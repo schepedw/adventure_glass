@@ -1,0 +1,63 @@
+<hr class = 'nav-padding' />
+<div class = 'container'>
+  <div class = 'row-fluid text-center hero'>
+    <h1> Build The Boat You Want </h1>
+    <h4 class = 'secondary'> Custom boats with fun and creative styles </h4>
+  </div>
+  <div class = 'row'>
+    <div class = 'col-xs-12 build-container'>
+      <div class = 'row'>
+        <div class = 'col-xs-12 col-md-6 options-container text-center'>
+          <div class = 'row'>
+            <div class = 'col-xs-12 picker boat-picker '>
+              <h3> What kind of boat do you want? </h3>
+              <div class="btn-group hidden-xs" role="group" aria-label="...">
+                <% @boat_options.each do |boat| %>
+                  <button type="button" class="btn btn-info"><%= boat %></button>
+                <% end %>
+              </div>
+              <%= select_tag(:style_dropdown, options_for_select(@boat_options), :prompt => "", :class=>'boat-options visible-xs-inline') %>
+            </div>
+            <div class = 'col-xs-12 picker style-picker'>
+              <h3> Choose a style </h3>
+              <%= select_tag(:style_dropdown, options_for_select(@boat_options), :prompt => "", :class=>'boat-options') %>
+            </div>
+            <div class = 'col-xs-12 picker hull-picker'>
+              <h3> Choose a Hull</h3>
+              <%= select_tag(:hull_dropdown, options_for_select(@boat_options), :prompt => "", :class=>'boat-options') %>
+            </div>
+            <div class = 'col-xs-12 picker extras-picker'>
+              <h3> Add Extras </h3>
+              <div class = 'row'>
+                <% @extras.each_with_index do |option, i|%>
+                  <div class = 'col-xs-3'>
+                    <ul class = 'check-box-list list-unstyled'>
+                      <li>
+                      <%= check_box_tag(option) %>
+                      <label><%=option%></label>
+                      </li>
+                    </ul>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class = 'col-xs-12 col-md-6 result-container'>
+          <div class = 'row'>
+            <div class = 'col-xs-12 col-md-6 result-boat result-boat-picture'>
+              <%=image_tag 'covered_paddleboat.jpg' %>
+            </div>
+            <div class = 'col-xs-12 col-md-6 result-boat result-boat-specs'>
+              <ul>
+                <li> Super </li>
+                <li> Duper </li>
+                <li> Long specification here </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

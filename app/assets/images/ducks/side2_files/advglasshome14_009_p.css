@@ -1,0 +1,296 @@
+/*--- Avanquest WebEasy Page Style ---*/
+
+
+.cc100              { /* Common */
+	border          :   0.00pt none #0080c0;
+	clip            : rect(0.00pt,251.25pt,0.75pt,0.00pt);
+	}
+.cc101              { /* Common */
+	font            : 8pt 'Arial', Helvetica, sans-serif;
+	color           : #0000ff;
+	}
+.cc102              { /* Common */
+	font            : 12pt 'Arial', Helvetica, sans-serif;
+	color           : #008080;
+	}
+.cc103              { /* Common */
+	font            : 12pt 'Arial', Helvetica, sans-serif;
+	color           : #0000ff;
+	}
+.cc104              { /* Common */
+	border          :   0.00pt none #0080c0;
+	clip            : rect(0.00pt,537.00pt,0.75pt,0.00pt);
+	}
+.cc105              { /* Common */
+	border          :   0.00pt none #ff0000;
+	}
+.cc106              { /* Common */
+	font            : 12pt 'Arial', Helvetica, sans-serif;
+	color           : #000000;
+	border          :   2.25pt double #ff8040;
+	}
+.cc107              { /* Common */
+	font            : 12pt 'Arial', Helvetica, sans-serif;
+	color           : #000000;
+	border          :   1.50pt solid #ff8000;
+	}
+.cc108              { /* Common */
+	font            : 12pt 'Arial', Helvetica, sans-serif;
+	color           : #000000;
+	}
+.cc109              { /* Common */
+	font            : 12pt 'Arial', Helvetica, sans-serif;
+	color           : #000000;
+	border          :   2.25pt double #ff6633;
+	}
+.cc98               { /* Common */
+	font            : bold 8pt 'Arial', Helvetica, sans-serif;
+	color           : #008080;
+	}
+.cc99               { /* Common */
+	font            : 6pt 'Arial', Helvetica, sans-serif;
+	color           : #0000ff;
+	border          :   0.75pt solid #ff9933;
+	}
+div#e30             { /* ADVENTUREGLASS \ */
+	background      : transparent url(advglasshome14009009.jpg) no-repeat top left;
+	position        : absolute;
+	left            : 138.00pt;
+	top             :   6.75pt;
+	width           : 342.00pt;
+	height          :  37.50pt;
+	}
+span#e29            { /* advglasshome14001005.gif */
+	background      : transparent url(advglasshome14001005.gif) no-repeat top left;
+	position        : absolute;
+	left            :  71.25pt;
+	top             :   5.25pt;
+	width           :  71.25pt;
+	height          :  42.00pt;
+	}
+span#e28            { /* advglasshome14001004.gif */
+	background      : transparent url(advglasshome14001004.gif) no-repeat top left;
+	position        : absolute;
+	left            :   5.25pt;
+	top             :   9.00pt;
+	width           :  63.75pt;
+	height          :  23.25pt;
+	}
+div#e27             { /* Home of: The Swan Paddle... */
+	position        : absolute;
+	left            :   5.25pt;
+	top             :  48.75pt;
+	width           : 691.50pt;
+	height          :  22.50pt;
+	}
+div#e26             { /* <SPAN class="SC150568340... */
+	background-color: #9dffb6;
+	position        : absolute;
+	left            :   7.50pt;
+	top             :  89.25pt;
+	width           : 708.00pt;
+	height          :  33.00pt;
+	}
+span#e25            { /* advglasshome14009008.gif */
+	background      : transparent url(advglasshome14009008.gif) no-repeat top left;
+	position        : absolute;
+	left            : 133.50pt;
+	top             :  75.00pt;
+	width           : 251.25pt;
+	height          :   0.75pt;
+	}
+div#e24             { /* Copyright © 2014 ADVENTU... */
+	position        : absolute;
+	left            : 315.00pt;
+	top             :2145.00pt;
+	width           : 150.00pt;
+	height          :  12.75pt;
+	}
+div#e23             { /* <DIV><FONT color="#00800... */
+	position        : absolute;
+	left            :  75.00pt;
+	top             :2077.50pt;
+	width           : 158.25pt;
+	height          :  53.25pt;
+	}
+div#e22             { /* <DIV><FONT color="#00800... */
+	position        : absolute;
+	left            : 247.50pt;
+	top             :2085.00pt;
+	width           : 109.50pt;
+	height          :  39.75pt;
+	}
+div#e21             { /* <TABLE style="WIDTH: 98p... */
+	position        : absolute;
+	left            :  13.50pt;
+	top             : 160.50pt;
+	width           :  73.50pt;
+	height          : 309.75pt;
+	}
+span#e20            { /* advglasshome14009007.gif */
+	background      : transparent url(advglasshome14009007.gif) no-repeat top left;
+	position        : absolute;
+	left            : 137.25pt;
+	top             : 141.75pt;
+	width           : 537.00pt;
+	height          :   0.75pt;
+	}
+div#e19             { /* DUCK PADDLEBOAT\ */
+	background      : #ffff00 url(advglasshome14009006.jpg) no-repeat top left;
+	position        : absolute;
+	left            : 128.25pt;
+	top             : 192.75pt;
+	width           : 597.75pt;
+	height          :  46.50pt;
+	}
+div#e18             { /* <DIV align="center"><FON... */
+	background-color: #ffffff;
+	position        : absolute;
+	left            : 132.00pt;
+	top             : 249.75pt;
+	width           : 582.00pt;
+	height          :  18.00pt;
+	}
+div#e17             { /* <DIV align="center"><FON... */
+	background-color: #ffffff;
+	position        : absolute;
+	left            : 495.00pt;
+	top             : 787.50pt;
+	width           : 210.75pt;
+	height          :  95.25pt;
+	}
+span#e16            { /* advglasshome14009005.jpg */
+	background      : transparent url(advglasshome14009005.jpg) no-repeat top left;
+	position        : absolute;
+	left            : 195.00pt;
+	top             : 281.25pt;
+	width           : 492.00pt;
+	height          : 302.25pt;
+	}
+span#e15            { /* ducknickparadeweb.jpg */
+	background      : transparent url(ducknickparadeweb.jpg) no-repeat top left;
+	position        : absolute;
+	left            : 376.50pt;
+	top             : 895.50pt;
+	width           : 330.00pt;
+	height          : 221.25pt;
+	}
+span#e14            { /* ducksi1web.jpg */
+	background      : transparent url(ducksi1web.jpg) no-repeat top left;
+	position        : absolute;
+	left            :  99.75pt;
+	top             : 617.25pt;
+	width           : 330.00pt;
+	height          : 247.50pt;
+	}
+div#e13             { /* <UL>  \<LI><FONT color="... */
+	background-color: #ffffff;
+	position        : absolute;
+	left            : 501.00pt;
+	top             :1155.75pt;
+	width           : 233.25pt;
+	height          : 109.50pt;
+	}
+div#e12             { /* <P style="TEXT-ALIGN: ce... */
+	background-color: #ffffff;
+	position        : absolute;
+	left            : 127.50pt;
+	top             :1357.50pt;
+	width           : 187.50pt;
+	height          :  58.50pt;
+	}
+span#e11            { /* advglasshome14009004.jpg */
+	background      : transparent url(advglasshome14009004.jpg) no-repeat top left;
+	position        : absolute;
+	left            : 102.75pt;
+	top             :1169.25pt;
+	width           : 380.25pt;
+	height          : 174.00pt;
+	}
+div#e10             { /* <DIV align="center"><FON... */
+	position        : absolute;
+	left            : 438.00pt;
+	top             :1126.50pt;
+	width           : 222.75pt;
+	height          :  21.75pt;
+	}
+div#e9              { /* <DIV align="center"><FON... */
+	background-color: #ffffff;
+	position        : absolute;
+	left            : 102.00pt;
+	top             : 879.00pt;
+	width           : 235.50pt;
+	height          : 213.75pt;
+	}
+div#e8              { /* <DIV align="center"><FON... */
+	background-color: #ffffff;
+	position        : absolute;
+	left            : 465.00pt;
+	top             : 607.50pt;
+	width           : 252.75pt;
+	height          : 155.25pt;
+	}
+div#e7              { /* The Adventureglass Paddl... */
+	background      : #ffff00 url(advglasshome14009003.jpg) no-repeat top left;
+	position        : absolute;
+	left            : 497.25pt;
+	top             :1997.25pt;
+	width           : 224.25pt;
+	height          :  54.75pt;
+	}
+div#e6              { /* <DIV align="center"><FON... */
+	background-color: #ffffff;
+	position        : absolute;
+	left            : 457.50pt;
+	top             :1717.50pt;
+	width           : 281.25pt;
+	height          : 131.25pt;
+	}
+span#e5             { /* advglasshome14003004.jpg */
+	background      : transparent url(advglasshome14003004.jpg) no-repeat top left;
+	position        : absolute;
+	left            : 495.00pt;
+	top             :1867.50pt;
+	width           : 237.75pt;
+	height          : 125.25pt;
+	}
+div#e4              { /* <DIV align="center"><FON... */
+	background-color: #ffffff;
+	position        : absolute;
+	left            : 420.00pt;
+	top             :1372.50pt;
+	width           : 315.00pt;
+	height          :  16.50pt;
+	}
+span#e3             { /* advglasshome14009002.jpg */
+	background      : transparent url(advglasshome14009002.jpg) no-repeat top left;
+	position        : absolute;
+	left            : 345.00pt;
+	top             :1410.00pt;
+	width           : 388.50pt;
+	height          : 267.00pt;
+	}
+span#e2             { /* advglasshome14009001.jpg */
+	background      : transparent url(advglasshome14009001.jpg) no-repeat top left;
+	position        : absolute;
+	left            :   7.50pt;
+	top             :1702.50pt;
+	width           : 435.75pt;
+	height          : 292.50pt;
+	}
+div#e1              { /* <P style="TEXT-ALIGN: ce... */
+	background-color: #ffffff;
+	position        : absolute;
+	left            :  52.50pt;
+	top             :1582.50pt;
+	width           : 252.75pt;
+	height          :  41.25pt;
+	}
+body#page           { /* Page Body */
+	background-color: #d7ffff;
+	background-image: url(advglasshome14009b01.jpg);
+	}
+
+
+
+/*--- EndOfFile ---*/

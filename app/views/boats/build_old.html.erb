@@ -1,0 +1,79 @@
+<hr class = 'nav-padding' />
+<div class = 'container'>
+  <div class = 'row'>
+    <div class = 'col-xs-12 text-center'>
+      <h1> How many passengers do you want? </h1>
+    </div>
+  </div>
+  <div class = 'row'>
+    <div class = 'col-md-6 col-md-offset-3'>
+      <div class = 'col-md-6 col-xs-12'>
+        <div class="counter">
+          <span class="input-number-decrement">–</span><input class="input-number" type="text" value="1" min="1" max="10"><span class="input-number-increment">+</span>
+        </div>
+      </div>
+      <div class = 'col-md-6 hidden-xs hidden-sm boat-people text-center'>
+      </div>
+    </div>
+  </div>
+  <div class = 'row'>
+    <div class = 'col-xs-12 text-center'>
+      <h1> What kind of boat do you want? </h1>
+    </div>
+  </div>
+  <div class = 'row'>
+    <div class = 'col-md-6 col-md-offset-3'>
+      <div class = 'col-md-6 col-xs-12'>
+        <%= select_tag(:combobox, options_for_select(@boat_options), :prompt => "", :class=>'boat-options') %>
+      </div>
+      <div class = 'col-md-6 hidden-xs hidden-sm boat-general'>
+      </div>
+    </div>
+  </div>
+  <div class = 'row'>
+    <div class = 'col-xs-12 text-center'>
+      <h1> Choose a Hull</h1>
+    </div>
+  </div>
+  <div class = 'row'>
+    <div class = 'col-md-6 col-md-offset-3'>
+      <div class = 'col-md-6 col-xs-12'>
+        <%= select_tag(:combobox, options_for_select([]), :prompt => "", :class=>'boat-specifics') %>
+      </div>
+      <div class = 'col-md-6 hidden-xs hidden-sm boat-specific picture'>
+      </div>
+    </div>
+  </div>
+  <div class = 'row'>
+    <div class = 'col-xs-12 text-center'>
+      <h1> Choose a style </h1>
+    </div>
+  </div>
+  <div class = 'row'>
+    <div class = 'col-md-6 col-md-offset-3'>
+      <div class = 'col-md-6 col-xs-12'>
+        <%= select_tag(:combobox, options_for_select([]), :prompt => "", :class=>'boat-specifics') %>
+      </div>
+      <div class = 'col-md-6 hidden-xs hidden-sm boat-specific picture'>
+      </div>
+    </div>
+  </div>
+  <div class = 'row'>
+    <div class = 'col-xs-12 text-center'>
+      <h1> Extras </h1>
+    </div>
+  </div>
+  <div class = 'row'>
+    <div class = 'col-md-6 col-md-offset-3'>
+      <div class = 'col-md-6 col-xs-12'>
+        <form>
+          <label>Doodad</label>
+          <%= check_box_tag('extra_1') %>
+        </form>
+      </div>
+      <div class = 'col-md-6 hidden-xs hidden-sm boat-specific picture'>
+      </div>
+    </div>
+  </div>
+</div>
+

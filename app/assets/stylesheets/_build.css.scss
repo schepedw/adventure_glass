@@ -1,0 +1,35 @@
+ul.build-tabs{
+  margin-left: -30px;
+  li{
+    background-image:  linear-gradient(to bottom, #F2F2F2 0, #CBCBCB 100%);
+    font-size: 18px;
+    font-weight: 500;
+    a{
+      padding-left: 30px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+}
+}
+
+.passengers-container{
+  font-family:Roboto, sans-serif;
+}
+
+.build-container{
+  border: 12px solid #e6e6e6;
+  border-radius: 26px;
+  .options-container{
+    .picker:not(:last-child){
+      border-bottom: 1px solid #e6e6e6;
+      padding-bottom: 10px;
+    }
+  }
+  .left-border{
+    border-left: 3px solid #e6e6e6;
+  }
+  .right-border{
+    border-right: 3px solid #e6e6e6;
+  }
+}
+
