@@ -1,5 +1,7 @@
 $(function(){
   divideBuildWindow();
+  Boat.showOptions();
+  Style.showOptions();
 });
 
 function divideBuildWindow(){
@@ -14,3 +16,28 @@ function divideBuildWindow(){
   }
 
 }
+
+
+function showStyleOptions(){
+
+}
+
+function showHullOptions(){
+
+}
+
+function updateHullOptions(){
+
+}
+
+function showExtras(){
+
+}
+
+var selectedOptions = {
+  boat: null,
+  style: null,
+  hull: null,
+  extras: null
+}
+

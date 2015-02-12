@@ -11,12 +11,14 @@
           <div class = 'row'>
             <div class = 'col-xs-12 picker boat-picker '>
               <h3> What kind of boat do you want? </h3>
-              <div class="btn-group hidden-xs" role="group" aria-label="...">
+              <div class="btn-group hidden-xs boat-button-container" role="group" aria-label="...">
+                <!--
                 <% @boat_options.each do |boat| %>
-                  <button type="button" class="btn btn-info"><%= boat %></button>
+                  <button type="button" class="btn btn-info btn-boat-toggle"><%= boat %></button>
                 <% end %>
+                -->
               </div>
-              <%= select_tag(:style_dropdown, options_for_select(@boat_options), :prompt => "", :class=>'boat-options visible-xs-inline') %>
+              <%= select_tag(:boat_dropdown, options_for_select([]), :prompt => "", :class=>'boat-options visible-xs-inline') %>
             </div>
             <div class = 'col-xs-12 picker style-picker'>
               <h3> Choose a style </h3>
