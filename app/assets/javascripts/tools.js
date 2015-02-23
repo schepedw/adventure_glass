@@ -1,0 +1,37 @@
+String.prototype.capitalize = function() {
+  return this.charAt(0).toUpperCase() + this.slice(1);
+}
+function selectableObject(options){
+  this.options = options;
+  this.select = function(boolFunction){
+    result = {};
+    for (property in this.options){
+      if (this.options.hasOwnProperty(property)){
+        selected = boolFunction(property);
+        result[property] = selected;
+      }
+    }
+    return new selectableObject(result);
+  }
+
+  this.except = function(exception){
+    result = {};
+    for (property in this.options){
+      if (this.options.hasOwnProperty(property) && property != exception){
+        result[property] = options[property];
+      }
+    }
+    return new selectableObject(result);
+  }
+
+  this.empty = function(){
+    for (property in this.options){
+      if (this.options.hasOwnProperty(property) && options[property]){
+        return false;
+      }
+    }
+    return true;
+
+  }
+}
+
