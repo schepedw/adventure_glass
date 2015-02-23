@@ -3,6 +3,9 @@ function getSections(){
 }
 
 $(function(){
+  initBoat();
+  initStyle();
+  initSelectedOptions();
   divideBuildWindow();
   sections = getSections();
   for (var i =  0; i < sections.length; i++){
@@ -41,27 +44,29 @@ function showExtras(){
 
 }
 
-var selectedOptions = {
-  boat: null,
-  style: null,
-  hull: null,
-  extras: null,
+function initSelectedOptions(){
+  window.selection = new selectableObject({
+    boat: null,
+    style: null,
+    hull: null,
+    extras: null,
+  });
 }
 
 function updateOptionsDisplay(){
   sections = getSections();
   for (var i =  0; i < sections.length; i++){
     sections[i].showOptions();
-    sections[i].setChangeListeners();
     sections[i].setCurrentSelection();
   }
 };
 
 function noOptionsSelected(selectChoices){
   for (category in selectChoices){
-    if (selectChoices[category] != null)
+    if (selectChoices[category] != null && selectChoices.hasOwnProperty(category))
       return false
   }
   return true;
 }
+
 
