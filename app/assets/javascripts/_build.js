@@ -1,7 +1,14 @@
+function getSections(){
+ return [Boat, Style];
+}
+
 $(function(){
   divideBuildWindow();
-  Boat.showOptions();
-  Style.showOptions();
+  sections = getSections();
+  for (var i =  0; i < sections.length; i++){
+    sections[i].showOptions();
+    sections[i].setChangeListeners();
+  }
 });
 
 function divideBuildWindow(){
@@ -38,6 +45,23 @@ var selectedOptions = {
   boat: null,
   style: null,
   hull: null,
-  extras: null
+  extras: null,
+}
+
+function updateOptionsDisplay(){
+  sections = getSections();
+  for (var i =  0; i < sections.length; i++){
+    sections[i].showOptions();
+    sections[i].setChangeListeners();
+    sections[i].setCurrentSelection();
+  }
+};
+
+function noOptionsSelected(selectChoices){
+  for (category in selectChoices){
+    if (selectChoices[category] != null)
+      return false
+  }
+  return true;
 }
 
