@@ -16,7 +16,7 @@ function initStyle(){
     if (boatOpt)
       compatibleOpts[boatOpt] = this.options[boatOpt];//use select here
     if (noOptionsSelected(compatibleOpts) &&
-        selection.except('style').empty){
+        selection.except('style').empty()){
       return this.options;
     }
     return compatibleOpts;
@@ -30,7 +30,7 @@ function initStyle(){
       if (styleOptions.hasOwnProperty(boatCategory)){
         optGroup = $('<optgroup label=' + boatCategory + '>') ;
         for ( i in styleOptions[boatCategory] ){
-          selectOption = $('<option value=' + styleOptions[boatCategory][i].toLowerCase() + '>' + styleOptions[boatCategory][i] + '</option>');
+          selectOption = $('<option value=' + encodeURI(styleOptions[boatCategory][i].toLowerCase()) + '>' + styleOptions[boatCategory][i] + '</option>');
           optGroup.append(selectOption);
         }
         $('#style_dropdown').append(optGroup);
@@ -48,5 +48,18 @@ function initStyle(){
   Style.setCurrentSelection = function(){
     $('#style_dropdown').val(selection.options['style']);
   }
-}
 
+  Style.findParentBoat = function(styleOpt){
+    if (styleOpt != 'null'){
+      for (key in this.options){
+        for (i = 0; i < this.options[key].length; i++){
+          value = this.options[key][i].toLowerCase();
+          if (value == styleOpt){
+            return key.capitalize();
+          }
+        }
+      }
+    }
+    return null;
+  }
+}

@@ -1,3 +1,4 @@
+$gallery-picture-width: 550px;
 .gallery-link{
   color: black;
   &:hover{
@@ -25,9 +26,20 @@
     padding-bottom: 1px;
   }
   padding-bottom: 15px;
-  max-width: 550px;
+  max-width: $gallery-picture-width;
+  @media (min-width: $gallery-picture-width) and (max-width:768px){
+    position: relative;
+    left: 50%;
+    margin-left: -$gallery-picture-width/2;
+  }
   &:hover{
     opacity: 1;
   }
 
+}
+
+.container.gallery-container{
+  @media (min-width: 768px) and (max-width:1199px){
+    width: 95%;
+  }
 }

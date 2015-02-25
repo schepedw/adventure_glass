@@ -33,5 +33,11 @@ function selectableObject(options){
     return true;
 
   }
+
+  this.replaceEmptyWithNull = function(){
+    for (category in this.options)
+       if (this.options[category] == "")
+        this.options[category]= null;
+  }
 }
 

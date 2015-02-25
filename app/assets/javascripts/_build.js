@@ -28,22 +28,6 @@ function divideBuildWindow(){
 }
 
 
-function showStyleOptions(){
-
-}
-
-function showHullOptions(){
-
-}
-
-function updateHullOptions(){
-
-}
-
-function showExtras(){
-
-}
-
 function initSelectedOptions(){
   window.selection = new selectableObject({
     boat: null,
@@ -55,6 +39,7 @@ function initSelectedOptions(){
 
 function updateOptionsDisplay(){
   sections = getSections();
+  selection.replaceEmptyWithNull();
   for (var i =  0; i < sections.length; i++){
     sections[i].showOptions();
     sections[i].setCurrentSelection();
