@@ -14,7 +14,9 @@ $gallery-picture-width: 550px;
     min-height: 500px;
   }
   overflow:hidden;
-  opacity: 0.85;
+  @media (min-width: 1200px){
+    opacity: 0.85;
+  }
   border-top-right-radius: 50px;
   border-top-left-radius: 50px;
   .gallery-option-description{
