@@ -1,0 +1,18 @@
+.col-md-6.img-container{
+  margin-top: 20px;
+  border-top: 2px solid gray;
+  img{
+    width: 100%;
+    padding: 20px;
+
+  }
+
+  &:first-child{
+    border-right: 2px solid gray;
+  }
+}
+.paddleboat-container{
+  border: 12px solid #e6e6e6;
+  border-radius: 26px;
+  padding: 15px;
+}
