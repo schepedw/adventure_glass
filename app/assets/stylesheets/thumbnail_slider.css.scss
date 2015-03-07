@@ -1,24 +1,12 @@
-h3 {
-  color: #3498db;
-}
-
-
-@media (min-width: 992px) and (max-width: 1199px){
-  .carousel-inner .active.left {
-    left: -25%;
-  }
-  .carousel-inner .next {
-    left:  25%;
-  }
-}
-@media (min-width: 768px) and (max-width: 991px){
+@media (min-width: 768px) and (max-width: 1199px){
   .carousel-inner .active.left {
     left: -33.33333%;
   }
   .carousel-inner .next {
     left:  33.33333%;
   }
-} 
+}
+
 @media (max-width: 768px){
   .carousel-inner .active.left {
     left: -50%;

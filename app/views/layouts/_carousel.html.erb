@@ -1,0 +1,38 @@
+<div id="carousel-example-generic" class="carousel slide hidden-xs" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <% @carousel_images.each_with_index do |image, index|%>
+    <li data-target="#carousel-example-generic" data-slide-to=<%=index.to_s%> class=<%="active" if index == 0 %>></li>
+  <% end %>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+  <% @carousel_images.each_with_index do |(image, caption), index|%>
+    <% active = index == 0 ? "active" : "" %>
+    <div class='item <%=active%>'>
+      <%= image_tag image %>
+      <div class="carousel-caption">
+        <%=caption%>
+      </div>
+    </div>
+  <% end %>
+    <!--
+    <div class="item">
+      <%= image_tag 'seaworld_landing.jpg' %>
+      <div class="carousel-caption">
+      </div>
+    </div>
+    -->
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="fa fa-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="fa fa-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
