@@ -9,7 +9,34 @@ class BoatsController < ApplicationController
     }
     @extras = %w(option0 option1 option2 option3 option4 option5 option6 option7 option8 option9 option10)
   end
-  def index
 
+  def index
+    @carousel_images = {'boat_landing_sample.jpg' => 'Caption here'}
   end
+
+  def show
+    options = {'african_queens' => ['option1','option2','option2','option2','option2','option2','option2'],
+    'mark_twains' => ['option1','option2','option2','option2','option2','option2','option2'],
+    'riverboats' => ['option1','option2','option2','option2','option2','option2','option2'],
+    'canoes' => ['option1','option2','option2','option2','option2','option2','option2'],
+    'excurion_boats' => ['option1','option2','option2','option2','option2','option2','option2'],
+    'pelicans' => ['option1','option2','option2','option2','option2','option2','option2'],
+    'handiboats' => ['option1','option2','option2','option2','option2','option2','option2'],
+    'sea_ventures' => ['option1','option2','option2','option2','option2','option2','option2'],
+    'gondolas' => ['option1','option2','option2','option2','option2','option2','option2']
+    }
+    @display_options = options[params[:subject]]
+    @pictures = []
+    @title = title
+    Dir.foreach(Rails.root.join('app','assets','images', params[:subject])) do |file|
+     @pictures << params[:subject] + '/' + file unless ['.', '..'].include?(file)
+    end
+  end
+
+  private
+
+  def title
+    params[:subject].gsub('_', ' ').titleize
+  end
+
 end

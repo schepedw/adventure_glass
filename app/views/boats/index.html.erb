@@ -1,0 +1,43 @@
+<div class = 'boat-gallery-carousel' >
+<%= render 'layouts/carousel.html.erb' %>
+</div>
+<div class = 'container boat-gallery-container'>
+  <div class = 'row-fluid'>
+    <div class="col-md-12"><span class = 'hero'>Custom Paddleboats</span></div>
+    <%= render 'thumbnail_slider' %>
+  </div>
+  <hr class = 'boat-gallery-divider' />
+  <div class = 'row-fluid riverboats-container'>
+    <div class = 'col-md-6 img-container text-center'>
+      <a href = 'boats/riverboats' class = 'gallery-image-link'><!-- TODO - need to separate 8 from 20 person boats -->
+        <%= image_tag 'riverboats/riverboat_small_side.jpg' %><span class = 'gallery-image-descriptor '>8 Passenger Riverboat</span>
+      </a>
+    </div>
+    <div class = 'col-md-6 img-container text-center'>
+      <a href = 'boats/riverboats' class = 'gallery-image-link'>
+        <%= image_tag 'riverboats/riverboat_rear_view.jpg' %><span class = 'gallery-image-descriptor '>20 Passenger Riverboat</span>
+      </a>
+    </div>
+  </div>
+  <hr class = 'boat-gallery-divider' />
+  <div class = 'row-fluid canoes-container'>
+    <div class = 'col-md-12 img-container text-center'>
+      <a href = '/boats/canoes' class = 'gallery-image-link'>
+        <%= image_tag 'canoes/side1.jpg' %><span class = 'gallery-image-descriptor '>Fiberglass Canoes</span>
+      </a>
+    </div>
+  </div>
+  <hr class = 'boat-gallery-divider' />
+  <div class = 'row-fluid gondolas-container excursion-boat-container'>
+    <div class = 'col-md-6 img-container text-center'>
+      <a href = '/boats/gondolas' class = 'gallery-image-link'>
+        <%= image_tag 'gondolas/side.png' %><span class = 'gallery-image-descriptor '>Gondolas</span>
+      </a>
+    </div>
+    <div class = 'col-md-6 img-container text-center'>
+      <a href = '/boats/excursion_boats' class = 'gallery-image-link'>
+        <%= image_tag 'excursion_boats/side2.jpg' %><span class = 'gallery-image-descriptor '>Excursion Boats</span>
+      </a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class = 'container-fluid'>
+<div class = 'row'>
+  <div class = 'col-md-1'> <!--TODO - figure out what to do for small screens-->
+    <!-- TODO: make each a link, so it's intuitive to click them?? the effect of clicking being making it active -> the larger display-->
+    <% @pictures.each_with_index do |picture, index| %>
+      <% active = index == 0 ? 'active ' : "" %>
+      <%= image_tag picture, :class => active + 'thumbnail gallery-thumbnail'%>
+    <% end %>
+  </div>
+  <div class = 'col-md-5'>
+    <div class = 'image-active'>
+      <%= image_tag @pictures[0] %>
+    </div>
+  </div>
+  <div class = 'col-md-2'>
+    <h3> Available Options </h3>
+    <ul class = 'options-list list-unstyled'>
+      <% @display_options.each do |option| %>
+        <li><%=option %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+</div>

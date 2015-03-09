@@ -3,50 +3,63 @@
   img{
     width: 100%;
     padding: 20px;
-
   }
   @media(min-width: 992px){
     &:not(:last-child){
       border-right: 1px solid #eeeeee;
     }
-    //&:not(.img-container:last-child){
+  }
+}
+
+.boat-gallery-divider{
+  border: 1px solid #eeeeee;
+}
+
+.paddleboat-container{
+  padding-top: 15px;
+  .carousel-control{
+    padding: 33px 18px;
+    opacity: 1;
+    background-color: #808080;
+    &.right, &.left{
+      margin: -43px -30px 25px -30px;
     }
-  }
-
-  .boat-gallery-divider{
-    border: 1px solid #eeeeee;
-  }
-
-  .paddleboat-container{
-    padding-top: 15px;
-    .carousel-control{
-      padding: 33px 18px;
+    &:focus{
       opacity: 1;
-      background-color: #808080;
-      &.right, &.left{
-        margin: -43px -30px 25px -30px;
-      }
-      &:focus{
-        opacity: 1;
-        &:hover{
-          opacity: 0.9;
-        }
+      &:hover{
+        opacity: 0.9;
       }
     }
   }
+}
 
 
-  .paddleboat-header{
-    h4{
-      margin-top: -60px;
-      padding-bottom: 50px;
-      font-family: 'Open Sans', sans-serif;
-      color: rgb(18, 37, 76);
-      font-size: 28px;
-    }
+.paddleboat-header{
+  h4{
+    margin-top: -60px;
+    padding-bottom: 50px;
+    font-family: 'Open Sans', sans-serif;
+    color: rgb(18, 37, 76);
+    font-size: 28px;
+  }
+}
+
+.boat-gallery-carousel{
+  overflow: hidden;
+}
+
+.gallery-thumbnail{
+  opacity: 0.85;
+  width: 100%;
+
+  &:hover{
+    opacity: 1.0;
   }
 
+}
 
-  .boat-gallery-carousel{
-    overflow: hidden;
+.image-active{
+  img{
+    width: 100%;
   }
+}
