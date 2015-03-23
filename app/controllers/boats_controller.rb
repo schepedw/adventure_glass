@@ -29,7 +29,7 @@ class BoatsController < ApplicationController
     @pictures = []
     @title = title
     Dir.foreach(Rails.root.join('app','assets','images', params[:subject])) do |file|
-     @pictures << params[:subject] + '/' + file unless ['.', '..'].include?(file)
+      @pictures << params[:subject] + '/' + file unless ['.', '..', '.DS_Store'].include?(file)
     end
   end
 

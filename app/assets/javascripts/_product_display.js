@@ -2,6 +2,7 @@ $(function(){
   $('.gallery-thumbnail').click(function(){
     $('.image-active').empty();
     $('.image-active').append($(this).clone().toggleClass('thumbnail gallery-thumbnail'));
+    $('.thumbnail-active').toggleClass('thumbnail-active');
+    $(this).toggleClass('thumbnail-active');
   });
-
 });

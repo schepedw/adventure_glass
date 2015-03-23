@@ -17,20 +17,6 @@
 
 .paddleboat-container{
   padding-top: 15px;
-  .carousel-control{
-    padding: 33px 18px;
-    opacity: 1;
-    background-color: #808080;
-    &.right, &.left{
-      margin: -43px -30px 25px -30px;
-    }
-    &:focus{
-      opacity: 1;
-      &:hover{
-        opacity: 0.9;
-      }
-    }
-  }
 }
 
 

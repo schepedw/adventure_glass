@@ -1,0 +1,20 @@
+.product-display .image-active img{
+  max-height: 30vw;
+}
+
+img.thumbnail-active{
+  border: 1px solid red;
+}
+
+.product-persistence{
+  border: 3px solid #dddddd;
+  border-radius: 9px;
+  padding: 10px;
+  a{
+    width: 100%;
+  }
+  hr{
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
