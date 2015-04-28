@@ -2,28 +2,23 @@
   <!-- Indicators -->
   <ol class="carousel-indicators">
     <% @carousel_images.each_with_index do |image, index|%>
-    <li data-target="#carousel-example-generic" data-slide-to=<%=index.to_s%> class=<%="active" if index == 0 %>></li>
-  <% end %>
+      <li data-target="#carousel-example-generic" data-slide-to=<%=index.to_s%> class=<%="active" if index == 0 %>></li>
+    <% end %>
   </ol>
 
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
-  <% @carousel_images.each_with_index do |(image, caption), index|%>
-    <% active = index == 0 ? "active" : "" %>
-    <div class='item <%=active%>'>
-      <%= image_tag image %>
-      <div class="carousel-caption">
-        <%=caption%>
+    <% @carousel_images.each_with_index do |(image, caption), index|%>
+      <% active = index == 0 ? "active" : "" %>
+      <div class='item <%=active%>'>
+        <%= image_tag image %>
+        <div class='container'>
+          <div class="carousel-caption">
+            <%=caption%>
+          </div>
+        </div>
       </div>
-    </div>
-  <% end %>
-    <!--
-    <div class="item">
-      <%= image_tag 'seaworld_landing.jpg' %>
-      <div class="carousel-caption">
-      </div>
-    </div>
-    -->
+    <% end %>
   </div>
 
   <!-- Controls -->

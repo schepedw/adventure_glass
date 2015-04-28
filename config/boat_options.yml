@@ -1,0 +1,52 @@
+african_queens:
+  - option1
+  - option2
+
+mark_twains:
+  - option1
+  - option2
+  - option3
+  - option4
+
+riverboats:
+  - option1
+  - option2
+  - option3
+  - option4
+
+canoes:
+  - option1
+  - option2
+  - option3
+  - option4
+
+excursion_boats:
+  - option1
+  - option2
+  - option3
+  - option4
+
+sea_ventures:
+  - option1
+  - option2
+  - option3
+  - option4
+
+gondolas:
+  - option1
+  - option2
+  - option3
+  - option4
+
+dixie_boats:
+  - option1
+  - option2
+  - option3
+  - option4
+
+pontoon_boats:
+  - option1
+  - option2
+  - option3
+  - option4
+

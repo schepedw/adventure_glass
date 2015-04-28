@@ -15,25 +15,28 @@ class BoatsController < ApplicationController
   end
 
   def show
-    options = {'african_queens' => ['option1','option2','option2','option2','option2','option2','option2'],
-    'mark_twains' => ['option1','option2','option2','option2','option2','option2','option2'],
-    'riverboats' => ['option1','option2','option2','option2','option2','option2','option2'],
-    'canoes' => ['option1','option2','option2','option2','option2','option2','option2'],
-    'excurion_boats' => ['option1','option2','option2','option2','option2','option2','option2'],
-    'pelicans' => ['option1','option2','option2','option2','option2','option2','option2'],
-    'handiboats' => ['option1','option2','option2','option2','option2','option2','option2'],
-    'sea_ventures' => ['option1','option2','option2','option2','option2','option2','option2'],
-    'gondolas' => ['option1','option2','option2','option2','option2','option2','option2']
-    }
-    @display_options = options[params[:subject]]
+    @display_options = AppConfig.boat_options[params[:subject]]
+
     @pictures = []
     @title = title
-    Dir.foreach(Rails.root.join('app','assets','images', params[:subject])) do |file|
-      @pictures << params[:subject] + '/' + file unless ['.', '..', '.DS_Store'].include?(file)
+    parent_dir = parent_folder_for(params[:subject])
+    Dir.foreach(Rails.root.join('app','assets','images', parent_dir, params[:subject])) do |file|
+      @pictures << parent_dir + params[:subject] + '/' + file unless ['.', '..', '.DS_Store'].include?(file)
     end
   end
 
   private
+
+  def parent_folder_for(dir)
+    case
+    when ['excursion_boats', 'riverboats'].include?(dir)
+      'barges/'
+    when ['gondolas', 'mark_twains', 'pirate_ships', 'sea_ventures', 'waterfowl', 'dixie_boats', 'pontoon_boats'].include?(dir)
+      'paddleboats/'
+    else
+      ''
+    end
+  end
 
   def title
     params[:subject].gsub('_', ' ').titleize

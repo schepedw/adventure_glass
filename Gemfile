@@ -19,10 +19,12 @@ gem "less-rails"
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'twitter-bootstrap-rails', '3.2.0'
+gem 'jquery-datatables-rails', :git => 'https://github.com/rweng/jquery-datatables-rails'
 gem 'font-awesome-rails'
 gem 'pry'
-# bundle exec rake doc:rails generates the API under doc/api.
-gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'figgy'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-gem 'spring',        group: :development
+group :development do
+  gem 'spring',        group: :development
+end

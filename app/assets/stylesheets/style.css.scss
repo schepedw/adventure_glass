@@ -26,3 +26,9 @@ h3{
   color: #0E3076;
   font-size: 28px;
 }
+
+.container{
+  @media(min-width: 1500px){
+    width: 80%;
+  }
+}

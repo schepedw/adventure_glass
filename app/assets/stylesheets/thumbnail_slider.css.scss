@@ -1,43 +1,54 @@
-@media (min-width: 768px) and (max-width: 1199px){
   .carousel-inner .active.left {
     left: -33.33333%;
   }
   .carousel-inner .next {
-    left:  33.33333%;
+    left: 33.33333%;
   }
-}
 
 @media (max-width: 768px){
   .carousel-inner .active.left {
     left: -50%;
   }
   .carousel-inner .next {
-    left:  50%;
+    left: 50%;
   }
-} 
+}
 @media (min-width: 1200px){
   .carousel-inner .active.left {
     left: -16.667%;
   }
   .carousel-inner .next {
-    left:  16.667%;
+    left: 16.667%;
   }
 }
 
+.hero-carousel{
+  .carousel-inner .active.left {
+    left: 0%;
+    -webkit-transition: all 0.2s ease-in-out;
+  }
+  .carousel-inner .next {
+    left: 100%;
+    -webkit-transition: all 0.2s ease-in-out;
+  }
+}
+
+
+
 .carousel-control {
-  width:  4%; 
   top: 40%;
+  width: 4%;
 }
 .carousel-control.left,.carousel-control.right {
-  margin-left:15px; 
+  margin-left:15px;
   background-image:none;
 }
 
-.paddleboat-container  .carousel-control{
+.paddleboat-container .carousel-control{
   padding: 38px 18px;
   opacity: 1;
   background-color: #808080;
-      margin: -55px -30px 45px -31px;
+  margin: -55px -30px 45px -31px;
   @media(max-width: 1199px) and (min-width: 992px){
     &.right, &.left{
       margin: -178px -30px 45px -31px;
@@ -52,8 +63,8 @@
   }
   @media(max-width: 767px){
     &.right, &.left{
-      margin: -248px -30px 42px -30px;
-      padding: 288px 20px;
+      margin: -41vw -30px 42px -30px;
+      padding: 46vw 20px;
     }
   }
   &:focus{

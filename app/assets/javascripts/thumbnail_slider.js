@@ -3,7 +3,8 @@ $(function(){
     interval: 4000
   })
 
-  $('.carousel .item').each(function(){
+
+  $('.thumbnail-carousel .carousel .item').each(function(){
     var next = $(this).next();
     if (!next.length) {
       next = $(this).siblings(':first');
