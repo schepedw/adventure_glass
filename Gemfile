@@ -21,10 +21,10 @@ gem 'jquery-ui-rails'
 gem 'twitter-bootstrap-rails', '3.2.0'
 gem 'jquery-datatables-rails', :git => 'https://github.com/rweng/jquery-datatables-rails'
 gem 'font-awesome-rails'
-gem 'pry'
 gem 'figgy'
-
+gem 'devise'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-group :development do
-  gem 'spring',        group: :development
+group :development, :test do
+  gem 'pry'
+  gem 'spring'
 end
