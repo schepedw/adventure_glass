@@ -7,7 +7,7 @@ class CreateAddresses < ActiveRecord::Migration
       t.string     :city, null: false
       t.string     :state, null: false
       t.integer    :zip_code, null: false
-      t.type       :string #needed for inheritance, in case we later want billing / shipping address
+      t.string     :type #needed for inheritance, in case we later want billing / shipping address
       t.timestamps
     end
   end
