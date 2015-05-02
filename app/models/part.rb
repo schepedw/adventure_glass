@@ -1,0 +1,3 @@
+class Part < Product
+
+end
