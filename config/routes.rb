@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-#  devise_for :users
+  devise_for :users
   root 'home#main'
   get '/boats/build' => 'boats#build'
   get '/boats' => 'boats#index'
@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   get '/paddleboats' => 'paddleboats#index'
   get '/lifts' => 'lifts#show'
   get '/docks' => 'docks#show'
+  get '/shopping_cart' => 'shopping_carts#show'
 end
