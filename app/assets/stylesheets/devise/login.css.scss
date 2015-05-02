@@ -1,0 +1,19 @@
+.login-container{
+  border: 8px solid #cccccc;
+  border-radius: 13px;
+  .field{
+    padding-top: 10px;
+    padding-left: 10px
+  }
+  .actions{
+    padding-top: 10px;
+    padding-left: 10px
+  }
+  background: white;
+}
+
+.login-background{
+  @media (min-width: 992px){
+  background-image: image-url('paddleboats/seaworldcropped.jpg')
+}
+}
