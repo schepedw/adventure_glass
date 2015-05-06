@@ -33,6 +33,11 @@ h3{
   }
 }
 
+@media(max-width: 767px){
+  nav.navbar-default{
+    padding: 0px;
+  }
+}
 .row-centered {
   text-align:center;
 }

@@ -1,6 +1,5 @@
 <div class = 'container'>
   <div class = 'row'>
-    <%= form_for @product do |f| %>
       <div class = 'col-md-1'> <!--TODO - figure out what to do for small screens-->
       <!-- TODO: make each a link, so it's intuitive to click them?? the effect of clicking being making it active -> the larger display-->
       <% @pictures.each_with_index do |picture, index| %>
@@ -13,19 +12,23 @@
         <%= image_tag @pictures[0] %>
       </div>
     </div>
+    <%= form_for @product do |f| %>
+      <input type='hidden' name='shopping_cart_id' value=<%=@cart.id%>>
     <div class = 'col-md-2 options'>
       <h3> Available Options </h3>
-      <ul class = 'options-list'>
-        <% @display_options.each do |option| %>
-          <li><%=option %></li>
+      <ul class = 'options-list list-unstyled'>
+        <% @product.available_options.each do |option| %>
+          <li><%=check_box"#{@product.class_name.downcase}[option_ids]", option.id %> <%=option.description%></li>
       <% end %>
       </ul>
     </div>
     <div class = 'col-md-2 product-persistence col-lg-offset-1 text-center'>
-      <a class = 'btn btn-primary'><i class = 'fa fa-shopping-cart'></i> I want one!</a>
+      <button type = 'submit' class = 'btn btn-primary'>
+        <i class = 'fa fa-shopping-cart'></i> I want one!
+      </button>
       <hr />
       <a class = 'btn btn-success'><i class = 'fa fa-bookmark'></i> Bookmark for later</a>
     </div>
-  <% end %>
+      <% end %>
   </div>
 </div>

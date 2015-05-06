@@ -35,6 +35,14 @@ ActiveRecord::Schema.define(version: 20150430000957) do
     t.datetime "updated_at"
   end
 
+  create_table "options_products", force: true do |t|
+    t.integer "product_id", null: false
+    t.integer "option_id",  null: false
+  end
+
+  add_index "options_products", ["option_id"], name: "index_options_products_on_option_id", using: :btree
+  add_index "options_products", ["product_id"], name: "index_options_products_on_product_id", using: :btree
+
   create_table "orders", force: true do |t|
     t.integer  "user_id",    null: false
     t.datetime "created_at"
@@ -44,44 +52,28 @@ ActiveRecord::Schema.define(version: 20150430000957) do
   create_table "products", force: true do |t|
     t.decimal  "price",       precision: 5, scale: 2
     t.text     "description"
+    t.string   "class_name"
+    t.string   "name"
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "products_options", force: true do |t|
-    t.integer "product_id", null: false
-    t.integer "option_id",  null: false
-  end
-
-  add_index "products_options", ["option_id"], name: "index_products_options_on_option_id", using: :btree
-  add_index "products_options", ["product_id"], name: "index_products_options_on_product_id", using: :btree
-
-  create_table "shopping_carts", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-  end
-
-  create_table "shopping_carts_products", force: true do |t|
+  create_table "products_shopping_carts", force: true do |t|
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "shopping_cart_id", null: false
     t.integer  "product_id",       null: false
   end
 
-  add_index "shopping_carts_products", ["product_id"], name: "index_shopping_carts_products_on_product_id", using: :btree
-  add_index "shopping_carts_products", ["shopping_cart_id"], name: "index_shopping_carts_products_on_shopping_cart_id", using: :btree
+  add_index "products_shopping_carts", ["product_id"], name: "index_products_shopping_carts_on_product_id", using: :btree
+  add_index "products_shopping_carts", ["shopping_cart_id"], name: "index_products_shopping_carts_on_shopping_cart_id", using: :btree
 
-  create_table "shopping_carts_products_options", force: true do |t|
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.integer  "shopping_cart_id",   null: false
-    t.integer  "products_option_id", null: false
+  create_table "shopping_carts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
   end
-
-  add_index "shopping_carts_products_options", ["products_option_id"], name: "index_shopping_carts_products_options_on_products_option_id", using: :btree
-  add_index "shopping_carts_products_options", ["shopping_cart_id"], name: "index_shopping_carts_products_options_on_shopping_cart_id", using: :btree
 
   create_table "specifications", force: true do |t|
     t.text     "description"
@@ -99,10 +91,10 @@ ActiveRecord::Schema.define(version: 20150430000957) do
   end
 
   create_table "users", force: true do |t|
-    t.string   "first_name",                          null: false
-    t.string   "last_name",                           null: false
+    t.string   "first_name"
+    t.string   "last_name"
     t.string   "email",                               null: false
-    t.string   "phone_number",                        null: false
+    t.string   "phone_number"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "encrypted_password",     default: "", null: false

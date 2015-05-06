@@ -1,0 +1,24 @@
+<% if @shopping_cart.products.empty? %>
+  <%= render 'empty'%>
+<% else %>
+  <div class = 'container-fluid'>
+  <% @shopping_cart.products.each do |product| %>
+    <div class = 'row-fluid clearfix'>
+      <div class = 'col-sm-2'> <!-- picture -->
+        <a href="/boats/mark_twains"><%= image_tag 'paddleboats/mark_twains/thumbnail.jpg',  :class=>"img-responsive thumbnail"%><span>Mark Twain</span></a>
+      </div>
+      <div class = 'col-sm-6'><!-- Title & brief description. Maybe some specs too? -->
+        <span> <%=link_to product.name, product_path(product) %> </span>
+        <span> <%= product.description %> </span>
+      </div>
+      <div class = 'col-sm-2'><!-- Price -->
+        <span> hello </span>
+      </div>
+      <div class = 'col-sm-2'><!-- Qty -->
+        <span> hello </span>
+      </div>
+    </div>
+  <% end %>
+  </div>
+
+<% end %>

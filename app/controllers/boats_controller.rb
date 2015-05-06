@@ -1,4 +1,4 @@
-class BoatsController < ApplicationController
+class BoatsController < ProductsController
   def build
     @boat_options = %w(Paddleboat Canoe Gondola Riverboat Excursion\ Boat)
     @style_options = {:canoe      => ['canoe_option1', 'canoe_option2'],
@@ -15,8 +15,8 @@ class BoatsController < ApplicationController
   end
 
   def show
+    @product = Boat.new
     @display_options = AppConfig.boat_options[params[:subject]]
-
     @pictures = []
     @title = title
     parent_dir = parent_folder_for(params[:subject])

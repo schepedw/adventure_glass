@@ -1,6 +1,6 @@
 require 'csv_reader'
 include CSVReader
-class PartsController < ApplicationController
+class PartsController < ProductsController
   def index
     respond_to do |format|
       format.html
@@ -10,11 +10,12 @@ class PartsController < ApplicationController
   end
 
   def show
-    part = find(params[:id].to_i)
+    part = find(params[:id].to_i) || Product.find(params[:id])
     name = part[0]
     attrs = part[1]
     @pictures = ["parts/#{attrs.part_number.to_s}_#{name}.jpg"]
     @display_options = []
+    @product = Product.new(class_name: 'Part')
   end
 
   private
