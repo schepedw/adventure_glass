@@ -10,6 +10,7 @@ class AddAssociations < ActiveRecord::Migration
       t.belongs_to  :shopping_cart, null: false, index: true
       t.belongs_to  :product, null: false, index: true
     end
+
   end
 
   def down

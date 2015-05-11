@@ -17,12 +17,13 @@ ActiveRecord::Schema.define(version: 20150430000957) do
   enable_extension "plpgsql"
 
   create_table "addresses", force: true do |t|
+    t.integer  "user_id"
     t.string   "building_number",    null: false
     t.string   "apt_or_unit_number"
     t.string   "street",             null: false
     t.string   "city",               null: false
     t.string   "state",              null: false
-    t.integer  "zip_code",           null: false
+    t.string   "zip_code",           null: false
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"

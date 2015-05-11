@@ -9,7 +9,6 @@ class ApplicationController < ActionController::Base
 
   private
   def shopping_cart_from_session
-    session[:shopping_cart_id] = nil
     shopping_cart = session[:shopping_cart_id].nil? ? ShoppingCart.create : ShoppingCart.find(session[:shopping_cart_id])
     session[:shopping_cart_id] = shopping_cart.id
     shopping_cart

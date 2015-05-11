@@ -1,0 +1,59 @@
+<% if current_user.nil? %>
+  <a href = 'users/sign_in'>Sign in here</a>
+<% end %>
+<%= form_for @user do |f| %>
+  <%= f.hidden_field :redirect_path, value: checkout_confirm_path %>
+  <% unless @user.registration_complete? %>
+    <% if current_user.nil? %>
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true %>
+
+      <%= f.label :password %> <br />
+      <%= f.password_field :password, autocomplete: "off" %>
+
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <% end %>
+
+    <%= f.label :first_name %>:
+    <%= f.text_field :first_name %><br />
+
+    <%= f.label :last_name %>:
+    <%= f.text_field :last_name %><br />
+
+    <%= f.label :phone_number%>:
+    <%= f.telephone_field :phone_number %><br />
+
+    <hr />
+  <% end %>
+  <%= f.fields_for :shipping_addresses do |shipping_address| %>
+    <!--
+      <% if @user.shipping_addresses.present? %>
+        <%= form_tag('#???') do %>
+          <%= select_tag "shipping_address", options_for_select(@user.shipping_addresses) %>
+        <% end %>
+        <span> or add a new address </span>
+      <% end %>
+    -->
+    <%= shipping_address.label :building_number%>
+    <%= shipping_address.number_field :building_number%>
+
+    <%= shipping_address.label :apt_or_unit_number %>
+    <%= shipping_address.text_field :apt_or_unit_number %>
+
+    <%= shipping_address.label :street %>
+    <%= shipping_address.text_field :street %>
+
+    <%= shipping_address.label :city %>
+    <%= shipping_address.text_field :city %>
+
+    <%= shipping_address.label :state %>
+    <%= shipping_address.text_field :state %>
+
+    <%= shipping_address.label :zip_code %>
+    <%= shipping_address.text_field :zip_code %>
+  <% end %>
+
+  <%= f.submit %>
+
+<% end %>
