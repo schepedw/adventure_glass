@@ -1,0 +1,29 @@
+.registration-form{
+  border: 10px solid rgb(226, 225, 223);
+  background-color: white;
+  border-radius: 10px;
+  .row .row{
+    padding: 15px;
+  }
+  hr{
+    height: 5px;
+    border-width: 3px 3px 0px 0px;
+  }
+  input{
+    width: 90%;
+    &.btn-checkout{
+      width: 100%;
+    }
+  }
+}
+.checkout{
+  &.affix-top{
+    position: absolute;
+    top: 175px;
+    right: 37px;
+  }
+  &.affix{
+    top: 108px;
+    right: 37px;
+  }
+}

@@ -49,3 +49,22 @@ h3{
   /* inline-block space fix */
   margin-right:-4px;
 }
+
+.gray-field{
+  padding-top: 15px;
+  background-color: #f3f3f3;
+  padding-bottom: 15px;
+  margin-bottom: -15px;
+}
+
+.required{
+  &:after{
+    content: ' \f069';
+    font-family: FontAwesome;
+    color: red;
+    font-size: 7px;
+    font-weight: 100;
+    position: absolute;
+    top: 4px;
+  }
+}

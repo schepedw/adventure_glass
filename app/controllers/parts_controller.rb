@@ -10,12 +10,10 @@ class PartsController < ProductsController
   end
 
   def show
-    part = find(params[:id].to_i) || Product.find(params[:id])
-    name = part[0]
-    attrs = part[1]
-    @pictures = ["parts/#{attrs.part_number.to_s}_#{name}.jpg"]
+    part = Product.find(params[:id])
+    @pictures = ["parts/#{params[:id]}_#{part.name}.jpg"]
     @display_options = []
-    @product = Product.new(class_name: 'Part')
+    @product = Product.new(class_name: 'Part', base_model_id: part.id)
   end
 
   private

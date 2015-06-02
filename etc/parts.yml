@@ -1,0 +1,190 @@
+pillow_block_3_4_in:
+  part_number: 1010
+  description: Pillow block 3/4 inch ID Roller Bearing for Cranks
+  price: $19.95
+
+pillow_block_1_in:
+  part_number: 1012
+  description: Pillow block1 inch ID Roller Bearing for Cranks
+  price: $21.95
+
+pillow_block_3_4_in_ss:
+  part_number: 1014
+  description: Pillow block 3/4 inch ID Roller Bearing for CranksStainless Steel
+  price: $69.95
+
+pillow_block_seal:
+  part_number: 1016
+  description: Rubber Seal for pillow block bearing 3/4 bore
+  price: $9.95
+
+delrin_insert:
+  part_number: 1022
+  description: Delrin insert bearing for outside crank
+  price: $19.95
+
+wood_insert:
+  part_number: 1024
+  description: Delrin insert bearing for outside crank
+  price: $22.95
+
+delrin_insert_ss:
+  part_number: 1029
+  description: Delrin insert bearing for outside crank stainless steel
+  price: $25.95
+
+l_bracket:
+  part_number: 1030
+  description: L Bracket for mounting bearing on outside crank
+  price: $21.95
+
+crank_left_ss_2_bearings:
+  part_number: 1108
+  description: Crank Left Stainless Steel 2 bearings Old Style
+  price: $135.50
+
+crank_right_ss_2_bearings:
+  part_number: 1208
+  description: Crank Right Stainless Steel 2 bearings Old Style
+  price: $135.50
+
+crank_left_ss_1_bearing:
+  part_number: 1110
+  description: Crank Left Stainless Steel 1 bearing New Style & Seaventure
+  price: $135.50
+
+crank_right_ss_1_bearing:
+  part_number: 1210
+  description: Crank Right Stainless Steel 1 bearing New Style & Seaventure
+  price: $135.50
+
+peal_black_3_4_in:
+  part_number: 1150
+  description: Peal black 3/4 in bore
+  price: $16.50
+
+paddlewheel:
+  part_number: 1401
+  description: 'Paddlewheel: specify boat style'
+  price: $385.00
+
+paddlewheel_mnt_bracket_painted:
+  part_number: 1410
+  description: Mounting Bracket assembly paddlewheel Painted steel
+  price: $38.50
+
+paddlewheel_mnt_bracket_ss:
+  part_number: 1412
+  description: Mounting Bracket assembly paddlewheel stainless steel
+  price: $38.50
+
+steering_knob:
+  part_number: 1510
+  description: Steering knob black
+  price: $12.95
+
+delrin_bearing_insert_3_4_in:
+  part_number: 1512
+  description: Delrin  Bearing insert 3/4 in bore
+  price: $8.50
+
+steering_handle_painted:
+  part_number: 1520
+  description: Steering Handle - Painted Steel
+  price: $39.50
+
+steering_handle_ss:
+  part_number: 1522
+  description: Steering Handle - Stainless Steel
+  price: $49.50
+
+front_steering_painted:
+  part_number: 1540
+  description: Front Steering assembly complete painted steel
+  price: $99.00
+
+front_steering_ss:
+  part_number: 1542
+  description: Front Steering assembly complete stainless steel
+  price: $99.00
+
+front_steering_brkt_painted:
+  part_number: 1550
+  description: Front Steering bracket - Painted Steel
+  price: $34.50
+
+front_steering_brkt_ss:
+  part_number: 1552
+  description: Front Steering bracket - Stainless Steel
+  price: $34.50
+
+front_steering_arm_ss:
+  part_number: 1553
+  description: Front steering arm stainless steel
+  price: $45.50
+
+front_steering_mount_painted:
+  part_number: 1560
+  description: Front Steering mount with Delrin insert - painted steel
+  price: $108.50
+
+front_steering_mount_ss:
+  part_number: 1562
+  description: Front Steering mount with Delrin insert - painted steel
+  description: Front Steering mount Stainless steel with Delrin insert
+  price: $108.50
+
+rear_steering_ss:
+  part_number: 1572
+  description: Rear Steering assembly with Delrin insert compete stainless steel
+  price: $129.50
+
+rear_steering_mount_ss:
+  part_number: 1632
+  description: Rear Steering mount with Delrin insert stainless steel
+  price: $108.50
+
+rear_steering_bracket_ss:
+  part_number: 1622
+  description: Rear steering bracket stainless steel
+  price: $52.50
+
+steering_rod_regular:
+  part_number: 1582
+  description: 'Steering connection rod: regular seize stainless steel'
+  price: $56.50
+
+steering_rod_african_queen:
+  part_number: 1586
+  description: 'Steering connection rod: African Queen stainless steel'
+  price: $56.50
+
+steering_rod_4_passenger:
+  part_number: 1588
+  description: 'Steering connection rod: 4 passenger stainless steel'
+  price: $59.00
+
+steering_rod_sea_venture:
+  part_number: 1590
+  description: 'Steering connection rod: Sea Venture stainless steel'
+  price: $68.50
+
+rudder_ss:
+  part_number: 1652
+  description: Rudder stainless steel
+  price: $68.50
+
+rudder_plastic:
+  part_number: 1654
+  description: Rudder plastic
+  price: $52.00
+
+drainplug_1_2_in:
+  part_number: 1702
+  description: Drainplug rubber 1/2 in
+  price: $9.75
+
+drainplug_1_in:
+  part_number: 1704
+  description: Drainplug rubber 1 in
+  price: $11.75

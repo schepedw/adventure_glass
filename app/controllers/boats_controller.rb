@@ -15,13 +15,15 @@ class BoatsController < ProductsController
   end
 
   def show
+    type = params[:type]
+    base_product = Boat.find_by_type(type)
     @product = Boat.new
-    @display_options = AppConfig.boat_options[params[:subject]]
     @pictures = []
-    @title = title
-    parent_dir = parent_folder_for(params[:subject])
-    Dir.foreach(Rails.root.join('app','assets','images', parent_dir, params[:subject])) do |file|
-      @pictures << parent_dir + params[:subject] + '/' + file unless ['.', '..', '.DS_Store'].include?(file)
+    @title = type#TODO:base_product.name
+    parent_dir = parent_folder_for(type)
+    binding.pry
+    Dir.foreach(Rails.root.join('app','assets','images', parent_dir, type)) do |file|
+      @pictures << parent_dir + type + '/' + file unless ['.', '..', '.DS_Store'].include?(file)
     end
   end
 
@@ -36,10 +38,6 @@ class BoatsController < ProductsController
     else
       ''
     end
-  end
-
-  def title
-    params[:subject].gsub('_', ' ').titleize
   end
 
 end

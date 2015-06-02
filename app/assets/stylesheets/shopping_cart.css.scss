@@ -38,3 +38,32 @@
     font-size: 25px;
   }
 }
+
+.affix, .affix-top{
+  a{
+    width: 100%
+  }
+}
+
+.affix{
+  right: 12px;
+  top: 72px;
+}
+
+.product-summary{
+  background-image: linear-gradient(to bottom, #428BCA 0, rgb(44, 95, 163) 100%);
+  padding-top: 10px;
+  p{
+    color: white;
+  }
+  a{
+    color: #2a6496;
+  }
+}
+
+.shopping-cart-summary{
+  background-color: #f3f3f3;
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  padding-bottom: 10px;
+}

@@ -1,59 +1,110 @@
-<% if current_user.nil? %>
-  <a href = 'users/sign_in'>Sign in here</a>
-<% end %>
-<%= form_for @user do |f| %>
-  <%= f.hidden_field :redirect_path, value: checkout_confirm_path %>
-  <% unless @user.registration_complete? %>
+<hr class = 'nav-padding' />
+<div class = 'row-centered gray-field'>
+<div class = 'col-centered col-xs-12 col-sm-6 registration-form'>
+  <div class = 'row'>
     <% if current_user.nil? %>
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true %>
-
-      <%= f.label :password %> <br />
-      <%= f.password_field :password, autocomplete: "off" %>
-
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      <a href = 'users/sign_in'>Sign in here</a>
     <% end %>
-
-    <%= f.label :first_name %>:
-    <%= f.text_field :first_name %><br />
-
-    <%= f.label :last_name %>:
-    <%= f.text_field :last_name %><br />
-
-    <%= f.label :phone_number%>:
-    <%= f.telephone_field :phone_number %><br />
-
-    <hr />
-  <% end %>
-  <%= f.fields_for :shipping_addresses do |shipping_address| %>
-    <!--
-      <% if @user.shipping_addresses.present? %>
-        <%= form_tag('#???') do %>
-          <%= select_tag "shipping_address", options_for_select(@user.shipping_addresses) %>
+    <%= form_for @user do |f| %>
+      <%= f.hidden_field :redirect_path, value: checkout_confirm_path %>
+      <% unless @user.registration_complete? %>
+        <% if current_user.nil? %>
+          <div class = 'row'>
+            <div class = 'col-xs-12 col-sm-6'>
+              <%= f.label :email, class: 'required'%><br />
+              <%= f.email_field :email, required: true, autofocus: true%>
+            </div>
+          </div>
+          <div class = 'row'>
+            <div class = 'col-sm-6 col-xs-12'>
+              <%= f.label :password, class: 'required'%> <br />
+              <%= f.password_field :password, required: true, autocomplete: "off" %>
+            </div>
+            <div class = 'col-sm-6 col-xs-12'>
+              <%= f.label :password_confirmation, class: 'required'%><br />
+              <%= f.password_field :password_confirmation, required: true, autocomplete: "off" %>
+            </div>
+          </div>
+          <hr />
         <% end %>
-        <span> or add a new address </span>
+
+        <div class = 'row'>
+          <div class = 'col-xs-2'>
+            <%= f.label :title%>:
+            <%= select_tag "title", options_for_select(%w(Mr. Mrs. Miss. Other)) %>
+          </div>
+
+          <div class = 'col-xs-10 col-sm-5'>
+            <%= f.label :first_name, class: 'required'%>:
+            <%= f.text_field :first_name, required: true %>
+          </div>
+
+          <div class = 'col-xs-12 col-sm-5'>
+            <%= f.label :last_name, class: 'required'%>:
+            <%= f.text_field :last_name, required: true %>
+          </div>
+        </div>
+
+        <div class = 'row'>
+          <div class = 'col-xs-6'>
+            <%= f.label :phone_number%>
+            <%= f.telephone_field :phone_number %>
+          </div>
+        </div>
+
+        <hr />
       <% end %>
-    -->
-    <%= shipping_address.label :building_number%>
-    <%= shipping_address.number_field :building_number%>
+      <%= f.fields_for :shipping_addresses do |shipping_address| %>
+        <!--
+          <% if @user.shipping_addresses.present? %>
+            <%= form_tag('#???') do %>
+              <%= select_tag "shipping_address", options_for_select(@user.shipping_addresses) %>
+            <% end %>
+            <span> or add a new address </span>
+          <% end %>
+        -->
+        <div class = 'row'>
+          <div class = 'row'>
+            <div class = 'col-xs-6 col-sm-3'>
+              <%= shipping_address.label :building_number, class: 'required'%>
+              <%= shipping_address.number_field :building_number, required: true%>
+            </div>
 
-    <%= shipping_address.label :apt_or_unit_number %>
-    <%= shipping_address.text_field :apt_or_unit_number %>
+            <div class = 'col-xs-12 col-sm-6'>
+              <%= shipping_address.label :street, class: 'required' %>
+              <%= shipping_address.text_field :street, required: true %>
+            </div>
 
-    <%= shipping_address.label :street %>
-    <%= shipping_address.text_field :street %>
+            <div class = 'col-xs-6 col-sm-3'>
+              <%= shipping_address.label :apt_or_unit_number %>
+              <%= shipping_address.text_field :apt_or_unit_number, required: true %>
+            </div>
 
-    <%= shipping_address.label :city %>
-    <%= shipping_address.text_field :city %>
+          </div>
 
-    <%= shipping_address.label :state %>
-    <%= shipping_address.text_field :state %>
+          <div class = 'row'>
+            <div class = 'col-xs-12 col-sm-6'>
+              <%= shipping_address.label :city, class: 'required'%><br />
+              <%= shipping_address.text_field :city, required: true %>
+            </div>
 
-    <%= shipping_address.label :zip_code %>
-    <%= shipping_address.text_field :zip_code %>
-  <% end %>
+            <div class = 'col-xs-6 col-sm-3'>
+              <%= shipping_address.label :state, class: 'required'%>
+              <%= shipping_address.text_field :state, required: true %>
+            </div>
 
-  <%= f.submit %>
+            <div class = 'col-xs-6 col-sm-3'>
+              <%= shipping_address.label :zip_code, class: 'required'%>
+              <%= shipping_address.text_field :zip_code, required: true %>
+            </div>
+          </div>
+        </div>
 
-<% end %>
+      <% end %>
+
+      <%= f.submit 'Continue to Checkout', class: 'btn btn-primary btn-checkout' %>
+
+    <% end %>
+  </div>
+</div>
+</div>

@@ -11,7 +11,7 @@ class UsersController < Devise::RegistrationsController
     @user = User.create(user_params)
     @address = update_shipping_addresses! if params[:user][:shipping_addresses]
     sign_up(resource_name, resource)
-    redirect_to params[:user][:redirect_path]
+    redirect_to(params[:user][:redirect_path] || root_path)#TODO: would be nice to have a better way of capturing user's original intent
   end
 
   private
@@ -43,7 +43,7 @@ class UsersController < Devise::RegistrationsController
 
   def update_shipping_addresses!
     address = ShippingAddress.find_or_create_by(shipping_address_params)
-    address.update_attributes(:updated_at, Time.now)
+    address.update_attribute(:updated_at, Time.now)
     @user.shipping_addresses << address
     @user.save!
     address

@@ -1,31 +1,41 @@
-Shipping address: <%= @shipping_address %>
+<hr class = 'nav-padding'/>
+<div class = 'container'>
+<div class = 'row-centered'>
+  <div class = 'col-centered col-xs-9'>
+    <div class = 'row'>
+      <div class = 'col-xs-12'>
+        <div class = 'row'>
+          <div class = 'col-xs-10'>
+            <div class = 'row'>
+              <div class = 'col-xs-12'>
+                <span><h4>Shipping address:</h4> <%= @shipping_address %></span>
+              </div>
+            </div>
 
-Payment: At this time, we do not accept online payments. Adventure Glass will soon call you at the phone number you provided, and we will collect your payment
-over the phone
+            <div class = 'row'>
+              <div class = 'col-xs-12'>
+                <span><h4>Payment:</h4><p> At this time, we do not accept online payments. Adventure Glass will soon call you at the phone number you provided, and we will collect your payment
+                  over the phone</p></span>
+              </div>
+            </div>
 
-Your purchased items:
-<% @shopping_cart.products.uniq.each do |product| %>
-  <div class = 'row-fluid clearfix'>
-    <div class = 'col-sm-2'> <!-- picture -->
-      <a href="/boats/mark_twains"><%= image_tag 'paddleboats/mark_twains/thumbnail.jpg',  :class=>"img-responsive thumbnail"%></a>
-    </div>
-    <div class = 'col-sm-6'>
-      <span class = 'cart-product-title'> <%= link_to product.name, product_path(product) %> </span>
-      <span> <%= product.description %> </span>
-      <br />
-      <span> <%= link_to 'Remove' %> </span>
-    </div>
-    <div class = 'col-sm-2'><!-- Price -->
-      <span> $<%= product.quantity * product.price %>  </span>
-      <% if product.quantity > 1 %>
-        <span>(<%= product.quantity %> @ $<%= product.price %>) </span>
-      <% end %>
-    </div>
-    <div class = 'col-sm-2'><!-- Qty -->
-      <%= form_tag('#some_path') do %>
-        <%= select_tag "quantity", options_for_select((0..10).to_a, product.quantity), :class => 'btn invisible-xs' %>
-      <% end %>
+            <div class = 'row'>
+              <div class = 'col-xs-12'>
+                <span><h4>Your items:</h4></span>
+              </div>
+            </div>
+            <%= render 'shopping_carts/products_summary' %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
-<% end %>
-
+  <div class = 'col-sm-3 shopping-cart-summary checkout text-center' data-spy="affix" data-offset-top="60" data-offset-bottom="200">
+    <h4> Subtotal (<%= pluralize(@shopping_cart.products.count, 'item') %>): $<%= @shopping_cart.subtotal %></h4>
+    <%= form_for Order.new do |f|%>
+      <%= f.hidden_field :shopping_cart_id, value: @shopping_cart.id %>
+      <%= f.hidden_field :user_id, value: @user.id%>
+      <%= f.submit 'Place Order', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div> </div>

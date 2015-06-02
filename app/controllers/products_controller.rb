@@ -3,18 +3,33 @@ class ProductsController < ApplicationController
   before_action :selected_associations, only: [:create]
 
   def create
-    product = klass.create(product_params)
-    if params['shopping_cart_id'].present?
-      add_to_cart(product) and redirect_to shopping_cart_path
+    product = create_product
+    if product_params.has_key?('shopping_cart_id')
+      redirect_to shopping_cart_path
     else
       redirect_to product_path, :id => product.id
     end
   end
 
+  def destroy
+    Product.find(params[:id]).delete
+    redirect_to :back
+  end
+
   private
+
+  def create_product
+    if base_model_id = params[class_name]['base_model_id']
+      p = Product.find(base_model_id).deep_dup
+      p.update_attributes(product_params)#TODO: should be able to use product_params
+    else
+      klass.create(product_params)
+    end
+  end
+
   def add_to_cart(product)
-    cart.products << product
-    cart.save!
+    product.shopping_carts << cart
+    product.save!
   end
 
   def cart
@@ -30,13 +45,16 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(class_name).permit(
-      :option_ids,
-      :specification_ids,
+      :shopping_cart_id,
       :price,
       :description,
       :class_name,
+      :base_model_id,
       :name,
-      :type,)
+      :type,
+      :option_ids => [],
+      :specification_ids => []
+    )
   end
 
   def klass

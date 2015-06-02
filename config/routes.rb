@@ -5,10 +5,8 @@ Rails.application.routes.draw do
   end
   root 'home#main'
   get '/boats/build' => 'boats#build'
-  resources :boats
   get '/boats' => 'boats#index'
-  get '/boats/:subject' => 'boats#show'
-  resources :parts
+  get '/boats/:type' => 'boats#show'
   get '/parts' => 'parts#index'
   get '/parts/:id' => 'parts#show'
   get '/paddleboats' => 'paddleboats#index'
@@ -19,4 +17,5 @@ Rails.application.routes.draw do
   get '/checkout/confirm' => 'checkout#confirm'
   resources :users#, only: [:create]
   resources :products
+  resources :orders
 end

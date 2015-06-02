@@ -3,36 +3,13 @@
 <% else %>
   <div class = 'container-fluid'>
     <div class = 'row-fluid'>
-      <div class = 'col-sm-11'>
-        <% @shopping_cart.products.uniq.each do |product| %>
-          <div class = 'row-fluid clearfix'>
-            <div class = 'col-sm-2'> <!-- picture -->
-              <a href="/boats/mark_twains"><%= image_tag 'paddleboats/mark_twains/thumbnail.jpg',  :class=>"img-responsive thumbnail"%></a>
-            </div>
-            <div class = 'col-sm-6'>
-              <span class = 'cart-product-title'> <%= link_to product.name, product_path(product) %> </span>
-              <span> <%= product.description %> </span>
-              <br />
-              <span> <%= link_to 'Remove' %> </span>
-            </div>
-            <div class = 'col-sm-2'><!-- Price -->
-              <span> $<%= product.quantity * product.price %>  </span>
-              <% if product.quantity > 1 %>
-                <span>(<%= product.quantity %> @ $<%= product.price %>) </span>
-              <% end %>
-            </div>
-            <div class = 'col-sm-2'><!-- Qty -->
-              <%= form_tag('#some_path') do %>
-                <%= select_tag "quantity", options_for_select((0..10).to_a, product.quantity), :class => 'btn invisible-xs' %>
-              <% end %>
-            </div>
-          </div>
-          <% end %>
+      <div class = 'col-sm-10'>
+        <%= render 'products_summary' %>
       </div>
-      <div class = 'col-sm-1'>
-        <%= link_to 'Check Out', checkout_path, :shopping_cart => @shopping_cart %>
+      <div class = 'col-sm-2 shopping-cart-summary text-center' data-spy="affix" data-offset-top="60" data-offset-bottom="200">
+        <h4> Subtotal (<%= pluralize(@shopping_cart.products.count, 'item') %>): $<%= @total_cost %></h4>
+        <%= link_to 'Check Out', checkout_path, :shopping_cart => @shopping_cart, class: 'btn btn-primary' %>
       </div>
     </div>
   </div>
-
 <% end %>

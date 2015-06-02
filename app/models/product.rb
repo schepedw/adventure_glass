@@ -1,7 +1,7 @@
 class Product < ActiveRecord::Base
   self.inheritance_column = :class_name
   has_and_belongs_to_many :options
-  has_and_belongs_to_many :shopping_carts
+  belongs_to :shopping_carts
   has_many :specifications
   scope :boats, -> { where(class_name: 'Boat') }
   scope :parts, -> { where(class_name: 'Part') }
@@ -10,5 +10,13 @@ class Product < ActiveRecord::Base
 
   def available_options
     Option.available_for(name)
+  end
+
+  def quantity
+    Product.where(attributes.except('id', 'created_at', 'updated_at')).count
+  end
+
+  def base_model
+    Product.find(base_model_id)
   end
 end
