@@ -1,31 +1,20 @@
 <div class = 'row-fluid'>
-  <div class="col-md-12 paddleboat-container">
-    <div class="carousel slide" id="myCarousel">
-      <div class="carousel-inner">
-        <div class="item text-center active">
-          <div class="col-lg-2 col-sm-4 col-xs-6"><a href="/boats/paddleboats"><%= image_tag 'paddleboats/waterfowl/thumbnail.jpg',  :class=>"img-responsive thumbnail"%><span>Waterfowl</span></a></div>
-        </div>
-        <div class="item text-center">
-          <div class="col-lg-2 col-sm-4 col-xs-6"><a href="/boats/mark_twains"><%= image_tag 'paddleboats/mark_twains/thumbnail.jpg',  :class=>"img-responsive thumbnail"%><span>Mark Twain</span></a></div>
-        </div>
-        <div class="item text-center">
-          <div class="col-lg-2 col-sm-4 col-xs-6"><a href="/boats/sea_ventures"><%= image_tag 'paddleboats/sea_ventures/thumbnail.jpg',  :class=>"img-responsive thumbnail"%><span>Sea Venture</span></a></div>
-        </div>
-        <div class="item text-center">
-          <div class="col-lg-2 col-sm-4 col-xs-6"><a href="/boats/pirate_ships"><%= image_tag 'paddleboats/pirate_ships/thumbnail.jpg',  :class=>"img-responsive thumbnail"%><span>Pirate Ship</span></a></div>
-        </div>
-        <div class="item text-center">
-          <div class="col-lg-2 col-sm-4 col-xs-6"><a href="/boats/gondolas"><%= image_tag 'paddleboats/gondolas/thumbnail.jpg',  :class=>"img-responsive thumbnail"%><span>Gondola</span></a></div>
-        </div>
-        <div class="item text-center">
-          <div class="col-lg-2 col-sm-4 col-xs-6"><a href="/boats/pontoons"><%= image_tag 'paddleboats/pontoon_boats/thumbnail.jpg',  :class=>"img-responsive thumbnail"%><span>Pontoon</span></a></div>
-        </div>
-        <div class="item text-center">
-          <div class="col-lg-2 col-sm-4 col-xs-6"><a href="/boats/dixie_boats"><%= image_tag 'paddleboats/dixie_boats/thumbnail.jpg',  :class=>"img-responsive thumbnail"%><span>Dixie</span></a></div>
-        </div>
+<div class="col-md-12 product-container">
+  <div class="carousel slide" id="myCarousel">
+    <div class="carousel-inner">
+      <div class="item text-center active">
+        <div class="col-lg-2 col-sm-4 col-xs-6"><a href="/boats/paddleboats#waterfowl"><%= image_tag 'paddleboats/waterfowl/thumbnail.jpg',  :class=>"img-responsive thumbnail"%><span>Waterfowl</span></a></div>
       </div>
-      <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-      <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+      <% @products_for_slider.each do |product| %>
+        <div class="item text-center">
+          <div class="col-lg-2 col-sm-4 col-xs-6">
+            <a href=<%= new_product_path(base_model_id: product.base_model_id) %> ><%= image_tag product.image_path + '/thumbnail.jpg', :class=>"img-responsive thumbnail"%> <span><%=product.name.pluralize %></span></a>
+          </div>
+        </div>
+      <% end %>
     </div>
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="fa fa-chevron-right"></i></a>
   </div>
+</div>
 </div>

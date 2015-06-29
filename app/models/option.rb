@@ -1,8 +1,8 @@
 class Option < ActiveRecord::Base
-  has_and_belongs_to_many :products
+  resourcify
+  belongs_to :products
 
-  def self.available_for(product_name)
-    #TODO - implement
-    [Option.first, Option.second, Option.last]
+  def price_to_s
+    sprintf( "%0.02f", price)
   end
 end

@@ -1,0 +1,25 @@
+<h3> Details </h3>
+<ul class='list-unstyled'>
+  <% @product.specifications.each do |spec|%>
+    <li>
+      <%= link_to product_specification_path(@product, spec), remote: true, method: :delete do %>
+        <i class = 'fa fa-times-circle danger'></i>
+      <% end %>
+      <%= best_in_place spec, :description, url: product_specification_path(@product, spec) %>
+    </li>
+  <% end %>
+  <li>
+    <%= link_to 'javascript:void(0);', id: 'add-specification-form-toggle' do%>
+      <i class = 'fa fa-plus-circle'> New Spec</i>
+    <% end %>
+    <div id = 'specification-new', style="display:none;">
+      <%= form_for Specification.new, url: product_specifications_path(@product), remote: true do |f|   %>
+        <%= f.hidden_field :product_id, value: @product.id%>
+        <%= f.text_field :description, required: true, placeholder: 'Description' %>
+        <%= button_tag type: 'submit', class: 'btn btn-success' do %>
+          Save
+        <% end %>
+      <% end %>
+    </div>
+  </li>
+</ul>

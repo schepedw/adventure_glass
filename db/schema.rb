@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150430000957) do
+ActiveRecord::Schema.define(version: 20150626030536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,19 +30,12 @@ ActiveRecord::Schema.define(version: 20150430000957) do
   end
 
   create_table "options", force: true do |t|
+    t.decimal  "price",       precision: 5, scale: 2, default: 0.0
+    t.integer  "product_id"
     t.text     "description"
-    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "options_products", force: true do |t|
-    t.integer "product_id", null: false
-    t.integer "option_id",  null: false
-  end
-
-  add_index "options_products", ["option_id"], name: "index_options_products_on_option_id", using: :btree
-  add_index "options_products", ["product_id"], name: "index_options_products_on_product_id", using: :btree
 
   create_table "orders", force: true do |t|
     t.integer  "user_id"
@@ -57,13 +50,42 @@ ActiveRecord::Schema.define(version: 20150430000957) do
     t.string   "class_name"
     t.string   "name"
     t.string   "type"
+    t.string   "image_path"
     t.integer  "shopping_cart_id"
+    t.integer  "quantity"
     t.integer  "base_model_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "products", ["base_model_id"], name: "index_products_on_base_model_id", using: :btree
+
+  create_table "products_specifications", force: true do |t|
+    t.integer "product_id",       null: false
+    t.integer "specification_id", null: false
+  end
+
+  add_index "products_specifications", ["product_id"], name: "index_products_specifications_on_product_id", using: :btree
+  add_index "products_specifications", ["specification_id"], name: "index_products_specifications_on_specification_id", using: :btree
+
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.integer  "resource_id"
+    t.string   "resource_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id", using: :btree
+  add_index "roles", ["name"], name: "index_roles_on_name", using: :btree
+
+  create_table "selected_product_options", force: true do |t|
+    t.integer "product_id", null: false
+    t.integer "option_id",  null: false
+  end
+
+  add_index "selected_product_options", ["option_id"], name: "index_selected_product_options_on_option_id", using: :btree
+  add_index "selected_product_options", ["product_id"], name: "index_selected_product_options_on_product_id", using: :btree
 
   create_table "shopping_carts", force: true do |t|
     t.datetime "created_at"
@@ -107,5 +129,12 @@ ActiveRecord::Schema.define(version: 20150430000957) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+
+  create_table "users_roles", id: false, force: true do |t|
+    t.integer "user_id"
+    t.integer "role_id"
+  end
+
+  add_index "users_roles", ["user_id", "role_id"], name: "index_users_roles_on_user_id_and_role_id", using: :btree
 
 end

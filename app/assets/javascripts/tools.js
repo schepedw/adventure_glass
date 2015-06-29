@@ -1,6 +1,20 @@
+$(function(){
+  //TODO: remove filestyle
+  $('.best_in_place').best_in_place();
+  $('#fileupload').fileupload({
+    dataType: 'json',
+    done: function (e, data) {
+      $.each(data.result.files, function (index, file) {
+        $('<p/>').text(file.name).appendTo(document.body);
+      });
+    }
+  });
+});
+
 String.prototype.capitalize = function() {
   return this.charAt(0).toUpperCase() + this.slice(1);
 }
+
 function selectableObject(options){
   this.options = options;
   this.select = function(boolFunction){
@@ -36,7 +50,7 @@ function selectableObject(options){
 
   this.replaceEmptyWithNull = function(){
     for (category in this.options)
-       if (this.options[category] == "")
+      if (this.options[category] == "")
         this.options[category]= null;
   }
 }

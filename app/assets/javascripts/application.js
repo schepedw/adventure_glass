@@ -14,6 +14,11 @@
 //= require jquery_ujs
 //= require jquery-ui
 //= require twitter/bootstrap
+//= require jquery.purr
+//= require best_in_place
+//= require jquery.remotipart
+//= require jquery.fileupload
+//= require bootstrap-filestyle
 //= require_tree .
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap

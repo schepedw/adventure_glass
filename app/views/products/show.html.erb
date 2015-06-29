@@ -1,0 +1,54 @@
+<hr class = 'nav-padding' />
+<div class = 'container product-title'>
+  <h2> <%= @product.name %> </h2>
+  <p> <%= @product.description %> </p>
+  <hr />
+</div>
+<div class = 'container'>
+  <div class = 'row'>
+    <div class = 'col-md-1'> <!--TODO - figure out what to do for small screens-->
+      <% @pictures.each_with_index do |picture, index| %>
+        <% active = index == 0 ? 'active ' : "" %>
+        <%= image_tag picture, :class => active + 'thumbnail gallery-thumbnail'%>
+      <% end %>
+    </div>
+    <div class = 'product-display col-md-6'>
+      <div class = 'image-active'>
+        <%= image_tag @pictures[0] %>
+      </div>
+    </div>
+    <%= form_for @product , url: product_path(@product) do |f| %>
+      <%= f.hidden_field :shopping_cart_id, value: @cart.id%>
+      <%= f.hidden_field :base_model_id, value: @product.base_model_id %>
+      <div class = 'col-md-2 options'>
+        <span class='product-price'>Price: $<%= @product.price_to_s %> </span>
+        <hr />
+        <h3> Details </h3>
+        <ul class='col-sm-12'>
+          <% @product.specifications.each do |spec|%>
+            <li>
+              <%= spec.description %>
+            <% end %>
+            </li>
+        </ul>
+        <hr style='width:100%;'/>
+        <h3> Options </h3>
+        <ul class = 'list-unstyled no-left-padding'>
+          <% @product.available_options.each do |option| %>
+            <li><%=check_box"#{@product.class_name.downcase}[option_ids]", option.id %> <%=option.description%> $<%= option.price_to_s %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class = 'col-md-2 product-persistence col-lg-offset-1 text-center'>
+        <div class = 'sm-bottom-padding'> Qty: <%= f.select :quantity, options_for_select((1..20).to_a) %></div>
+        <%= button_tag type: 'submit', class: 'btn btn-primary full-width' do %>
+          <i class = 'fa fa-shopping-cart'></i> Update Order
+        <% end %>
+        <hr />
+        <%= link_to product_path(@product), class: 'btn btn-danger', method: :delete do %>
+          <i class = 'fa fa-trash-can'></i> Remove From Cart
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

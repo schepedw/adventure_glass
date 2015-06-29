@@ -1,3 +1,2 @@
 class Boat < Product
-
 end

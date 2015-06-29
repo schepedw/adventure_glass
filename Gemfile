@@ -13,6 +13,7 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer',  platforms: :ruby
 gem "less-rails"
+gem 'lookup_by'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -22,6 +23,9 @@ gem 'jquery-datatables-rails', :git => 'https://github.com/rweng/jquery-datatabl
 gem 'font-awesome-rails'
 gem 'figgy'
 gem 'devise'
+gem 'rolify'
+gem 'best_in_place'
+gem 'remotipart', '~> 1.2'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development, :test do
   gem 'pry'

@@ -12,7 +12,7 @@
           <span class="caret"></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
-          <li role="presentation"><a role="menuitem"  href="#">Paddleboats</a></li>
+          <li role="presentation"><a role="menuitem"  href="/boats/paddleboats">Paddleboats</a></li>
           <li role="presentation"><a role="menuitem"  href="/boats/canoes">Canoes</a></li>
           <li role="presentation"><a role="menuitem"  href="#">Barges</a></li>
         </ul>
@@ -25,7 +25,7 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="dropdownMenu1">
           <li role="presentation"><a role="menuitem"  href="/parts">Boat Parts</a></li>
-          <li role="presentation"><a role="menuitem"  href="/docks">Docks</a></li>
+          <li role="presentation"><a role="menuitem"  href="<%= product_path(Dock.first) %>">Docks</a></li>
           <li role="presentation"><a role="menuitem"  href="/lifts">Lifts</a></li>
         </ul>
       </li>

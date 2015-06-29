@@ -8,7 +8,7 @@
 <div class = 'container gallery-container'>
   <div class = 'row'>
     <div class = 'col-sm-4'>
-      <a href = 'boats' class = 'gallery-link'>
+      <a href = '/boats' class = 'gallery-link'>
         <div class = 'gallery-option text-center'>
           <%= image_tag 'boat_index.jpg' %>
           <div class = 'gallery-option-description'>
@@ -18,7 +18,7 @@
       </a>
     </div>
     <div class = 'col-sm-4'>
-      <a href = '#' class = 'gallery-link'>
+      <a href = '<%= new_product_path(base_model_id: Dock.first.id) %>' class = 'gallery-link'>
         <div class = 'gallery-option'>
           <%= image_tag 'docks/dockindy1.jpg' %>
           <div class = 'gallery-option-description'>
@@ -28,7 +28,7 @@
       </a>
     </div>
     <div class = 'col-sm-4'>
-      <a href = '#' class = 'gallery-link'>
+      <a href = '/parts' class = 'gallery-link'>
         <div class = 'gallery-option'>
           <%= image_tag 'accessories/hand_crank.jpg' %>
           <div class = 'gallery-option-description'>

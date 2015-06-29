@@ -11,22 +11,21 @@ class BoatsController < ProductsController
   end
 
   def index
+    @riverboat = 3
+    @boats = Boat.where.not(type: ['waterfowl', 'paddleboats'])
     @carousel_images = {'boat_landing_sample.jpg' => 'Caption here'}
+    @products_for_slider = Product.boats.where(type: 'paddleboat')
   end
 
-  def show
-    type = params[:type]
-    base_product = Boat.find_by_type(type)
-    @product = Boat.new
-    @pictures = []
-    @title = type#TODO:base_product.name
-    parent_dir = parent_folder_for(type)
-    binding.pry
-    Dir.foreach(Rails.root.join('app','assets','images', parent_dir, type)) do |file|
-      @pictures << parent_dir + type + '/' + file unless ['.', '..', '.DS_Store'].include?(file)
-    end
+  def paddleboat_index
+    @products_for_slider = Boat.where(type: 'waterfowl')
+    @carousel_images = {
+      'paddleboats/seaworldcropped.jpg' => 'caption #1',
+      'paddleboats/white_swans.png' => 'caption #3'
+    }
+    @paddleboats = Boat.where(type: 'paddleboat')
+    render 'boats/paddleboats/index'
   end
-
   private
 
   def parent_folder_for(dir)

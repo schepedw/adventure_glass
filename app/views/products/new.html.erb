@@ -1,0 +1,51 @@
+<hr class = 'nav-padding' />
+<div class = 'container product-title'>
+  <h2> <%= @base_model.name %> </h2>
+  <p> <%= @base_model.description %> </p>
+  <hr />
+</div>
+<div class = 'container'>
+  <div class = 'row'>
+    <div class = 'col-md-1'> <!--TODO - figure out what to do for small screens-->
+      <% @pictures.each_with_index do |picture, index| %>
+        <% active = index == 0 ? 'active ' : "" %>
+        <%= image_tag picture, :class => active + 'thumbnail gallery-thumbnail'%>
+      <% end %>
+    </div>
+    <div class = 'product-display col-md-6'>
+      <div class = 'image-active'>
+        <%= image_tag @pictures[0] %>
+      </div>
+    </div>
+    <%= form_for Product.new do |f| %>
+      <%= f.hidden_field :base_model_id, value: @base_model.id %>
+      <div class = 'col-md-2 options'>
+        <span class='product-price'>Price: $<%= @base_model.price_to_s %> </span>
+        <hr />
+        <h3> Details </h3>
+        <ul class='col-sm-12'>
+          <% @base_model.specifications.each do |spec|%>
+            <li>
+              <%= spec.description %>
+            </li>
+          <% end %>
+        </ul>
+        <hr style='width:100%;'/>
+        <h3> Options </h3>
+        <ul class = 'list-unstyled no-left-padding'>
+          <% @base_model.available_options.each do |option| %>
+            <li><%=check_box "product[selected_option_ids][#{option.id}]", :selected %> <%=option.description%> $<%= option.price_to_s %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class = 'col-md-2 product-persistence col-lg-offset-1 text-center'>
+        <div class = 'sm-bottom-padding'> Qty: <%= f.select :quantity, options_for_select((1..20).to_a) %></div>
+        <%= button_tag type: 'submit', class: 'btn btn-primary full-width' do %>
+          <i class = 'fa fa-shopping-cart'></i> I want one!
+        <% end %>
+        <hr />
+        <a class = 'btn btn-success'><i class = 'fa fa-bookmark'></i> Bookmark for later</a>
+      </div>
+    <% end %>
+  </div>
+</div>

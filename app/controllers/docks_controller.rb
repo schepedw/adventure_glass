@@ -5,6 +5,5 @@ class DocksController < ApplicationController
     Dir.foreach(Rails.root.join('app','assets','images', 'docks')) do |file|
       @pictures << 'docks/' + file unless ['.', '..', '.DS_Store'].include?(file)
     end
-
   end
 end

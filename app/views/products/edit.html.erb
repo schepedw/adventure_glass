@@ -1,0 +1,30 @@
+<hr class = 'nav-padding'/>
+<div class = 'container product-title'>
+  <h2> <%= best_in_place @product, :name %> </h2>
+</div>
+<!-- price: decimal, description: text, name: string-->
+<!-- also allow crud of specs & options related to this product from this page -->
+<!-- also show 'x' on pictures on hover -->
+<!-- re ordering of pics? definitely a wish list kinda thing -->
+<div class = 'container'>
+  <div class = 'row'>
+    <div class = 'col-md-1' id='pictures'> <!--TODO - figure out what to do for small screens-->
+    <%= render 'products/pictures/edit' %>
+    </div>
+    <div class = 'product-display col-md-6'>
+      <div class = 'image-active'>
+        <%= image_tag @pictures[0] %>
+      </div>
+    </div>
+    <div class = 'col-md-2'>
+      <span class='product-price'>Price: $<%= best_in_place @product, :price, display_as: :price_to_s %> </span>
+      <hr />
+      <div id='specifications'>
+        <%= render 'specifications/edit' %>
+      </div>
+      <div id='options'>
+        <%= render 'options/edit' %>
+      </div>
+    </div>
+  </div>
+</div>
