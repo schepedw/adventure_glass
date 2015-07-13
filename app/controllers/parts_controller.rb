@@ -1,6 +1,8 @@
 require 'csv_reader'
 include CSVReader
 class PartsController < ProductsController
+  before_action :current_shopping_cart
+
   def index
     respond_to do |format|
       format.html

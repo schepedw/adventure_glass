@@ -6,7 +6,7 @@
     <div class="col-md-12"><a href = '/boats/paddleboats'><span class = 'hero'>Custom Paddleboats</span></a></div>
     <%= render 'thumbnail_slider' %>
   </div>
- <hr class = 'boat-gallery-divider' />
+  <hr class = 'boat-gallery-divider' />
   <div class = 'row-fluid riverboats-container'>
     <div class = 'col-md-6 img-container text-center'>
       <a href = <%= new_shopping_cart_product_path(@shopping_cart, base_model_id: Boat.find_by_name('Riverboat').id) %> class = 'gallery-image-link'>
