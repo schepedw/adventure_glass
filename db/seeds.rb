@@ -5,8 +5,8 @@ Boat.delete_all
 Dock.delete_all
 Part.delete_all
 Lift.delete_all
-def product_range
-  (Product.first.id .. Product.last.id).to_a
+def base_model_range
+  (BaseModel.first.id .. BaseModel.last.id).to_a
 end
 
 def option_range

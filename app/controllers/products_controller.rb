@@ -1,23 +1,16 @@
 class ProductsController < ApplicationController
   include PictureFinder
   respond_to :html, :json
-  before_action :cart, only: [:show, :create]
+  before_action :current_shopping_cart, only: [:new, :show, :create]
   before_action :parse_selections!, only: [:create]
 
   def create
-    base_model = Product.find(product_params[:base_model_id])
-    @product = base_model.dup
-    @product.update_attributes(product_params)
-    @product.specification_ids = base_model.specification_ids
-    @product.available_option_ids = base_model.available_option_ids
-    #TODO: need to get selected options
-    @product.shopping_cart = cart
-    @product.save!
+    Product.create(product_params)
     redirect_to shopping_cart_path
   end
 
   def new
-    @base_model = Product.find(params[:base_model_id])
+    @base_model = BaseModel.find(params[:base_model_id])
     @pictures = pictures_for(@base_model)
   end
 
@@ -61,10 +54,6 @@ class ProductsController < ApplicationController
 
   private
 
-  def cart
-    @cart ||= current_shopping_cart
-  end
-
   def check_correct_cart
     if product.shopping_cart != cart
       flash[:error] = 'That product is not in your shopping cart!'
@@ -89,8 +78,8 @@ class ProductsController < ApplicationController
       :base_model_id,
       :name,
       :type,
-      {selected_option_ids: :selected},
-    )
+      {selected_option_ids: []}
+     ).merge(shopping_cart: current_shopping_cart)
   end
 
   def klass
@@ -99,10 +88,10 @@ class ProductsController < ApplicationController
 
   def parse_selections!
     association = :selected_option_ids #extendable to be an array
-    if product_params[association].is_a?(Hash)
+    if params[class_name][association].is_a? Hash
       params[class_name][association] = \
-        product_params[association].keys.select do |k|
-        product_params[association][k][:selected] == 1
+      params[class_name][association].keys.select do |k|
+        params[class_name][association][k][:selected] == '1'
       end
     end
   end

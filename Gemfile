@@ -26,6 +26,7 @@ gem 'devise'
 gem 'rolify'
 gem 'best_in_place'
 gem 'remotipart', '~> 1.2'
+gem 'mail'
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 group :development, :test do
   gem 'pry'

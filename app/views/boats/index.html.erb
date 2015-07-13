@@ -9,12 +9,12 @@
  <hr class = 'boat-gallery-divider' />
   <div class = 'row-fluid riverboats-container'>
     <div class = 'col-md-6 img-container text-center'>
-      <a href = <%= new_product_path(base_model_id: Boat.find_by_name('Riverboat').id) %> class = 'gallery-image-link'>
+      <a href = <%= new_shopping_cart_product_path(@shopping_cart, base_model_id: Boat.find_by_name('Riverboat').id) %> class = 'gallery-image-link'>
         <%= image_tag 'barges/riverboats/riverboat_small_side.jpg' %><span class = 'gallery-image-descriptor '>8 Passenger Riverboat</span>
       </a>
     </div>
     <div class = 'col-md-6 img-container text-center'>
-      <a href = <%= new_product_path(base_model_id: Boat.find_by_name('Riverboat').id) %> class = 'gallery-image-link'>
+      <a href = <%= new_shopping_cart_product_path(@shopping_cart, base_model_id: Boat.find_by_name('Riverboat').id) %> class = 'gallery-image-link'>
         <%= image_tag 'barges/riverboats/riverboat_rear_view.jpg' %><span class = 'gallery-image-descriptor '>20 Passenger Riverboat</span>
       </a>
     </div>
@@ -22,7 +22,7 @@
   <hr class = 'boat-gallery-divider' />
   <div class = 'row-fluid canoes-container'>
     <div class = 'col-md-12 img-container text-center'>
-      <a href = <%= new_product_path(base_model_id: Boat.find_by_name('Canoe').id) %> class = 'gallery-image-link'>
+      <a href = <%= new_shopping_cart_product_path(@shopping_cart, base_model_id: Boat.find_by_name('Canoe').id) %> class = 'gallery-image-link'>
         <%= image_tag 'canoes/canoeside.jpg' %><span class = 'gallery-image-descriptor '>Fiberglass Canoes</span>
       </a>
     </div>
@@ -30,12 +30,12 @@
   <hr class = 'boat-gallery-divider' />
   <div class = 'row-fluid gondolas-container excursion-boat-container'>
     <div class = 'col-md-6 img-container text-center'>
-      <a href = <%= new_product_path(base_model_id: Boat.find_by_name('Gondola').id) %> class = 'gallery-image-link'>
+      <a href = <%= new_shopping_cart_product_path(@shopping_cart, base_model_id: Boat.find_by_name('Gondola').id) %> class = 'gallery-image-link'>
         <%= image_tag 'paddleboats/gondolas/side.png' %><span class = 'gallery-image-descriptor '>Gondolas</span>
       </a>
     </div>
     <div class = 'col-md-6 img-container text-center'>
-      <a href = <%= new_product_path(base_model_id: Boat.find_by_name('Excursion boat').id) %> class = 'gallery-image-link'>
+      <a href = <%= new_shopping_cart_product_path(@shopping_cart, base_model_id: Boat.find_by_name('Excursion boat').id) %> class = 'gallery-image-link'>
         <%= image_tag 'barges/excursion_boats/side2.jpg' %><span class = 'gallery-image-descriptor '>Excursion Boats</span>
       </a>
     </div>

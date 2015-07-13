@@ -4,7 +4,7 @@
       <a href="/boats/mark_twains"><%= image_tag 'paddleboats/mark_twains/thumbnail.jpg',  :class=>"img-responsive thumbnail"%></a>
     </div>
     <div class = 'col-sm-6'>
-      <span class = 'cart-product-title'> <%= link_to product.name, product_path(product) %> </span>
+      <span class = 'cart-product-title'> <%= link_to product.name, shopping_cart_product_path(@shopping_cart, product) %> </span>
       <p> <%= product.description %> </p>
       <br />
       <span> <%= link_to 'Remove' %> </span>

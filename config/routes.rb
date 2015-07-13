@@ -6,26 +6,24 @@ Rails.application.routes.draw do
   root 'home#main'
   get '/boats/build' => 'boats#build' #TODO: I don't like this, or this page really...
   get '/boats/paddleboats' => 'boats#paddleboat_index'
-  get '/boats' => 'boats#index'
   get '/parts' => 'parts#index'
   get '/parts/:id' => 'parts#show' #TODO: remove?
   get '/lifts' => 'lifts#show'
   get '/docks' => 'docks#show'
   get '/shopping_cart' => 'shopping_carts#show'
-  resources :shopping_carts, only: [:create, :show, :update] do
-    resources :products, only: [:show, :update]
+  resources :shopping_carts, only: [:show, :update] do
+    resources :products
   end
   get '/checkout' => 'checkout#show'
   get '/checkout/confirm' => 'checkout#confirm'
-  resources :users#, only: [:create]
+  resources :users
   resources :boats
   resources :options
-  resources :products do
+  resources :base_models do
     resources :specifications
-    post 'pictures' => 'products#upload_picture'
-    delete 'pictures' => 'products#delete_picture'
+    post 'pictures' => 'base_models#upload_picture'
+    delete 'pictures' => 'base_models#delete_picture'
   end
   resources :orders
-  #TODO: nest specifications under products
   #TODO: nest orders under users - will that work with anonymous checkout?
 end

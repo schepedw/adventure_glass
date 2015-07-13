@@ -1,2 +1,2 @@
-class Lift < Product
+class Lift < BaseModel
 end

@@ -1,3 +1,3 @@
-class Part < Product
+class Part < BaseModel
 
 end

@@ -1,2 +1,2 @@
-class Dock < Product
+class Dock < BaseModel
 end

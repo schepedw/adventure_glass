@@ -1,4 +1,5 @@
 class BoatsController < ProductsController
+  before_action :current_shopping_cart
   def build
     @boat_options = %w(Paddleboat Canoe Gondola Riverboat Excursion\ Boat)
     @style_options = {:canoe      => ['canoe_option1', 'canoe_option2'],
@@ -14,7 +15,7 @@ class BoatsController < ProductsController
     @riverboat = 3
     @boats = Boat.where.not(type: ['waterfowl', 'paddleboats'])
     @carousel_images = {'boat_landing_sample.jpg' => 'Caption here'}
-    @products_for_slider = Product.boats.where(type: 'paddleboat')
+    @products_for_slider = Boat.where(type: 'paddleboat')
   end
 
   def paddleboat_index

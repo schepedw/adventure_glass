@@ -29,9 +29,28 @@ ActiveRecord::Schema.define(version: 20150626030536) do
     t.datetime "updated_at"
   end
 
+  create_table "base_models", force: true do |t|
+    t.decimal  "price",       precision: 5, scale: 2
+    t.text     "description"
+    t.string   "class_name"
+    t.string   "name"
+    t.string   "type"
+    t.string   "image_path"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "base_models_specifications", force: true do |t|
+    t.integer "base_model_id",    null: false
+    t.integer "specification_id", null: false
+  end
+
+  add_index "base_models_specifications", ["base_model_id"], name: "index_base_models_specifications_on_base_model_id", using: :btree
+  add_index "base_models_specifications", ["specification_id"], name: "index_base_models_specifications_on_specification_id", using: :btree
+
   create_table "options", force: true do |t|
-    t.decimal  "price",       precision: 5, scale: 2, default: 0.0
-    t.integer  "product_id"
+    t.decimal  "price",         precision: 5, scale: 2, default: 0.0
+    t.integer  "base_model_id"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -45,12 +64,6 @@ ActiveRecord::Schema.define(version: 20150626030536) do
   end
 
   create_table "products", force: true do |t|
-    t.decimal  "price",            precision: 5, scale: 2
-    t.text     "description"
-    t.string   "class_name"
-    t.string   "name"
-    t.string   "type"
-    t.string   "image_path"
     t.integer  "shopping_cart_id"
     t.integer  "quantity"
     t.integer  "base_model_id"
@@ -59,14 +72,6 @@ ActiveRecord::Schema.define(version: 20150626030536) do
   end
 
   add_index "products", ["base_model_id"], name: "index_products_on_base_model_id", using: :btree
-
-  create_table "products_specifications", force: true do |t|
-    t.integer "product_id",       null: false
-    t.integer "specification_id", null: false
-  end
-
-  add_index "products_specifications", ["product_id"], name: "index_products_specifications_on_product_id", using: :btree
-  add_index "products_specifications", ["specification_id"], name: "index_products_specifications_on_specification_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"

@@ -17,9 +17,7 @@
         <%= image_tag @pictures[0] %>
       </div>
     </div>
-    <%= form_for @product , url: product_path(@product) do |f| %>
-      <%= f.hidden_field :shopping_cart_id, value: @cart.id%>
-      <%= f.hidden_field :base_model_id, value: @product.base_model_id %>
+    <%= form_for @product , url: shopping_cart_product_path(@shopping_cart, @product) do |f| %>
       <div class = 'col-md-2 options'>
         <span class='product-price'>Price: $<%= @product.price_to_s %> </span>
         <hr />
@@ -45,7 +43,7 @@
           <i class = 'fa fa-shopping-cart'></i> Update Order
         <% end %>
         <hr />
-        <%= link_to product_path(@product), class: 'btn btn-danger', method: :delete do %>
+        <%= link_to shopping_cart_product_path(@shopping_cart, @product), class: 'btn btn-danger', method: :delete do %>
           <i class = 'fa fa-trash-can'></i> Remove From Cart
         <% end %>
       </div>

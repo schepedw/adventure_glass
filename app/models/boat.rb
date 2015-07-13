@@ -1,2 +1,2 @@
-class Boat < Product
+class Boat < BaseModel
 end
