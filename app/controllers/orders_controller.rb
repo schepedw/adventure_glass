@@ -6,8 +6,8 @@ class OrdersController < ApplicationController
   def create
     order = Order.create(order_params)
     current_user.shopping_cart = ShoppingCart.create
+    OrderMailer.confirm_order(order).deliver_later
     redirect_to order_path(order)
-    #redirect to orders#show for this order
     #make an orders index page, part of the logged in users ish
     #flash[:success] (something)
   end
