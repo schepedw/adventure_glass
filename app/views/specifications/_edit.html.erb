@@ -1,11 +1,11 @@
 <h3> Details </h3>
 <ul class='list-unstyled'>
-  <% @product.specifications.each do |spec|%>
+  <% @base_model.specifications.each do |spec|%>
     <li>
-      <%= link_to product_specification_path(@product, spec), remote: true, method: :delete do %>
+      <%= link_to base_model_specification_path(@base_model, spec), remote: true, method: :delete do %>
         <i class = 'fa fa-times-circle danger'></i>
       <% end %>
-      <%= best_in_place spec, :description, url: product_specification_path(@product, spec) %>
+      <%= best_in_place spec, :description, url: base_model_specification_path(@base_model, spec) %>
     </li>
   <% end %>
   <li>
@@ -13,8 +13,8 @@
       <i class = 'fa fa-plus-circle'> New Spec</i>
     <% end %>
     <div id = 'specification-new', style="display:none;">
-      <%= form_for Specification.new, url: product_specifications_path(@product), remote: true do |f|   %>
-        <%= f.hidden_field :product_id, value: @product.id%>
+      <%= form_for Specification.new, url: base_model_specifications_path(@base_model), remote: true do |f|   %>
+        <%= f.hidden_field :base_model_id, value: @base_model.id%>
         <%= f.text_field :description, required: true, placeholder: 'Description' %>
         <%= button_tag type: 'submit', class: 'btn btn-success' do %>
           Save

@@ -31,9 +31,9 @@
     </div>
   </div>
   <div class = 'col-sm-3 shopping-cart-summary checkout text-center' data-spy="affix" data-offset-top="60" data-offset-bottom="200">
-    <h4> Subtotal (<%= pluralize(@shopping_cart.products.count, 'item') %>): $<%= @shopping_cart.subtotal %></h4>
+    <h4> Subtotal (<%= pluralize(@cart.products.count, 'item') %>): $<%= @cart.subtotal %></h4>
     <%= form_for Order.new do |f|%>
-      <%= f.hidden_field :shopping_cart_id, value: @shopping_cart.id %>
+      <%= f.hidden_field :shopping_cart_id, value: @cart.id %>
       <%= f.hidden_field :user_id, value: @user.id%>
       <%= f.submit 'Place Order', class: 'btn btn-primary' %>
     <% end %>

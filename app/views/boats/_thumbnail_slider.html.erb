@@ -8,7 +8,7 @@
       <% @products_for_slider.each do |product| %>
         <div class="item text-center">
           <div class="col-lg-2 col-sm-4 col-xs-6">
-            <a href=<%= new_shopping_cart_product_path(@shopping_cart, base_model_id: product.id) %> ><%= image_tag product.image_path + '/thumbnail.jpg', :class=>"img-responsive thumbnail"%> <span><%=product.name.pluralize %></span></a>
+            <a href=<%= new_shopping_cart_product_path(@cart, base_model_id: product.id) %> ><%= image_tag product.image_path + '/thumbnail.jpg', :class=>"img-responsive thumbnail"%> <span><%=product.name.pluralize %></span></a>
           </div>
         </div>
       <% end %>

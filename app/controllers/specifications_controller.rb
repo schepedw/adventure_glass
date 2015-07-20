@@ -2,8 +2,8 @@ class SpecificationsController < ApplicationController
   respond_to :html, :json
   def create
     Specification.create(specification_params)
-    @product = Product.find(specification_params[:product_id]) rescue nil
-    @specifications = @product.present? ? @product.specifications : Specification.all
+    @base_model = BaseModel.find(specification_params[:base_model_id]) rescue nil
+    @specifications = @base_model.present? ? @base_model.specifications : Specification.all
   end
 
   def update
@@ -14,12 +14,12 @@ class SpecificationsController < ApplicationController
 
   def destroy
     Specification.delete(params[:id])
-    @product = Product.find(params[:product_id]) rescue nil
-    @specifications = @product.present? ? @product.specifications : Specification.all
+    @base_model = BaseModel.find(params[:base_model_id]) rescue nil
+    @specifications = @base_model.present? ? @base_model.specifications : Specification.all
   end
 
   private
   def specification_params
-    params.require(:specification).permit(:description, :price, :product_id)
+    params.require(:specification).permit(:description, :price, :base_model_id)
   end
 end

@@ -1,13 +1,13 @@
-<% @shopping_cart.products.uniq.each do |product| %>
+<% @cart.products.uniq.each do |product| %>
   <div class = 'row-fluid clearfix product-summary'>
     <div class = 'col-sm-2'> <!-- picture -->
       <a href="/boats/mark_twains"><%= image_tag 'paddleboats/mark_twains/thumbnail.jpg',  :class=>"img-responsive thumbnail"%></a>
     </div>
     <div class = 'col-sm-6'>
-      <span class = 'cart-product-title'> <%= link_to product.name, shopping_cart_product_path(@shopping_cart, product) %> </span>
+      <span class = 'cart-product-title'> <%= link_to product.name, shopping_cart_product_path(@cart, product) %> </span>
       <p> <%= product.description %> </p>
       <br />
-      <span> <%= link_to 'Remove' %> </span>
+      <span> <%= link_to 'Remove', product, remote: true, method: :delete %> </span>
     </div>
     <div class = 'col-sm-2'><!-- Price -->
       <span> $<%= product.quantity * product.price %>  </span>

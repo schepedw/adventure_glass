@@ -1,4 +1,4 @@
-$('#pictures').html("<%= j (render 'products/pictures/edit') %>");
+$('#pictures').html("<%= j (render 'base_models/pictures/edit') %>");
 $('.gallery-thumbnail').click(function(){
   $('.image-active').empty();
   $('.image-active').append($(this).clone().toggleClass('thumbnail gallery-thumbnail'));

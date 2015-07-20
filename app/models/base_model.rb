@@ -2,7 +2,7 @@ class BaseModel < ActiveRecord::Base
   resourcify
   self.inheritance_column = :class_name
   has_many :available_options, class_name: 'Option'
-  has_and_belongs_to_many :specifications
+  has_many :specifications
   scope :boats, -> { where(class_name: 'Boat') }
   scope :parts, -> { where(class_name: 'Part') }
   scope :lifts, -> { where(class_name: 'Lift') }

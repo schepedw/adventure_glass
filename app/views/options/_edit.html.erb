@@ -1,10 +1,9 @@
-<% @options ||= @product.available_options %>
+<% @options ||= @base_model.available_options %>
 <h3> Options </h3>
 <ul class = 'options-list list-unstyled'>
   <% @options.each do |option| %>
     <li>
-      <%= link_to option_path(option, product_id: @product.id), remote: true, method: :delete, query: {product_id: @product.try(:id)}  do %>
-        <!-- is query: needed here ^ -->
+      <%= link_to option_path(option, base_model_id: @base_model.id), remote: true, method: :delete do %>
         <i class = 'fa fa-times-circle danger'></i>
       <% end %>
       <%= best_in_place option, :description %> $<%= best_in_place option, :price, display_as: :price_to_s %>
@@ -16,7 +15,7 @@
     <% end %>
     <div id = 'option-new', style="display:none;">
       <%= form_for Option.new, remote: true do |f|   %>
-        <%= f.hidden_field :product_id, value: @product.id%>
+        <%= f.hidden_field :base_model_id, value: @base_model.id%>
         <%= f.text_field :description, required: true, placeholder: 'Description' %>
         <%= f.number_field :price, placeholder: 'Price', value: nil, step: 'any' %>
         <%= button_tag type: 'submit', class: 'btn btn-success' do %>

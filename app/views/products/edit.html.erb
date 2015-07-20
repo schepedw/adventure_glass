@@ -2,13 +2,9 @@
 <div class = 'container product-title'>
   <h2> <%= best_in_place @product, :name %> </h2>
 </div>
-<!-- price: decimal, description: text, name: string-->
-<!-- also allow crud of specs & options related to this product from this page -->
-<!-- also show 'x' on pictures on hover -->
-<!-- re ordering of pics? definitely a wish list kinda thing -->
 <div class = 'container'>
   <div class = 'row'>
-    <div class = 'col-md-1' id='pictures'> <!--TODO - figure out what to do for small screens-->
+    <div class = 'col-md-1' id='pictures'>
     <%= render 'products/pictures/edit' %>
     </div>
     <div class = 'product-display col-md-6'>

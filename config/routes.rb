@@ -7,12 +7,11 @@ Rails.application.routes.draw do
   get '/boats/build' => 'boats#build' #TODO: I don't like this, or this page really...
   get '/boats/paddleboats' => 'boats#paddleboat_index'
   get '/parts' => 'parts#index'
-  get '/parts/:id' => 'parts#show' #TODO: remove?
   get '/lifts' => 'lifts#show'
   get '/docks' => 'docks#show'
   get '/shopping_cart' => 'shopping_carts#show'
   resources :shopping_carts, only: [:show, :update] do
-    resources :products
+    resources :products, shallow: true
   end
   get '/checkout' => 'checkout#show'
   get '/checkout/confirm' => 'checkout#confirm'

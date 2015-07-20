@@ -17,7 +17,7 @@
         <%= image_tag @pictures[0] %>
       </div>
     </div>
-    <%= form_for Product.new, url: shopping_cart_products_path(@shopping_cart) do |f| %>
+    <%= form_for Product.new, url: shopping_cart_products_path(@cart) do |f| %>
       <%= f.hidden_field :base_model_id, value: @base_model.id %>
       <div class = 'col-md-2 options'>
         <span class='product-price'>Price: $<%= @base_model.price_to_s %> </span>

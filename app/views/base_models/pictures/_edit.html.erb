@@ -1,0 +1,17 @@
+<% @pictures.each_with_index do |picture, index| %>
+  <% active = index == 0 ? 'active ' : "" %>
+  <div class = 'edit_boat'>
+  <%= image_tag picture, :class => active + 'thumbnail gallery-thumbnail'%>
+  <%= link_to base_model_pictures_path(@base_model, filename: picture), method: :delete, remote: true, class: 'delete-picture' do %>
+    <%= button_tag type: 'submit', class: 'delete-picture' do %>
+      <i class = 'fa fa-times-circle '></i>
+    <%end %>
+  <% end %>
+  </div>
+<% end %>
+<%= form_for(base_model_pictures_path(@base_model), remote: true, class: 'pic-add-form') do |f| %>
+  <input id="fileupload" type="file" name="files[]" data-url=<%="/base_models/#{@base_model.id}/pictures"%> style='dsplay:none;' multiple>
+  <a href='javascript:void(0);' class='fileupload-mask' id="fileupload" type="file" name="files[]" data-url=<%="/base_models/#{@base_model.id}/pictures"%> multiple>
+    <%= image_tag 'upload_file.jpeg' %>
+  </a>
+<% end %>

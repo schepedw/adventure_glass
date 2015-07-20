@@ -1,6 +1,6 @@
 require 'csv_reader'
 include CSVReader
-class PartsController < ProductsController
+class PartsController < BaseModelsController
   before_action :current_shopping_cart
 
   def index
@@ -19,31 +19,27 @@ class PartsController < ProductsController
   end
 
   private
+
   def format_yml
-    AppConfig.parts.inject( [] ) do |rows, (part_name, attrs)|
-      rows << display_row("#{attrs.part_number.to_s}_#{part_name}.jpg", attrs.part_number, attrs.description, attrs.price)
+    Part.all.inject( [] ) do |rows, part|
+      rows << display_row(part)#"#{part_number.id}_#{part.name}.jpg", part.id, part.description, part.price)
     end
   end
 
-  def display_row(image_file, part_number, description, price)
-    [img_tag(image_file), part_number, description, price].inject( [] ) do |row, col|
-      row << link_tag(col, part_number)
+  def display_row(part)
+    base_model_id = part.id
+    image_file = "#{part.id}_#{part.name.downcase.gsub(' ','_')}.jpg"
+    [img_tag(image_file), part.id, part.description, part.price].inject( [] ) do |row, col|
+      row << link_tag(col, base_model_id)
     end
   end
 
-  def link_tag(link_text, part_number)
-    "<a href = 'parts/#{part_number}'>#{link_text}</a>"
+  def link_tag(link_text, base_model_id)
+    "<a href = '#{new_shopping_cart_product_path(@cart, base_model_id: base_model_id)}'>#{link_text}</a>"
   end
 
   def img_tag(img)
-    "<img src='assets/parts/#{img}' class='img-responsive thumbnail'/>"
+    "<img src='assets/parts/#{img}' class='img-responsive thumbnail table-thumbnail'/>"
   end
 
-  def find(id)
-    #TODO - can remove this if we move to AR
-    AppConfig.parts.find do |name, attrs|
-      attrs.part_number == id
-    end
-  end
 end
-

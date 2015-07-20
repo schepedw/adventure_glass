@@ -99,8 +99,8 @@ ActiveRecord::Schema.define(version: 20150626030536) do
   end
 
   create_table "specifications", force: true do |t|
+    t.integer  "base_model_id"
     t.text     "description"
-    t.integer  "product_id"
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"

@@ -20,7 +20,7 @@ end
 def parts
   AppConfig.parts.each do |part_name, attrs|
     Part.create(
-      name: part_name,
+      name: part_name.humanize,
       id: attrs.part_number,
       description: attrs.description,
       image_path: 'parts',
@@ -28,6 +28,7 @@ def parts
     )
   end
 end
+
 def boats
   Boat.create(
     price: Faker::Commerce.price.to_i,

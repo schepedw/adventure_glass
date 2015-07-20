@@ -1,4 +1,4 @@
-class BoatsController < ProductsController
+class BoatsController < BaseModelsController
   before_action :current_shopping_cart
   def build
     @boat_options = %w(Paddleboat Canoe Gondola Riverboat Excursion\ Boat)
@@ -21,7 +21,7 @@ class BoatsController < ProductsController
   def paddleboat_index
     @products_for_slider = Boat.where(type: 'waterfowl')
     @carousel_images = {
-      'paddleboats/seaworldcropped.jpg' => 'caption #1',
+    #  'paddleboats/seaworldcropped.jpg' => 'caption #1',
       'paddleboats/white_swans.png' => 'caption #3'
     }
     @paddleboats = Boat.where(type: 'paddleboat')

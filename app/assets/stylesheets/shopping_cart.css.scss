@@ -50,8 +50,10 @@
   top: 72px;
 }
 
+.product-summary-container{
+  padding-left: 13%;
+}
 .product-summary{
-  background-image: linear-gradient(to bottom, #428BCA 0, rgb(44, 95, 163) 100%);
   padding-top: 10px;
   p{
     color: white;
@@ -62,8 +64,8 @@
 }
 
 .shopping-cart-summary{
-  background-color: #f3f3f3;
   border-radius: 5px;
-  border: 1px solid #cccccc;
+  border: 3px solid #cccccc;
   padding-bottom: 10px;
+  margin-top: 10px;
 }
