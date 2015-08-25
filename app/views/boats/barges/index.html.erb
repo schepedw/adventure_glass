@@ -1,0 +1,41 @@
+<div class = 'hero-carousel'>
+<%= render 'layouts/carousel' %>
+</div>
+<div class = 'text-center' >
+  <h2> Proudly Made in the United States </h2>
+  <p class='secondary'> Handcrafted in North Webster, IN </p>
+</div>
+<div class = 'container gallery-container'>
+  <div class = 'row'>
+    <div class = 'col-sm-4'>
+      <a href = <%= new_product_path(base_model_id: BaseModel.find_by_name('8 Person Riverboat'))%>  class = 'gallery-link'>
+        <div class = 'gallery-option text-center'>
+          <%= image_tag 'barges/riverboats/8_person_riverboat.jpg' %>
+          <div class = 'gallery-option-description'>
+            <p class = 'text-center'> 8 Person Riverboats </p>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class = 'col-sm-4'>
+      <a href = <%= new_product_path(base_model_id: BaseModel.find_by_name('20 Person Riverboat'))%>  class = 'gallery-link'>
+        <div class = 'gallery-option text-center'>
+          <%= image_tag 'barges/riverboats/riverboat_front_view.jpg' %>
+          <div class = 'gallery-option-description'>
+            <p class = 'text-center'> 20 Person Riverboats </p>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class = 'col-sm-4'>
+      <a href = <%= new_product_path(base_model_id: BaseModel.find_by_name('Excursion Boat'))%>  class = 'gallery-link'>
+        <div class = 'gallery-option text-center'>
+          <%= image_tag 'barges/excursion_boats/excursion_boat_1.jpg' %>
+          <div class = 'gallery-option-description'>
+            <p class = 'text-center'> Excursion Boats </p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>

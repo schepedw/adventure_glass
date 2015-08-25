@@ -1,16 +1,40 @@
-<!-- put the adv glass logo up here -->
-<h2> Hello <%= full_name %> </h2>
-Thank you for your recent purchase with Adventure Glass. You a total of <%= total_item_count %> items. Adventure Glass will be in contact with you
-shortly.<!-- TODO: how short is shortly? -->
+<a class = 'navbar-brand' href = '/' ><img src='http://adventureglass.com/advglasshome15001005.gif'></a>
+<br />
+<h2> Hello, <%= @user.full_name %> </h2>
+Thank you for your recent purchase with Adventure Glass. You ordered a total of <%= @products.count %> items.
+Adventure Glass will be in contact with you shortly.<!-- TODO: how short is shortly? -->
 Your order is summarized below.
 
 <hr />
 
 <h2> Order Summary </h2>
 
-<% items.each_with_index do |item, index| %>
-
-<% end %>
+<table style='width:95%; margin-left:15px'>
+  <% @products.each_with_index do |product, index| %>
+    <tr style='width: 100%'>
+      <td style='width: 10%; padding-right: 15px;'>
+        <a href="/boats/mark_twains"><img src='http://adventureglass.com/advglasshome15019003.jpg'></a><!-- TODO:  use correct images & link destinations -->
+      </td>
+      <td style='width: 30%; padding-right: 30px;'>
+        <span class = 'cart-product-title'> <%= link_to product.name, shopping_cart_product_url(@cart, product) %> </span>
+        <p> <%= product.description %> </p>
+      </div>
+      </td>
+      <td style='width: 15%; padding-right: 30px;'>
+        <span> $<%= product.quantity * product.price %>  </span>
+        <% if product.quantity > 1 %>
+          <br />
+          <span>(<%= product.quantity %> @ $<%= product.price %>) </span>
+        <% end %>
+      </td>
+      <td style='width: 10%; padding-right: 15px;'>
+        <span>Qty: <%= product.quantity %> </span>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<br />
+<hr />
 Adventure Glass, Inc.
 <span><a href='tel:574-834-2554' class = 'fa fa-phone'> 574-834-2554 </a> | </span>
 <span class = 'fa fa-envelope'> <a href="mailto:info@advboat.com" > info@advboat.com</a></span>

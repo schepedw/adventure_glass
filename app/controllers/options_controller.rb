@@ -18,8 +18,26 @@ class OptionsController < ApplicationController
     @options = @base_model.present? ? @base_model.available_options : Option.all
   end
 
+  def update_selected
+    @product = Product.find(params[:product_id])
+    @option = Option.find(params[:id])
+    if params[class_name][:option_ids][params[:id]] == '1'
+      @product.selected_options << @option
+    else
+      @product.selected_options.delete(@option)
+    end
+    @product.save!
+  end
+
   private
   def option_params
     params.require(:option).permit(:description, :price, :base_model_id)
+  end
+
+  def class_name
+    @class_name ||= \
+      ['boat', 'part', 'lift', 'dock', 'product'].find do |type|
+      params[type].present?
+    end
   end
 end

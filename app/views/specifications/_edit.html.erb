@@ -14,7 +14,7 @@
     <% end %>
     <div id = 'specification-new', style="display:none;">
       <%= form_for Specification.new, url: base_model_specifications_path(@base_model), remote: true do |f|   %>
-        <%= f.hidden_field :base_model_id, value: @base_model.id%>
+        <%= f.hidden_field :base_model_id, value: @base_model.id%> <!-- todo: why do you need base model id if you've got the base model id in the path above ^ --> 
         <%= f.text_field :description, required: true, placeholder: 'Description' %>
         <%= button_tag type: 'submit', class: 'btn btn-success' do %>
           Save

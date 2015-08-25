@@ -2,10 +2,13 @@ class ProductsController < ApplicationController
   include PictureFinder
   respond_to :html, :json
   before_action :parse_selections!, only: [:create]
+  before_action :check_cart, only: [:show, :update, :destroy]
+  #TODO: need a filter for show, update, destroy to make sure that the item is in the current cart & the current cart belongs to the user
+  #TODO: do we ever use the edit view?
 
   def create
     Product.create(product_params)
-    redirect_to shopping_cart_path
+    redirect_to shopping_cart_path(@cart)
   end
 
   def new
@@ -14,33 +17,30 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    Product.find(params[:id]).delete
-    redirect_to shopping_cart_path
+    @cart.products.find(params[:id]).delete
+    redirect_to shopping_cart_path(@cart)
   end
 
   def show
-    @pictures = pictures_for(Product.find(params[:id]))
     @product = Product.find(params[:id])
+    @pictures = pictures_for(@product)
   end
 
   def edit
     @product = Product.find(params[:id])
-    @pictures = pictures_for(@product, 100)
+    @pictures = pictures_for(@product)
   end
 
   def update
-    p = Product.find(params[:id])
+    p = @cart.products.find(params[:id])
     p.update_attributes(product_params)
     respond_with p
   end
 
   private
 
-  def check_correct_cart
-    if product.shopping_cart != cart
-      flash[:error] = 'That product is not in your shopping cart!'
-      redirect_to :back
-    end
+  def check_cart
+    redirect_to root_path unless given_cart == @cart && @cart.product_ids.include?(params[:id].to_i)
   end
 
   def class_name
@@ -48,6 +48,11 @@ class ProductsController < ApplicationController
       ['boat', 'part', 'lift', 'dock', 'product'].find do |type|
       params[type].present?
     end
+  end
+
+  def given_cart
+    cart = ShoppingCart.find(params[:shopping_cart_id] || product_params[:shopping_cart_id])
+    cart ||= (product_params[:shopping_cart] if product_params[:shopping_cart])
   end
 
   def product_params

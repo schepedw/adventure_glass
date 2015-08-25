@@ -6,7 +6,6 @@
     <div class = 'col-sm-6'>
       <span class = 'cart-product-title'> <%= link_to product.name, shopping_cart_product_path(@cart, product) %> </span>
       <p> <%= product.description %> </p>
-      <br />
       <span> <%= link_to 'Remove', product, remote: true, method: :delete %> </span>
     </div>
     <div class = 'col-sm-2'><!-- Price -->
@@ -18,7 +17,7 @@
     </div>
     <div class = 'col-sm-2'><!-- Qty -->
       <%= form_tag('#some_path') do %>
-        <%= select_tag "quantity", options_for_select((0..10).to_a, product.quantity), :class => 'btn invisible-xs' %>
+        <%= select_tag "quantity", options_for_select((0..[15, product.quantity].max).to_a, product.quantity), :class => 'btn invisible-xs' %>
       <% end %>
     </div>
   </div>

@@ -4,7 +4,7 @@
 </div>
 <div class = 'container boat-gallery-container'>
   <div class = 'row-fluid thumbnail-carousel'>
-    <div class="col-md-12"><span class = 'hero'>Some fun title capturing the concept of 'waterfowl'</span></div>
+    <div class="col-md-12"><span class = 'hero'>Creative Waterfowl Designs</span></div>
     <div class = 'row-fluid'>
       <div class="col-md-12 product-container">
         <div class="carousel slide" id='waterfowl' >
@@ -12,7 +12,7 @@
             <% @products_for_slider.each.with_index do |product, i| %>
               <div class="item text-center <%=i == 0 ? 'active' : ''%>">
                 <div class="col-lg-2 col-sm-4 col-xs-6">
-                  <a href= <%= new_shopping_cart_product_path(@cart, base_model_id: product.id) %>><%= image_tag product.image_path + '/thumbnail.jpg', :class=>"img-responsive thumbnail"%> <span><%=product.name.gsub(' paddle boat', '').pluralize.titleize %></span></a>
+                  <a href= <%= new_product_path(base_model_id: product.id) %>><%= image_tag product.image_path + '/thumbnail.jpg', :class=>"img-responsive thumbnail"%> <span><%=product.name.gsub(' paddle boat', '').pluralize.titleize %></span></a>
                 </div>
               </div>
             <% end %>
@@ -26,12 +26,12 @@
   <hr class = 'boat-gallery-divider' />
   <div class = 'row-fluid riverboats-container'>
     <div class = 'col-md-6 img-container text-center'>
-      <a href = <%= new_shopping_cart_product_path(@cart, base_model_id: @paddleboats[0]) %> class = 'gallery-image-link'>
+      <a href = <%= new_product_path(base_model_id: @paddleboats[0]) %> class = 'gallery-image-link'>
         <%= image_tag (@paddleboats[0].image_path + '/thumbnail.jpg') %><span class = 'gallery-image-descriptor '><%=@paddleboats[0].name.pluralize%></span>
       </a>
     </div>
     <div class = 'col-md-6 img-container text-center'>
-      <a href = <%= new_shopping_cart_product_path(@cart, base_model_id: @paddleboats[1]) %> class = 'gallery-image-link'>
+      <a href = <%= new_product_path(base_model_id: @paddleboats[1]) %> class = 'gallery-image-link'>
         <%= image_tag (@paddleboats[1].image_path + '/thumbnail.jpg')%><span class = 'gallery-image-descriptor '><%=@paddleboats[1].name.pluralize%></span>
       </a>
     </div>
@@ -39,7 +39,7 @@
   <hr class = 'boat-gallery-divider' />
   <div class = 'row-fluid canoes-container'>
     <div class = 'col-md-12 img-container text-center'>
-      <a href = <%= new_shopping_cart_product_path(@cart, base_model_id: @paddleboats[2]) %> class = 'gallery-image-link'>
+      <a href = <%= new_product_path(base_model_id: @paddleboats[2]) %> class = 'gallery-image-link'>
         <%= image_tag (@paddleboats[2].image_path + '/thumbnail.jpg') %><span class = 'gallery-image-descriptor '><%=@paddleboats[2].name.pluralize%></span>
       </a>
     </div>
@@ -47,12 +47,12 @@
   <hr class = 'boat-gallery-divider' />
   <div class = 'row-fluid gondolas-container excursion-boat-container'>
     <div class = 'col-md-6 img-container text-center'>
-      <a href = <%= new_shopping_cart_product_path(@cart, base_model_id: @paddleboats[3]) %> class = 'gallery-image-link'>
+      <a href = <%= new_product_path(base_model_id: @paddleboats[3]) %> class = 'gallery-image-link'>
         <%= image_tag (@paddleboats[3].image_path + '/thumbnail.jpg') %><span class = 'gallery-image-descriptor '><%=@paddleboats[3].name.pluralize%></span>
       </a>
     </div>
     <div class = 'col-md-6 img-container text-center'>
-      <a href = <%= new_shopping_cart_product_path(@cart, base_model_id: @paddleboats[4]) %> class = 'gallery-image-link'>
+      <a href = <%= new_product_path(base_model_id: @paddleboats[4]) %> class = 'gallery-image-link'>
         <%= image_tag (@paddleboats[4].image_path  + '/thumbnail.jpg')%><span class = 'gallery-image-descriptor '><%=@paddleboats[4].name.pluralize%></span>
       </a>
     </div>

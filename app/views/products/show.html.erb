@@ -17,36 +17,41 @@
         <%= image_tag @pictures[0] %>
       </div>
     </div>
-    <%= form_for @product , url: shopping_cart_product_path(@cart, @product) do |f| %>
-      <div class = 'col-md-2 options'>
-        <span class='product-price'>Price: $<%= @product.price_to_s %> </span>
-        <hr />
-        <h3> Details </h3>
-        <ul class='col-sm-12'>
-          <% @product.specifications.each do |spec|%>
-            <li>
-              <%= spec.description %>
-            <% end %>
-            </li>
-        </ul>
-        <hr style='width:100%;'/>
-        <h3> Options </h3>
-        <ul class = 'list-unstyled no-left-padding'>
-          <% @product.available_options.each do |option| %>
-            <li><%=check_box"#{@product.class_name.downcase}[option_ids]", option.id %> <%=option.description%> $<%= option.price_to_s %></li>
+    <div class = 'col-md-2 options'>
+      <span class='product-price'>Price: $<%= @product.total_cost_to_s %> </span>
+      <hr />
+      <h3> Details </h3>
+      <ul class='col-sm-12'>
+        <% @product.specifications.each do |spec|%>
+          <li>
+            <%= spec.description %>
           <% end %>
-        </ul>
-      </div>
-      <div class = 'col-md-2 product-persistence col-lg-offset-1 text-center'>
-        <div class = 'sm-bottom-padding'> Qty: <%= f.select :quantity, options_for_select((1..20).to_a) %></div>
-        <%= button_tag type: 'submit', class: 'btn btn-primary full-width' do %>
-          <i class = 'fa fa-shopping-cart'></i> Update Order
+          </li>
+      </ul>
+      <hr style='width:100%;'/>
+      <h3> Options </h3>
+      <ul class = 'list-unstyled no-left-padding'>
+        <% @product.available_options.sort_by(&:id).each do |option| %>
+          <li>
+            <%= form_for option, url: "/products/#{@product.id}/selected_options/#{option.id}", remote: true, method: :put, html: {class: 'select_option'} do |option_form| %>
+              <%= check_box"#{@product.class_name.downcase}[option_ids]", option.id, checked: @product.selected_options.include?(option) %> <%=option.description%> $<%= option.price_to_s %>
+            <% end %>
+          </li>
         <% end %>
-        <hr />
-        <%= link_to shopping_cart_product_path(@cart, @product), class: 'btn btn-danger', method: :delete do %>
-          <i class = 'fa fa-trash-can'></i> Remove From Cart
-        <% end %>
+      </ul>
+    </div>
+    <div class = 'col-md-2 product-persistence col-lg-offset-1 text-center'>
+      <div class = 'sm-bottom-padding'>
+        Qty: <%= select_tag :quantity, options_for_select([@product.quantity], @product.quantity) %>
+        <%= best_in_place @product, :quantity, as: :select, collection: (1..20).to_a.inject( {} ){|h, v| h[v.to_s] = v; h}, place_holder: @product.quantity, activator: '#quantity', url: shopping_cart_product_path(@cart, @product) %>
       </div>
-    <% end %>
+      <hr />
+      <%= link_to shopping_cart_product_path(@cart, @product), class: 'btn btn-danger', method: :delete do %>
+        <i class = 'fa fa-trash-can'></i> Remove From Cart
+      <% end %>
+    </div>
   </div>
 </div>
+<script>
+var best_in_place_qty = $("#best_in_place_product_" + <%=@product.id %> + '_quantity');
+</script>

@@ -1,6 +1,9 @@
 <hr class = 'nav-padding' />
 <div class = 'container product-title'>
   <h2> <%= @base_model.name %> </h2>
+  <% if current_user.try(:has_role?, :admin) %>
+    <%= link_to "Edit", edit_base_model_path(@base_model), class: 'btn btn-small btn-success'%>
+  <% end %>
   <p> <%= @base_model.description %> </p>
   <hr />
 </div>

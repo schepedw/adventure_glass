@@ -18,7 +18,7 @@
       </a>
     </div>
     <div class = 'col-sm-4'>
-      <a href = <%= new_shopping_cart_product_path(@cart, base_model_id: Dock.first.id) %> class = 'gallery-link'>
+      <a href = <%= new_product_path(base_model_id: Dock.first.id) %> class = 'gallery-link'>
         <div class = 'gallery-option'>
           <%= image_tag 'docks/dockindy1.jpg' %>
           <div class = 'gallery-option-description'>

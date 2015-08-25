@@ -1,33 +1,33 @@
 class BaseModelsController < ApplicationController
   include PictureFinder
-  respond_to :html, :json
+  respond_to :html, :json, :js
+  before_action :check_permissions
 
   def edit
-    check_permissions
     @base_model = BaseModel.find(params[:id])
     @pictures = pictures_for(@base_model, 100)
   end
 
   def update
-    check_permissions
     b = BaseModel.find(params[:id])
     b.update_attributes(base_model_params)
     respond_with b
   end
 
   def upload_picture
-    check_permissions
     @base_model = BaseModel.find(params[:base_model_id])
     params[:files].each do |uploaded_io|
       File.open(Rails.root.join('app', 'assets', 'images', @base_model.image_path, uploaded_io.original_filename), 'wb') do |file|
         file.write(uploaded_io.read)
       end
     end
-    @pictures = pictures_for(@base_model)
+    @pictures = pictures_for(@base_model, 100)
+    respond_to do |format|
+      format.js
+    end
   end
 
   def delete_picture
-    check_permissions
     @pic_to_delete = params[:filename]
     File.delete(Rails.root.join('app', 'assets', 'images', @pic_to_delete))
     @base_model = BaseModel.find(params[:base_model_id])
@@ -62,7 +62,6 @@ class BaseModelsController < ApplicationController
   end
 
   def check_permissions
-    binding.pry
     redirect_to root_path unless current_user.try(:has_role?, :admin)
   end
 

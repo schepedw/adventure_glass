@@ -1,4 +1,4 @@
-class BoatsController < BaseModelsController
+class BoatsController < ApplicationController
   before_action :current_shopping_cart
   def build
     @boat_options = %w(Paddleboat Canoe Gondola Riverboat Excursion\ Boat)
@@ -12,7 +12,6 @@ class BoatsController < BaseModelsController
   end
 
   def index
-    @riverboat = 3
     @boats = Boat.where.not(type: ['waterfowl', 'paddleboats'])
     @carousel_images = {'boat_landing_sample.jpg' => 'Caption here'}
     @products_for_slider = Boat.where(type: 'paddleboat')
@@ -21,23 +20,16 @@ class BoatsController < BaseModelsController
   def paddleboat_index
     @products_for_slider = Boat.where(type: 'waterfowl')
     @carousel_images = {
-    #  'paddleboats/seaworldcropped.jpg' => 'caption #1',
       'paddleboats/white_swans.png' => 'caption #3'
     }
     @paddleboats = Boat.where(type: 'paddleboat')
     render 'boats/paddleboats/index'
   end
-  private
 
-  def parent_folder_for(dir)
-    case
-    when ['excursion_boats', 'riverboats'].include?(dir)
-      'barges/'
-    when ['gondolas', 'mark_twains', 'pirate_ships', 'sea_ventures', 'waterfowl', 'dixie_boats', 'pontoon_boats'].include?(dir)
-      'paddleboats/'
-    else
-      ''
-    end
+  def barge_index
+    @carousel_images = {'barges/riverboats/riverboat_side_view.jpg' => 'Need better pics'}
+    @barges = Product.where(type: 'barge')
+    render 'boats/barges/index'
   end
 
 end

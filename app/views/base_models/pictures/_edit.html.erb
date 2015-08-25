@@ -9,9 +9,8 @@
   <% end %>
   </div>
 <% end %>
-<%= form_for(base_model_pictures_path(@base_model), remote: true, class: 'pic-add-form') do |f| %>
-  <input id="fileupload" type="file" name="files[]" data-url=<%="/base_models/#{@base_model.id}/pictures"%> style='dsplay:none;' multiple>
+<%# form_for(base_model_pictures_path(@base_model), remote: true, format: 'js',  html: { class: 'pic-add-form'} )  do |f| %>
   <a href='javascript:void(0);' class='fileupload-mask' id="fileupload" type="file" name="files[]" data-url=<%="/base_models/#{@base_model.id}/pictures"%> multiple>
     <%= image_tag 'upload_file.jpeg' %>
   </a>
-<% end %>
+<%#end %>

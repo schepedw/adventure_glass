@@ -1,12 +1,18 @@
 require 'faker'
 Option.delete_all
 Specification.delete_all
-Boat.delete_all
-Dock.delete_all
-Part.delete_all
-Lift.delete_all
+BaseModel.delete_all
+Product.delete_all
 def base_model_range
-  (BaseModel.first.id .. BaseModel.last.id).to_a
+  BaseModel.all.map(&:id)
+end
+
+def user
+  @a ||= User.find_by_email('test@test.com')
+  return @a if @a.present?
+  @a = User.create(email: 'test@test.com', password: 'test', shipping_addresses: [ShippingAddress.first])
+  @a.add_role :admin
+  @a.save!
 end
 
 def option_range
@@ -66,6 +72,27 @@ def boats
       type: 'barge',
       description: Faker::Lorem.sentence)
   end
+  Boat.create( price: Faker::Commerce.price.to_i, name: '8 Person Riverboat', available_options: [Option.find(option_range.sample)],
+              specifications: [Specification.find(spec_range.sample)],
+              image_path: "barges/riverboats",
+              type: 'barge',
+              description: Faker::Lorem.sentence)
+
+  Boat.create( price: Faker::Commerce.price.to_i, name: '20 Person Riverboat', available_options: [Option.find(option_range.sample)],
+              specifications: [Specification.find(spec_range.sample)],
+              image_path: "barges/riverboats",
+              type: 'barge',
+              description: Faker::Lorem.sentence)
+
+  Boat.create(
+    price: Faker::Commerce.price.to_i,
+    name: 'Excursion Boat',
+    available_options: [Option.find(option_range.sample)],
+    specifications: [Specification.find(spec_range.sample)],
+    image_path: "barges/excursion_boats",
+    type: 'excursion_boat',
+    description: Faker::Lorem.sentence
+  )
 end
 
 10.times do |i|
@@ -77,9 +104,10 @@ end
 
 ShippingAddress.create(building_number: '510', street: 'N Wesley Dr.', city: 'Jasper',
                        state: 'IN', zip_code: '47546')
-cart = ShoppingCart.new
-a = User.create(email: 'test@test.com', password: 'test', shopping_cart: cart, shipping_addresses: [ShippingAddress.first])
-a.add_role :admin
-a.save
 parts
 boats
+cart = ShoppingCart.create(user: user)
+50.times {|i| Product.create(shopping_cart: cart, base_model_id: base_model_range.sample, quantity: rand(10))}
+cart.product_ids = Product.all.select{|p| p.id % 3 == 0 }.map(&:id)
+user.update_attributes(shopping_cart: cart)
+Order.create(shopping_cart: cart, user: user)

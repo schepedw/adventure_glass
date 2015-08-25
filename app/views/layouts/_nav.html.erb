@@ -13,8 +13,9 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenu1">
           <li role="presentation"><a role="menuitem"  href="/boats/paddleboats">Paddleboats</a></li>
-          <li role="presentation"><a role="menuitem"  href="/boats/canoes">Canoes</a></li>
-          <li role="presentation"><a role="menuitem"  href="#">Barges</a></li>
+          <li role="presentation"><%=link_to 'Canoes', new_product_path(base_model_id: BaseModel.find_by_type(:canoe)), html: { role: 'menuitem' } %>
+          </li>
+          <li role="presentation"><a role="menuitem"  href="/boats/barges">Barges</a></li>
         </ul>
       </li>
 
@@ -25,8 +26,8 @@
         </a>
         <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="dropdownMenu1">
           <li role="presentation"><a role="menuitem"  href="/parts">Boat Parts</a></li>
-          <li role="presentation"><a role="menuitem"  href="<%= new_shopping_cart_product_path(@cart, base_model_id: Dock.first.id) %>">Docks</a></li>
-          <li role="presentation"><a role="menuitem"  href="/lifts">Lifts</a></li>
+          <li role="presentation"><a role="menuitem"  href=<%= new_product_path(base_model_id: Dock.first.id) %>>Docks</a></li>
+          <li role="presentation"><a role="menuitem"  href=<%= new_product_path(base_model_id: Lift.first.id) %>>Lifts</a></li>
         </ul>
       </li>
 
@@ -49,7 +50,7 @@
           <li role="presentation"><a role="menuitem" tabindex="-1" href="/boats">Boats</a></li>
           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Extras</a></li><!--TODO - where should these 3 go? -->
           <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Order</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="/shopping_cart">Cart</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="-1" href=<%= shopping_cart_path(@cart)%>>Cart</a></li>
           <% if current_user %>
             <li role="presentation">
               <%= link_to " Log out", destroy_user_session_path, :method => :delete, :class => 'fa fa-sign-out', :role=> "menuitem", :tabindex=>"-1"%>
@@ -61,7 +62,7 @@
       </li>
 
       <li class = 'hidden-xs hidden-sm'>
-        <a href = '/shopping_cart' ><span class = 'fa fa-shopping-cart'></span> Cart </a>
+        <a href =<%= shopping_cart_path(@cart)%> ><span class = 'fa fa-shopping-cart'></span> Cart </a>
       </li>
       <% if current_user %>
         <li class = 'hidden-xs hidden-sm'><%= link_to " Log out", destroy_user_session_path, :method => :delete, :class => 'fa fa-sign-out' %></li>

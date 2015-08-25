@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
     super || ShoppingCart.create(:user => self)
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   def registration_complete?
     missing_registration_attrs.empty?
   end
@@ -17,6 +21,6 @@ class User < ActiveRecord::Base
   def missing_registration_attrs
     %w(email encrypted_password first_name last_name phone_number).select do |attr|
       send(attr).nil?
-  end
+    end
   end
 end

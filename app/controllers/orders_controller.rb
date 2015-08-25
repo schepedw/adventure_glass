@@ -1,6 +1,10 @@
 class OrdersController < ApplicationController
   before_filter :authenticate_user!
   def show
+    order = Order.all.find{|o| !o.products.empty?}
+    @user = order.user
+    @products = order.products
+    render 'order_mailer/confirm_order'
   end
 
   def create

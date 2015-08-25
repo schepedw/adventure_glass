@@ -1,7 +1,6 @@
 require 'csv_reader'
 include CSVReader
-class PartsController < BaseModelsController
-  before_action :current_shopping_cart
+class PartsController < ApplicationController
 
   def index
     respond_to do |format|
@@ -15,14 +14,14 @@ class PartsController < BaseModelsController
     part = Product.find(params[:id])
     @pictures = ["parts/#{params[:id]}_#{part.name}.jpg"]
     @display_options = []
-    @product = Product.new(class_name: 'Part', base_model_id: part.id)
+    @product = Part.new(base_model_id: part.id)
   end
 
   private
 
   def format_yml
     Part.all.inject( [] ) do |rows, part|
-      rows << display_row(part)#"#{part_number.id}_#{part.name}.jpg", part.id, part.description, part.price)
+      rows << display_row(part)
     end
   end
 
@@ -35,7 +34,7 @@ class PartsController < BaseModelsController
   end
 
   def link_tag(link_text, base_model_id)
-    "<a href = '#{new_shopping_cart_product_path(@cart, base_model_id: base_model_id)}'>#{link_text}</a>"
+    "<a href = '#{new_product_path(base_model_id: base_model_id)}'>#{link_text}</a>"
   end
 
   def img_tag(img)

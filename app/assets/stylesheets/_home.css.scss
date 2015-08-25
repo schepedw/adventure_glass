@@ -1,25 +1,25 @@
 $gallery-picture-width: 100%;
-.gallery-link{
+.gallery-link {
   color: black;
-  &:hover{
-    text-decoration: none;
+  &:hover {
     color: black;
+    text-decoration: none;
   }
 }
 
-.gallery-option{
-  img{
+.gallery-option {
+  img {
     height: 33vw;
     width: 100%;
     min-height: 500px;
   }
   overflow:hidden;
-  @media (min-width: 1200px){
+  @media (min-width: 1200px) {
     opacity: 0.9;
   }
   border-top-right-radius: 50px;
   border-top-left-radius: 50px;
-  .gallery-option-description{
+  .gallery-option-description {
     background-color: #DDDDDD;
     font-size: 20px;
     border-bottom-right-radius: 20px;
@@ -29,19 +29,23 @@ $gallery-picture-width: 100%;
   }
   padding-bottom: 15px;
   max-width: $gallery-picture-width;
-  @media (min-width: $gallery-picture-width) and (max-width:768px){
+  @media (min-width: $gallery-picture-width) and (max-width:768px) {
     position: relative;
     left: 50%;
     margin-left: -$gallery-picture-width/2;
   }
-  &:hover{
+  &:hover {
     opacity: 1;
   }
 
 }
 
-.container.gallery-container{
-  @media (min-width: 768px) and (max-width:1199px){
+.container.gallery-container {
+  @media (min-width: 768px) and (max-width:1199px) {
     width: 95%;
   }
+}
+
+.carousel-inner .item.active img {
+  width: 100%;
 }
