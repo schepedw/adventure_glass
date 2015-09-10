@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
-ruby "2.1.5"
+ruby "2.2.2"
+
+group :production do
+  gem 'unicorn-rails'
+end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
@@ -21,12 +25,15 @@ gem 'jquery-ui-rails'
 gem 'twitter-bootstrap-rails', '3.2.0'
 gem 'jquery-datatables-rails', :git => 'https://github.com/rweng/jquery-datatables-rails'
 gem 'font-awesome-rails'
+
 gem 'figgy'
 gem 'devise'
 gem 'rolify'
 gem 'best_in_place'
 gem 'remotipart', '~> 1.2'
 gem 'mail'
+gem 'capistrano', '2.15.4'
+gem 'bluepill'
 #gem 'sidekiq' #read more at http://railscasts.com/episodes/366-sidekiq
 #email stylers, as mentioned by http://railscasts.com/episodes/312-sending-html-email
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
