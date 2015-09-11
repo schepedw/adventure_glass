@@ -37,8 +37,8 @@ gem 'bluepill'
 #gem 'sidekiq' #read more at http://railscasts.com/episodes/366-sidekiq
 #email stylers, as mentioned by http://railscasts.com/episodes/312-sending-html-email
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+gem 'faker'
 group :development, :test do
   gem 'pry'
-  gem 'faker'
   gem 'spring'
 end
