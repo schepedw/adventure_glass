@@ -63,17 +63,11 @@ namespace :bundle do
   end
 end
 
-before "deploy:assets:precompile", "db:migrate"
+before "deploy:assets:precompile", "db:setup", "db:migrate"
 namespace :db do
   desc "setup db"
   task :setup, :roles => :db do
-    run "cd #{release_path} && export BUNDLE_ENV=deployment && RAILS_ENV=deployment bundle exec rake db:setup"
-    run "cd #{release_path} && script/rails runner -e production \"CallRep.update_all_reps('us')\""
-    run "cd #{release_path} && script/rails runner -e production \"CallRep.update_all_reps('uk')\""
-    run "cd #{release_path} && script/rails runner -e production \"CallRep.update_all_reps('jv')\""
-    run "cd #{release_path} && script/rails runner -e production \"CallRep.set_active_reps('us')\""
-    run "cd #{release_path} && script/rails runner -e production \"CallRep.set_active_reps('uk')\""
-    run "cd #{release_path} && script/rails runner -e production \"CallRep.set_active_reps('jv')\""
+    run "cd #{release_path} && RAILS_ENV=#{rails_env} bundle exec rake db:setup"
   end
   task :migrate, :roles => :db do
     run "cd #{release_path} && RAILS_ENV=#{rails_env} bundle exec rake db:migrate"
