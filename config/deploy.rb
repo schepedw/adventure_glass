@@ -1,4 +1,3 @@
-#require "rvm/capistrano"
 require 'bundler/capistrano'
 
 default_run_options[:shell] = '/bin/bash --login'
@@ -49,6 +48,13 @@ namespace :bluepill do
   end
 end
 
+before 'bluepill:start', 'secrets:generate'
+namespace 'secrets' do
+  task :generate do
+    run "cd #{release_path} && export SECRET_KEY_BASE=$(bundle exec rake secret)"
+  end
+end
+
 namespace :bundle do
   task :install, :roles => :app do
     shared_dir = File.join(shared_path, 'bundle')
@@ -63,7 +69,7 @@ namespace :bundle do
   end
 end
 
-before "deploy:assets:precompile", "db:setup", "db:migrate"
+before "deploy:assets:precompile", 'random:clear_files', "db:setup", "db:migrate"
 namespace :db do
   desc "setup db"
   task :setup, :roles => :db do
@@ -71,5 +77,12 @@ namespace :db do
   end
   task :migrate, :roles => :db do
     run "cd #{release_path} && RAILS_ENV=#{rails_env} bundle exec rake db:migrate"
+  end
+end
+
+namespace 'random' do
+  task :clear_files do
+    run "cd #{release_path} && rm log && mkdir log && touch log/production.log"
+    run "cd #{release_path} && rm tmp/pids"
   end
 end
