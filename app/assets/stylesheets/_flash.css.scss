@@ -1,0 +1,17 @@
+.flash{
+  padding-left: 10%;
+  color: white;
+  font-weight: bold;
+  &.success{
+    background-image: linear-gradient(to bottom, #0ED40E 0, #C7EFB2 100%);
+  }
+  &.error{
+    background-image: linear-gradient(to bottom, #FF1313 0, #F79999 100%);
+  }
+  &.notice{
+    background-image: linear-gradient(to bottom, #96E0FD 0, #7AC2FF 100%);
+  }
+  &.warning{
+    background-image: linear-gradient(to bottom, #FFAF1C 0, #FFD026 100%);
+  }
+}
