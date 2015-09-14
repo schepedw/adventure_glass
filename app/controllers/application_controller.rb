@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
+  class UnauthorizedError < RuntimeError; end
   protect_from_forgery with: :exception
   before_action :current_shopping_cart
+
+  rescue_from UnauthorizedError do |ex|
+    render 'site/unauthorized', layout: 'application', status: 403, formats: [:html]
+  end
 
   def current_shopping_cart
     @cart ||= current_user.shopping_cart unless current_user.nil?

@@ -34,6 +34,21 @@ class BaseModelsController < ApplicationController
     @pictures = pictures_for(@base_model, 100)
   end
 
+  def destroy
+    b = BaseModel.find(params[:id])
+    b.delete
+    FileUtils.rm_rf(Rails.root.join('app', 'assets', 'images', b.image_path)) unless b.image_path.blank?
+    redirect_to root_path, notice: 'Product removed'
+  end
+
+  def create
+    base_model = BaseModel.create(base_model_params)
+    image_path = "user_added/#{base_model.name.downcase.gsub(' ', '_')}"
+    Dir.mkdir(Rails.root.join('app', 'assets', 'images', image_path))
+    base_model.update_attribute(:image_path, image_path)
+    redirect_to edit_base_model_path(base_model)
+  end
+
   private
 
   def class_name
@@ -62,7 +77,7 @@ class BaseModelsController < ApplicationController
   end
 
   def check_permissions
-    redirect_to root_path unless current_user.try(:has_role?, :admin)
+    raise UnauthorizedError unless current_user.try(:has_role?, :admin)
   end
 
 end

@@ -1,6 +1,7 @@
 <hr class = 'nav-padding'/>
 <div class = 'container product-title'>
   <h2> <%= best_in_place @base_model, :name, url: base_model_path(@base_model) %> </h2>
+  <p> <%= best_in_place @base_model, :description, url: base_model_path(@base_model)%> </p>
 </div>
 <!-- re ordering of pics? definitely a wish list kinda thing -->
 <div class = 'container'>
@@ -22,6 +23,7 @@
       <div id='options'>
         <%= render 'options/edit' %>
       </div>
+      <%= link_to "Delete", base_model_path(@base_model), method: 'delete', class: 'btn btn-small btn-danger'%>
     </div>
   </div>
 </div>

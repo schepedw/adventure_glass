@@ -1,0 +1,38 @@
+<hr class = 'nav-padding' />
+<%= form_for(BaseModel.new) do |form| %>
+<div class = 'container product-title'>
+  <h2> <%=form.text_field :name, placeholder: 'Product Name', required: true %> </h2>
+  <p>  <%=form.text_field :description, placeholder: 'Product Description', required: true  %> </p>
+  <p>  <%= form.label 'Product Type ' %><%=form.select :class_name, options_for_select(%w[Boat Dock Lift Part]), include_blank: true, required: true  %> </p>
+  <hr />
+</div>
+<div class = 'container'>
+  <div class = 'row'>
+    <div class = 'col-md-1'> <!--TODO - figure out what to do for small screens-->
+    </div>
+    <div class = 'product-display col-md-6'>
+      <div class = 'image-active'>
+        <em> Add pics on the next page </em>
+      </div>
+    </div>
+      <div class = 'col-md-2 options'>
+        <span class='product-price'>Price: $<%= form.number_field :price, step: 0.01, min: 0.0, max: 100000, required: true %> </span>
+        <hr />
+        <h3> Details </h3>
+        <ul class='col-sm-12'>
+            <li>
+            <em> Add details on the next page </em>
+            </li>
+        </ul>
+        <hr style='width:100%;'/>
+        <h3> Options </h3>
+        <ul class = 'list-unstyled no-left-padding'>
+          <li><em> Add options on the next page </em> </li>
+        </ul>
+      </div>
+      <div class = 'col-md-2 product-persistence col-lg-offset-1 text-center'>
+        <%= button_tag 'Save', type: 'submit', class: 'btn btn-success full-width' %>
+      </div>
+    <% end %>
+  </div>
+</div>
