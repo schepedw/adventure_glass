@@ -51,7 +51,7 @@ end
 before 'bluepill:start', 'secrets:generate'
 namespace 'secrets' do
   task :generate do
-    run "cd #{release_path} && export SECRET_KEY_BASE=$(bundle exec rake secret)"
+    run "export SECRET_KEY_BASE=$(bundle exec rake secret)"
   end
 end
 
