@@ -15,6 +15,7 @@ Bluepill.application(app_name) do |app|
     process.start_grace_time = 30.seconds
     process.stop_grace_time = 10.seconds
     process.restart_grace_time = 13.seconds
+    process.stdout = process.stderr = "/tmp/production.log"
 
     process.monitor_children do |child_process|
       child_process.stop_command = "kill -QUIT {{PID}}"
