@@ -51,7 +51,8 @@ end
 before 'bluepill:start', 'secrets:generate'
 namespace 'secrets' do
   task :generate do
-    run "export SECRET_KEY_BASE=$(bundle exec rake secret)"
+    run "cd #{release_path} && sed -i '$ d' config/secrets.yml "
+    run "cd #{release_path} && echo \"  secret_key_base: $(bundle exec rake secret)\" >> config/secrets.yml"
   end
 end
 
@@ -83,6 +84,6 @@ end
 namespace 'random' do
   task :clear_files do
     run "cd #{release_path} && rm log && mkdir log && touch log/production.log"
-    run "cd #{release_path} && rm tmp/pids"
+    run "cd #{release_path} && rm tmp/pids && mkdir tmp/pids && chmod 777 tmp/pids"
   end
 end

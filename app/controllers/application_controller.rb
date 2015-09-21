@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   def shopping_cart_from_session
     shopping_cart = ShoppingCart.find(session[:cart_id])
   rescue ActiveRecord::RecordNotFound
-    shopping_cart = ShoppingCart.create(user: current_user).id
+    shopping_cart = ShoppingCart.create(user: current_user)
   ensure
     session[:cart_id] = shopping_cart.id
     shopping_cart
