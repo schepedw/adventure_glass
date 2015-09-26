@@ -87,3 +87,6 @@ namespace 'random' do
     run "cd #{release_path} && rm tmp/pids && mkdir tmp/pids && chmod 777 tmp/pids"
   end
 end
+
+        require './config/boot'
+        require 'airbrake/capistrano'
