@@ -37,6 +37,9 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    airbrake (4.1.0)
+      builder
+      multi_json
     arel (5.0.1.20140414130214)
     bcrypt (3.1.10)
     best_in_place (3.0.3)
@@ -189,6 +192,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrake
   best_in_place
   bluepill
   capistrano (= 2.15.4)

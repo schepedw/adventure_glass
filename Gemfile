@@ -34,6 +34,7 @@ gem 'remotipart', '~> 1.2'
 gem 'mail'
 gem 'capistrano', '2.15.4'
 gem 'bluepill'
+gem 'airbrake'
 #gem 'sidekiq' #read more at http://railscasts.com/episodes/366-sidekiq
 #email stylers, as mentioned by http://railscasts.com/episodes/312-sending-html-email
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
