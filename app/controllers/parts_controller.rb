@@ -27,7 +27,7 @@ class PartsController < ApplicationController
 
   def display_row(part)
     base_model_id = part.id
-    image_file = "#{part.id}_#{part.name.downcase.gsub(' ','_')}.jpg"
+    image_file = "#{part.image_path}/#{part.id}_#{part.name.downcase.gsub(' ','_')}.jpg"
     [img_tag(image_file), part.id, part.description, part.price].inject( [] ) do |row, col|
       row << link_tag(col, base_model_id)
     end
@@ -38,7 +38,7 @@ class PartsController < ApplicationController
   end
 
   def img_tag(img)
-    "<img src='assets/parts/#{img}' class='img-responsive thumbnail table-thumbnail'/>"
+    "<img src='assets/#{img}' class='img-responsive thumbnail table-thumbnail'/>"
   end
 
 end

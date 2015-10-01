@@ -1,11 +1,19 @@
 <hr class = 'nav-padding' />
-<div class = 'row-fluid text-center hero'>
-  <h1> Find the parts you need to keep afloat </h1>
-</div>
-<div class = 'row-fluid'>
-  <div class = 'col-xs-12'>
-    <table id='parts' class = 'table table-hover display dataTable table-bordered dtr-inline' data-source = '/parts.json'>
-
-    </table>
+<div class = 'container'>
+  <div class = 'row-fluid text-center hero'>
+    <h1> Find the parts you need to keep afloat </h1>
+    <br />
+  </div>
+  <div class = 'row-fluid hidden-xs'>
+    <div class = 'col-xs-12'>
+      <table id='parts' class = 'table table-hover display dataTable table-bordered dtr-inline' data-source = '/parts.json'>
+      </table>
+    </div>
+  </div>
+  <div class = 'row-fluid hidden-xs'>
+    <div class = 'col-xs-12'>
+      <table id='parts' class = 'table table-hover display dataTable table-bordered dtr-inline' data-source = '/parts.json?pageWidth=xs'>
+      </table>
+    </div>
   </div>
 </div>

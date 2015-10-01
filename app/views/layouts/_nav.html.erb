@@ -31,26 +31,15 @@
         </ul>
       </li>
 
-      <li class= 'hidden-xs hidden-sm'>
-        <a class="dropdown hover" aria-expanded="false">
-          ORDER
-          <span class="caret"></span>
-        </a>
-
-        <ul class="dropdown-menu dropdown-menu-left" role="menu" aria-labelledby="dropdownMenu1">
-          <li role="presentation"><a role="menuitem"  href="/boats/build">Boats</a></li>
-          <li role="presentation"><a role="menuitem"  href="/parts">Parts</a></li>
-        </ul>
-      </li>
-
 
       <li class = 'visible-xs-inline-block visible-sm-inline-block bars'>
         <a class = 'btn btn-default dropdown-toggle bars' data-toggle='dropdown' href = '#'><span class = 'fa fa-bars fa-3x'></span> </a>
         <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
           <li role="presentation"><a role="menuitem" tabindex="-1" href="/boats">Boats</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Extras</a></li><!--TODO - where should these 3 go? -->
-          <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Order</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="-1" href=<%= shopping_cart_path(@cart)%>>Cart</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="0" href="/parts">Parts</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="1" href=<%= new_product_path(base_model_id: Dock.first.id) %>>Docks</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="2" href=<%= new_product_path(base_model_id: Lift.first.id) %>>Lifts</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="3" href=<%= shopping_cart_path(@cart)%>>Cart</a></li>
           <% if current_user %>
             <li role="presentation">
               <%= link_to " Log out", destroy_user_session_path, :method => :delete, :class => 'fa fa-sign-out', :role=> "menuitem", :tabindex=>"-1"%>
@@ -62,14 +51,19 @@
       </li>
 
       <li class = 'hidden-xs hidden-sm'>
-        <a href =<%= shopping_cart_path(@cart)%> ><span class = 'fa fa-shopping-cart'></span> Cart </a>
+        <a href =<%= shopping_cart_path(@cart)%> ><span class = 'fa fa-shopping-cart'></span> CART </a>
       </li>
       <% if current_user %>
-        <li class = 'hidden-xs hidden-sm'><%= link_to " Log out", destroy_user_session_path, :method => :delete, :class => 'fa fa-sign-out' %></li>
-      <% else %>
-        <li class = 'hidden-xs hidden-sm'><a href="/users/sign_in"><span class = 'fa fa-sign-out'></span> Log In</a></li>
+        <li class = 'hidden-xs hidden-sm'><%= link_to destroy_user_session_path, method: :delete do %>
+        <span class = 'fa fa-sign-out'></span>
+        LOG OUT
       <% end %>
-    </ul>
-  </div>
+
+      </li>
+    <% else %>
+      <li class = 'hidden-xs hidden-sm'><a href="/users/sign_in"><span class = 'fa fa-sign-out'></span> LOG IN</a></li>
+    <% end %>
+  </ul>
+</div>
 </div>
 </nav>
