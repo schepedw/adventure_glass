@@ -7,5 +7,4 @@ module PictureFinder
     end
     pics
   end
-
 end
