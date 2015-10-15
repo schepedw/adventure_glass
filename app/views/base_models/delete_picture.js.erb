@@ -1,5 +1,4 @@
 $('#pictures').html("<%= j (render 'base_models/pictures/edit') %>");
-console.log('hello');
 $('.gallery-thumbnail').click(function(){
   $('.image-active').empty();
   $('.image-active').append($(this).clone().toggleClass('thumbnail gallery-thumbnail'));

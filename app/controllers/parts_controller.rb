@@ -6,7 +6,7 @@ class PartsController < ApplicationController
     respond_to do |format|
       format.html
       format.json {
-        render json: {:aaData => format_yml}}
+        render json: {:aaData => data_table}}
     end
   end
 
@@ -19,10 +19,11 @@ class PartsController < ApplicationController
 
   private
 
-  def format_yml
-    Part.all.inject( [] ) do |rows, part|
+  def data_table
+    existing_parts = Part.all.inject( [] ) do |rows, part|
       rows << display_row(part)
     end
+    new_part + existing_parts
   end
 
   def display_row(part)
@@ -41,4 +42,12 @@ class PartsController < ApplicationController
     "<img src='assets/#{img}' class='img-responsive thumbnail table-thumbnail'/>"
   end
 
+  def new_part
+    return [] unless current_user && current_user.has_role?(:admin)
+    [["<a href = '#{new_base_model_path}'> #{img_tag("upload_file.jpeg")}</a>",
+     "<a href = '#{new_base_model_path}'> -- </a>",
+     "<a href = '#{new_base_model_path}'> Add new part </a>",
+     "<a href = '#{new_base_model_path}'> -- </a>"
+    ]]
+  end
 end
