@@ -34,7 +34,10 @@ class ProductsController < ApplicationController
   def update
     p = @cart.products.find(params[:id])
     p.update_attributes(product_params)
-    respond_with p
+    respond_to do |format|
+      format.json { respond_with p }
+      format.js
+    end
   end
 
   private

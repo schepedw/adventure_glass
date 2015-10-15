@@ -1,0 +1,7 @@
+<div class = 'col-sm-2 product-subtotal-<%=product.id%>'><!-- Price -->
+  <span> $<%= '%.02f' % (product.quantity * product.price) %>  </span>
+  <% if product.quantity > 1 %>
+    <br />
+    <span>(<%= product.quantity %> @ $<%= '%.02f' % product.price %>) </span>
+  <% end %>
+</div>

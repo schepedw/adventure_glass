@@ -8,17 +8,16 @@
       <p> <%= product.description %> </p>
       <span> <%= link_to 'Remove', product, remote: true, method: :delete %> </span>
     </div>
-    <div class = 'col-sm-2'><!-- Price -->
-      <span> $<%= '%.02f' % (product.quantity * product.price) %>  </span>
-      <% if product.quantity > 1 %>
-        <br />
-        <span>(<%= product.quantity %> @ $<%= '%.02f' % product.price %>) </span>
-      <% end %>
-    </div>
+    <%= render 'product_subtotal', product: product %>
     <div class = 'col-sm-2'><!-- Qty -->
-      <%= form_tag('#some_path') do %>
-        <%= select_tag "quantity", options_for_select((0..[15, product.quantity].max).to_a, product.quantity), :class => 'btn invisible-xs' %>
-      <% end %>
+      <div class = 'fake-select'>
+        <%= best_in_place product, :quantity, class: 'product-quantity', as: :select, url: shopping_cart_product_path(@cart, product),
+          collection: (0..[15, product.quantity].max).to_a.inject( {} ) {|a,b| a[b] = b; a} %>
+        <div class = 'caret-container'>
+          <div class = 'fa fa-caret-up'></div>
+          <div class = 'fa fa-caret-down'></div>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>

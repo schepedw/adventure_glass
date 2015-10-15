@@ -1,0 +1,2 @@
+$('.cart-subtotal').replaceWith("<%= j (render 'cart_subtotal') %>");
+$('.product-subtotal-<%=@updated_product.id%>').replaceWith("<%= j (render 'product_subtotal', product: @updated_product) %>")

@@ -8,4 +8,10 @@ class ShoppingCart < ActiveRecord::Base
       sum + (product.price * product.quantity)
     end
   end
+
+  def total_item_count
+    products.inject(0) do |sum, product|
+      sum + product.quantity
+    end
+  end
 end
