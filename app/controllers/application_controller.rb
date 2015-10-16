@@ -7,6 +7,14 @@ class ApplicationController < ActionController::Base
     render 'site/unauthorized', layout: 'application', status: 403, formats: [:html]
   end
 
+  rescue_from StandardError do |ex|
+    if ['development', 'production', 'staging'].include? Rails.env
+      Airbrake.notify(ex)
+    else
+      raise ex
+    end
+  end
+
   def current_shopping_cart
     @cart ||= current_user.shopping_cart unless current_user.nil?
     @cart ||= shopping_cart_from_session

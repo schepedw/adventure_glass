@@ -74,7 +74,7 @@ before "deploy:assets:precompile", 'random:clear_files', "db:setup", "db:migrate
 namespace :db do
   desc "setup db"
   task :setup, :roles => :db do
-    run "cd #{release_path} && RAILS_ENV=#{rails_env} bundle exec rake db:setup"
+ #   run "cd #{release_path} && RAILS_ENV=#{rails_env} bundle exec rake db:setup"
   end
   task :migrate, :roles => :db do
     run "cd #{release_path} && RAILS_ENV=#{rails_env} bundle exec rake db:migrate"
@@ -88,5 +88,5 @@ namespace 'random' do
   end
 end
 
-        require './config/boot'
-        require 'airbrake/capistrano'
+     #   require './config/boot'
+     #   require 'airbrake/capistrano'
