@@ -8,8 +8,9 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from StandardError do |ex|
-    if ['development', 'production', 'staging'].include? Rails.env
+    if ['production', 'staging'].include? Rails.env
       Airbrake.notify(ex)
+      #TODO: make a 500 page
     else
       raise ex
     end
