@@ -39,7 +39,7 @@ class PartsController < ApplicationController
   end
 
   def img_tag(img)
-    "<img src='assets/#{img}' class='img-responsive thumbnail table-thumbnail'/>"
+    ActionController::Base.helpers.image_tag(img, class: 'img-responsive thumbnail table-thumbnail')
   end
 
   def new_part
