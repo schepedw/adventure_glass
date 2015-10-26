@@ -17,7 +17,7 @@ class BaseModelsController < ApplicationController
   def upload_picture
     @base_model = BaseModel.find(params[:base_model_id])
     params[:files].each do |uploaded_io|
-      File.open(Rails.root.join('app', 'assets', 'images', @base_model.image_path, uploaded_io.original_filename), 'wb') do |file|
+      File.open(Rails.root.join('public', 'assets', 'base_model_pictures', @base_model.image_path, uploaded_io.original_filename), 'wb') do |file|
         file.write(uploaded_io.read)
       end
     end
@@ -29,7 +29,7 @@ class BaseModelsController < ApplicationController
 
   def delete_picture
     @pic_to_delete = params[:filename]
-    File.delete(Rails.root.join('app', 'assets', 'images', @pic_to_delete))
+    File.delete(Rails.root.join('public', 'assets', @pic_to_delete))
     @base_model = BaseModel.find(params[:base_model_id])
     @pictures = pictures_for(@base_model, 100)
   end
