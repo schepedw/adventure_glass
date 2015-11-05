@@ -50,11 +50,12 @@ h3{
   margin-right:-4px;
 }
 
-.gray-field{
+.boat-background{
   padding-top: 15px;
-  background-color: #f3f3f3;
   padding-bottom: 15px;
   margin-bottom: -15px;
+  background-image: image-url('seaworld_landing_opaque.jpg');
+  background-size: cover;
 }
 
 .required{
