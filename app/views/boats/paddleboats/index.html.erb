@@ -1,6 +1,10 @@
 <hr class = 'nav-padding'/>
 <div class = 'hero-carousel'>
-  <%= render 'layouts/carousel'%>
+  <div class="carousel-inner" role="listbox">
+    <div class='item active'>
+      <%= image_tag 'paddleboats/white_swans.png' %>
+    </div>
+  </div>
 </div>
 <div class = 'container boat-gallery-container'>
   <div class = 'row-fluid thumbnail-carousel'>
@@ -10,15 +14,15 @@
         <div class="carousel slide" id='waterfowl' >
           <div class="carousel-inner">
             <% @products_for_slider.each.with_index do |product, i| %>
-              <div class="item text-center <%=i == 0 ? 'active' : ''%>">
-                <div class="col-lg-2 col-sm-4 col-xs-6">
-                  <a href= <%= new_product_path(base_model_id: product.id) %>><%= image_tag product.image_path + '/thumbnail.jpg', :class=>"img-responsive thumbnail"%> <span><%=product.name.gsub(' paddle boat', '').pluralize.titleize %></span></a>
-                </div>
+            <div class="item text-center <%=i == 0 ? 'active' : ''%>">
+              <div class="col-lg-2 col-sm-4 col-xs-6">
+                <a href= <%= new_product_path(base_model_id: product.id) %>><%= image_tag product.image_path + '/thumbnail.jpg', :class=>"img-responsive thumbnail"%> <span><%=product.name.gsub(' paddle boat', '').pluralize.titleize %></span></a>
               </div>
-            <% end %>
+            </div>
+          <% end %>
           </div>
-          <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
-          <a class="right carousel-control" href="#myCarousel" data-slide="next"><i class="fa fa-chevron-right"></i></a>
+          <a class="left carousel-control" href="#waterfowl" data-slide="prev"><i class="fa fa-chevron-left"></i></a>
+          <a class="right carousel-control" href="#waterfowl" data-slide="next"><i class="fa fa-chevron-right"></i></a>
         </div>
       </div>
     </div>
