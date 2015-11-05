@@ -13,21 +13,16 @@ class BoatsController < ApplicationController
 
   def index
     @boats = Boat.where.not(type: ['waterfowl', 'paddleboats'])
-    @carousel_images = {'boat_landing_sample.jpg' => 'Caption here'}
     @products_for_slider = Boat.where(type: 'paddleboat')
   end
 
   def paddleboat_index
     @products_for_slider = Boat.where(type: 'waterfowl')
-    @carousel_images = {
-      'paddleboats/white_swans.png' => 'caption #3'
-    }
     @paddleboats = Boat.where(type: 'paddleboat')
     render 'boats/paddleboats/index'
   end
 
   def barge_index
-    @carousel_images = {'barges/riverboats/riverboat_side_view.jpg' => 'Need better pics'}
     @barges = Product.where(type: 'barge')
     render 'boats/barges/index'
   end
