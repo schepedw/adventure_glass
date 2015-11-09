@@ -16,7 +16,8 @@
   @media (min-width: 992px){
     height: 70vh;
     padding-top: 7vh;
-    background-image: image-url('paddleboats/seaworldcropped.jpg')
+    background-image: image-url('paddleboats/seaworldcropped.jpg');
+    background-size: cover;
   }
   margin-bottom: -15px;
   padding-top: 10px;
