@@ -16,7 +16,7 @@ Your order is summarized below.
         <a href="/boats/mark_twains"><img src='http://adventureglass.com/advglasshome15019003.jpg'></a><!-- TODO:  use correct images & link destinations -->
       </td>
       <td style='width: 30%; padding-right: 30px;'>
-        <span class = 'cart-product-title'> <%= link_to product.name, shopping_cart_product_url(@cart, product) %> </span>
+        <span class = 'cart-product-title'> <%= link_to product.name, product_url(product) %> </span>
         <p> <%= product.description %> </p>
       </div>
       </td>

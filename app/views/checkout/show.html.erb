@@ -5,8 +5,9 @@
     <% if current_user.nil? %>
       <a href = 'users/sign_in'>Sign in here</a>
     <% end %>
-    <%= form_for @user do |f| %>
-      <%= f.hidden_field :redirect_path, value: checkout_confirm_path %>
+    <%= form_for(@user, url: registration_path(:user)) do |f| %>
+      <%= hidden_field :request, :referer, value: checkout_confirm_path %>
+      <%= f.hidden_field :id, value: @user.id %>
       <% unless @user.registration_complete? %>
         <% if current_user.nil? %>
           <div class = 'row'>
@@ -31,7 +32,7 @@
         <div class = 'row'>
           <div class = 'col-xs-2'>
             <%= f.label :title%>:
-            <%= select_tag "title", options_for_select(%w(Mr. Mrs. Miss. Other)) %>
+            <%= f.select "title", options_for_select(%w(Mr. Mrs. Miss Other), @user.title) %>
           </div>
 
           <div class = 'col-xs-10 col-sm-5'>
@@ -54,7 +55,7 @@
 
         <hr />
       <% end %>
-      <%= f.fields_for :shipping_addresses do |shipping_address| %>
+      <%= f.fields_for :shipping_addresses, @user.most_recent_shipping_address do |shipping_address| %>
         <!--
           <% if @user.shipping_addresses.present? %>
             <%= form_tag('#???') do %>

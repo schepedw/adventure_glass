@@ -1,3 +1,4 @@
+#TODO: remove me
 class DocksController < ApplicationController
   def show
     @display_options = ['Custom Size', 'Custom Shape', 'Wood Or Resin Finish']

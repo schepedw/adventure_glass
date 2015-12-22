@@ -1,0 +1,10 @@
+if(window.location.pathname == '/shopping_cart'){
+  <% if @cart.empty? %>
+      $('.shopping-cart').replaceWith("<%= j (render partial: 'shopping_carts/empty') %>");
+  <% else %>
+      $("#product-<%=@product.id%>-summary").remove();
+    $('.cart-subtotal').replaceWith("<%= j (render partial: 'shopping_carts/cart_subtotal') %>");
+  <% end %>
+} else{
+  window.location.assign('/shopping_cart');
+}

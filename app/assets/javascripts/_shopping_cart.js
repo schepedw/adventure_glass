@@ -4,10 +4,11 @@ $(function(){
   });
 
   $('.fake-select').click(function(){
-    if ($('.product-quantity.best_in_place').children().length > 0)
+    bip = $(this).find('.product-quantity.best_in_place');
+    if (bip.children().length > 0)
       return;
-    $('.product-quantity.best_in_place').click();
-    $('.caret-container').hide();
+    bip.click();
+    $(this).find('.caret-container').hide();
   });
   $('.product-quantity.best_in_place').bind("ajax:success", function() { $.ajax({url: $(location).attr('href') + '.js'}) } );
 });

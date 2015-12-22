@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151001015344) do
+ActiveRecord::Schema.define(version: 20151123005640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,10 +30,10 @@ ActiveRecord::Schema.define(version: 20151001015344) do
   end
 
   create_table "base_models", force: true do |t|
-    t.decimal  "price",       precision: 5, scale: 2
-    t.text     "description"
+    t.decimal  "price",       precision: 5, scale: 2, null: false
+    t.text     "description",                         null: false
     t.string   "class_name"
-    t.string   "name"
+    t.string   "name",                                null: false
     t.string   "type"
     t.string   "image_path"
     t.datetime "created_at"
@@ -49,24 +49,27 @@ ActiveRecord::Schema.define(version: 20151001015344) do
   add_index "base_models_specifications", ["specification_id"], name: "index_base_models_specifications_on_specification_id", using: :btree
 
   create_table "options", force: true do |t|
-    t.decimal  "price",         precision: 5, scale: 2, default: 0.0
+    t.decimal  "price",         precision: 5, scale: 2, default: 0.0, null: false
     t.integer  "base_model_id"
-    t.text     "description"
+    t.text     "description",                                         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "orders", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",          null: false
     t.integer  "shopping_cart_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "status_id",        null: false
   end
 
+  add_index "orders", ["status_id"], name: "index_orders_on_status_id", using: :btree
+
   create_table "products", force: true do |t|
-    t.integer  "shopping_cart_id"
-    t.integer  "quantity"
-    t.integer  "base_model_id"
+    t.integer  "shopping_cart_id", null: false
+    t.integer  "quantity",         null: false
+    t.integer  "base_model_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -100,7 +103,7 @@ ActiveRecord::Schema.define(version: 20151001015344) do
 
   create_table "specifications", force: true do |t|
     t.integer  "base_model_id"
-    t.text     "description"
+    t.text     "description",   null: false
     t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"

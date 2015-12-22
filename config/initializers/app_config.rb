@@ -4,5 +4,4 @@ AppConfig = Figgy.build do |config|
 
   config.define_overlay(:default, nil)
   config.define_overlay(:environment) { Rails.env }
-  config.define_overlay(:local, 'local')
 end

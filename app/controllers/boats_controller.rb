@@ -1,5 +1,6 @@
 class BoatsController < ApplicationController
   before_action :current_shopping_cart
+  #TODO: git rid of this shit
   def build
     @boat_options = %w(Paddleboat Canoe Gondola Riverboat Excursion\ Boat)
     @style_options = {:canoe      => ['canoe_option1', 'canoe_option2'],
@@ -26,5 +27,4 @@ class BoatsController < ApplicationController
     @barges = Product.where(type: 'barge')
     render 'boats/barges/index'
   end
-
 end

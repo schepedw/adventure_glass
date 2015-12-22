@@ -1,3 +1,2 @@
 class Part < BaseModel
-
 end

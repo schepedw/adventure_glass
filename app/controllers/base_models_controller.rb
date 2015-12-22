@@ -79,5 +79,4 @@ class BaseModelsController < ApplicationController
   def check_permissions
     raise UnauthorizedError unless current_user.try(:has_role?, :admin)
   end
-
 end
