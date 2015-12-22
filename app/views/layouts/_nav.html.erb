@@ -39,7 +39,7 @@
           <li role="presentation"><a role="menuitem" tabindex="0" href="/parts">Parts</a></li>
           <li role="presentation"><a role="menuitem" tabindex="1" href=<%= new_product_path(base_model_id: Dock.first.id) %>>Docks</a></li>
           <li role="presentation"><a role="menuitem" tabindex="2" href=<%= new_product_path(base_model_id: Lift.first.id) %>>Lifts</a></li>
-          <li role="presentation"><a role="menuitem" tabindex="3" href=<%= shopping_cart_path(@cart)%>>Cart</a></li>
+          <li role="presentation"><a role="menuitem" tabindex="3" href=<%= shopping_cart_path %>>Cart</a></li>
           <% if current_user %>
             <li role="presentation">
               <%= link_to " Log out", destroy_user_session_path, :method => :delete, :class => 'fa fa-sign-out', :role=> "menuitem", :tabindex=>"-1"%>
@@ -51,7 +51,7 @@
       </li>
 
       <li class = 'hidden-xs hidden-sm'>
-        <a href =<%= shopping_cart_path(@cart)%> ><span class = 'fa fa-shopping-cart'></span> CART </a>
+        <a href =<%= shopping_cart_path %> ><span class = 'fa fa-shopping-cart'></span> CART </a>
       </li>
       <% if current_user %>
         <li class = 'hidden-xs hidden-sm'><%= link_to destroy_user_session_path, method: :delete do %>

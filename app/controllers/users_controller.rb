@@ -1,17 +1,17 @@
 class UsersController < Devise::RegistrationsController
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find(user_params[:id])
     @user.update_attributes(user_params)
     @address = update_shipping_addresses! if params[:user][:shipping_addresses]
-    redirect_to(params[:user][:redirect_path] || root_path)
+    redirect_to(params[:request][:referer] || root_path)
   end
 
   def create
     @user = User.create(user_params)
     @address = update_shipping_addresses! if params[:user][:shipping_addresses]
     sign_up(resource_name, resource)
-    redirect_to(params[:user][:redirect_path] || root_path)#TODO: would be nice to have a better way of capturing user's original intent
+    redirect_to(params[:request][:referer] || root_path)
   end
 
   private
@@ -23,11 +23,8 @@ class UsersController < Devise::RegistrationsController
       :first_name,
       :last_name,
       :phone_number,
+      :id
     )
-  end
-
-  def devise_mapping
-    Devise.mappings[:user]
   end
 
   def shipping_address_params
@@ -38,14 +35,10 @@ class UsersController < Devise::RegistrationsController
       :city,
       :state,
       :zip_code
-    )
+    ).merge(user_id: user_params[:id])
   end
 
   def update_shipping_addresses!
-    address = ShippingAddress.find_or_create_by(shipping_address_params)
-    address.update_attribute(:updated_at, Time.now)
-    @user.shipping_addresses << address
-    @user.save!
-    address
+    Address.find_or_create_by(shipping_address_params)
   end
 end

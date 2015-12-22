@@ -90,8 +90,8 @@ end
 10.times do |i|
   Option.create(description: Faker::Company.catch_phrase, price: Faker::Commerce.price.to_f)
   Specification.create(description: Faker::Company.bs)
-  Dock.create(price: Faker::Commerce.price.to_i, name: Faker::Commerce.product_name, available_options: [Option.find(option_range.sample)], specifications: [Specification.find(spec_range.sample)], image_path: 'docks', description: Faker::Lorem.sentence)
-  Lift.create(price: Faker::Commerce.price.to_i, name: Faker::Commerce.product_name, available_options: [Option.find(option_range.sample)], specifications: [Specification.find(spec_range.sample)], image_path: 'lifts', description: Faker::Lorem.sentence)
+  Dock.create(price: Faker::Commerce.price.to_i, name: "Super nifty Dock", available_options: [Option.find(option_range.sample)], specifications: [Specification.find(spec_range.sample)], image_path: 'docks', description: Faker::Lorem.sentence)
+  Lift.create(price: Faker::Commerce.price.to_i, name: "The best Lift ever", available_options: [Option.find(option_range.sample)], specifications: [Specification.find(spec_range.sample)], image_path: 'lifts', description: Faker::Lorem.sentence)
 end
 
 parts

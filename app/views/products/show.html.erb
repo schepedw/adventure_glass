@@ -43,10 +43,10 @@
     <div class = 'col-md-2 product-persistence col-lg-offset-1 text-center'>
       <div class = 'sm-bottom-padding'>
         Qty: <%= select_tag :quantity, options_for_select([@product.quantity], @product.quantity) %>
-        <%= best_in_place @product, :quantity, as: :select, collection: (1..20).to_a.inject( {} ){|h, v| h[v.to_s] = v; h}, place_holder: @product.quantity, activator: '#quantity', url: shopping_cart_product_path(@cart, @product) %>
+        <%= best_in_place @product, :quantity, as: :select, collection: (1..20).to_a.inject( {} ){|h, v| h[v.to_s] = v; h}, place_holder: @product.quantity, activator: '#quantity' %>
       </div>
       <hr />
-      <%= link_to shopping_cart_product_path(@cart, @product), class: 'btn btn-danger', method: :delete do %>
+      <%= link_to product_path(@product), class: 'btn btn-danger', method: :delete, remote: true do %>
         <i class = 'fa fa-trash-can'></i> Remove From Cart
       <% end %>
     </div>

@@ -9,10 +9,13 @@ development:
   <<: *default
   database: adventure_glass_dev
 
-test:
+test: &test
   <<: *default
   database: adventure_glass_test
 
 production:
   <<: *default
   database: adventure_glass_prod
+
+cucumber:
+  <<: *test

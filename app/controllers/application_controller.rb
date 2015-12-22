@@ -19,7 +19,6 @@ class ApplicationController < ActionController::Base
   def current_shopping_cart
     @cart ||= current_user.shopping_cart unless current_user.nil?
     @cart ||= shopping_cart_from_session
-    @cart
   end
 
   private

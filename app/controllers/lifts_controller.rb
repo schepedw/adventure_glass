@@ -1,3 +1,4 @@
+#TODO: remove me
 class LiftsController < ApplicationController
   def show
     @display_options = []

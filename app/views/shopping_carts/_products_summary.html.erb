@@ -1,17 +1,17 @@
 <% @cart.products.uniq.each do |product| %>
-  <div class = 'row-fluid clearfix product-summary'>
+  <div class = 'row-fluid clearfix' id='product-<%=product.id%>-summary'>
     <div class = 'col-sm-2'> <!-- picture -->
       <a href="/boats/mark_twains"><%= image_tag 'paddleboats/mark_twains/thumbnail.jpg',  :class=>"img-responsive thumbnail"%></a>
     </div>
     <div class = 'col-sm-6'>
-      <span class = 'cart-product-title'> <%= link_to product.name, shopping_cart_product_path(@cart, product) %> </span>
+      <span class = 'cart-product-title'> <%= link_to product.name, product_path(product) %> </span>
       <p> <%= product.description %> </p>
       <span> <%= link_to 'Remove', product, remote: true, method: :delete %> </span>
     </div>
-    <%= render 'product_subtotal', product: product %>
+    <%= render 'shopping_carts/product_subtotal', product: product %>
     <div class = 'col-sm-2'><!-- Qty -->
       <div class = 'fake-select'>
-        <%= best_in_place product, :quantity, class: 'product-quantity', as: :select, url: shopping_cart_product_path(@cart, product),
+        <%= best_in_place product, :quantity, class: 'product-quantity', as: :select,
           collection: (0..[15, product.quantity].max).to_a.inject( {} ) {|a,b| a[b] = b; a} %>
         <div class = 'caret-container'>
           <div class = 'fa fa-caret-up'></div>
