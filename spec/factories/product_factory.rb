@@ -1,6 +1,5 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :product do
     quantity 3
   end
 end
-

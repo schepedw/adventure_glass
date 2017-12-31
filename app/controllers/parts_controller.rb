@@ -1,12 +1,12 @@
 require 'csv_reader'
 include CSVReader
 class PartsController < ApplicationController
-
   def index
     respond_to do |format|
       format.html
-      format.json {
-        render json: {:aaData => data_table}}
+      format.json do
+        render json: { aaData: data_table }
+      end
     end
   end
 
@@ -20,7 +20,7 @@ class PartsController < ApplicationController
   private
 
   def data_table
-    existing_parts = Part.all.inject( [] ) do |rows, part|
+    existing_parts = Part.all.inject([]) do |rows, part|
       rows << display_row(part)
     end
     new_part + existing_parts
@@ -28,8 +28,8 @@ class PartsController < ApplicationController
 
   def display_row(part)
     base_model_id = part.id
-    image_file = "#{part.image_path}/#{part.id}_#{part.name.downcase.gsub(' ','_')}.jpg"
-    [img_tag(image_file), part.id, part.description, part.price].inject( [] ) do |row, col|
+    image_file = "#{part.image_path}/#{part.id}_#{part.name.downcase.tr(' ', '_')}.jpg"
+    [img_tag(image_file), part.id, part.description, part.price].inject([]) do |row, col|
       row << link_tag(col, base_model_id)
     end
   end
@@ -44,10 +44,10 @@ class PartsController < ApplicationController
 
   def new_part
     return [] unless current_user && current_user.has_role?(:admin)
-    [["<a href = '#{new_base_model_path}'> #{img_tag("upload_file.jpeg")}</a>",
-     "<a href = '#{new_base_model_path}'> -- </a>",
-     "<a href = '#{new_base_model_path}'> Add new part </a>",
-     "<a href = '#{new_base_model_path}'> -- </a>"
+    [["<a href = '#{new_base_model_path}'> #{img_tag('upload_file.jpeg')}</a>",
+      "<a href = '#{new_base_model_path}'> -- </a>",
+      "<a href = '#{new_base_model_path}'> Add new part </a>",
+      "<a href = '#{new_base_model_path}'> -- </a>"
     ]]
   end
 end

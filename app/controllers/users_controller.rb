@@ -1,5 +1,4 @@
 class UsersController < Devise::RegistrationsController
-
   def update
     @user = User.find(user_params[:id])
     @user.update_attributes(user_params)
@@ -11,7 +10,7 @@ class UsersController < Devise::RegistrationsController
     @user = User.create(user_params)
     @address = update_shipping_addresses! if params[:user][:shipping_addresses]
     sign_up(resource_name, resource)
-    redirect_to(params[:request][:referer] || root_path)
+    redirect_to(params.dig(:request, :referer) || root_path)
   end
 
   private

@@ -12,7 +12,13 @@ class BaseModel < ActiveRecord::Base
   accepts_nested_attributes_for :specifications, allow_destroy: true
 
   def price_to_s
-    sprintf( "%0.02f", price)
+    format('%0.02f', price)
   end
 
+  def add_picture(uploaded_io)
+    file_path = ['public', 'assets', 'base_model_pictures', image_path, uploaded_io.original_filename]
+    File.open(Rails.root.join(*file_path), 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
+  end
 end

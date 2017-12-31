@@ -6,7 +6,7 @@ describe User do
   describe 'shopping cart' do
     let(:shopping_cart) { ShoppingCart.create(user: user) }
     it 'creates a shopping cart if none exists' do
-      expect(ShoppingCart).to receive(:create).with({user: user})
+      expect(ShoppingCart).to receive(:create).with(user: user)
       user.shopping_cart
     end
 
@@ -35,7 +35,7 @@ describe User do
       end
     end
     context 'incomplete' do
-      %w(email encrypted_password first_name last_name phone_number).each do |attr|
+      %w[email encrypted_password first_name last_name phone_number].each do |attr|
         it "is incomplete without #{attr}" do
           user.send("#{attr}=", nil)
           expect(user.registration_complete?).to be false

@@ -9,7 +9,7 @@ Given(/^I am editing a base model(?: that has at least one|)( specification| opt
   @base_model = BaseModel.first
   if association.present?
     association.strip!
-    instance_variable_set("@#{association}", FactoryGirl.create(association.to_sym, base_model_id: @base_model.id))
+    instance_variable_set("@#{association}", FactoryBot.create(association.to_sym, base_model_id: @base_model.id))
   end
   visit "/base_models/#{@base_model.id}/edit"
 end
@@ -61,7 +61,7 @@ When(/^I remove that option$/) do
 end
 
 When(/^I add a picture$/) do
-    pending # express the regexp above with the code you wish you had
+  pending # express the regexp above with the code you wish you had
 end
 
 When(/^I remove a picture$/) do
@@ -93,9 +93,7 @@ end
 
 Then(/^the new option will be persisted$/) do
   @option = @base_model.available_options.reload.last
-  if @new_price.present?
-    expect(@option.price.to_f).to eql @new_price
-  end
+  expect(@option.price.to_f).to eql @new_price if @new_price.present?
   if @new_description.present?
     expect(@option.description).to eql @new_description
   end

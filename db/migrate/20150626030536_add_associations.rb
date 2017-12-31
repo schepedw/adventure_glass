@@ -1,8 +1,7 @@
 class AddAssociations < ActiveRecord::Migration
-
   def up
     create_table :selected_product_options do |t|
-      t.belongs_to :product, null:false, index: true
+      t.belongs_to :product, null: false, index: true
       t.belongs_to :option, null: false, index: true
     end
 

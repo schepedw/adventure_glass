@@ -15,7 +15,7 @@ Feature: Checking out
 
     Examples:
       | logged_in?         | given_info | available_fields |
-      | have logged in     | title, first name, last name, phone number, building number, street, apartment number, city, state, zip code| title, first name, last name, phone number, building number, street, apartment number, city, state, zip code|
+      | have logged in     | title, first name, last name, phone number, building number, street, apartment number, city, state, zip code | title, first name, last name, phone number, building number, street, apartment number, city, state, zip code|
       | have not logged in | |email, password, password confirmation, title, first name, last name, phone number, building number, street, apt or unit number, city, state, zip code|
 
   Scenario: Skipping user registration fields for users with complete info
@@ -59,20 +59,20 @@ Feature: Checking out
     Then the product will be removed from my cart
     And the subtotal of my shopping cart will be updated
 
-  Scenario: Placing an order
-    Given I have logged in
-    And I am viewing the confirmation page for my order
-    When I click on "Place Order"
-    Then an order will be created
+    #Scenario: Placing an order
+    #Given I have logged in
+    #And I am viewing the confirmation page for my order
+    #When I click on "Place Order"
+    #Then an order will be created
 
-  Scenario: Receiving confirmation email for order placement
-    Given I have logged in
-    And I am viewing the confirmation page for my order
-    Then I will receive an email confirming my order
-    When I click on "Place Order"
+    #Scenario: Receiving confirmation email for order placement
+    #Given I have logged in
+    #And I am viewing the confirmation page for my order
+    #Then I will receive an email confirming my order
+    #When I click on "Place Order"
 
-  Scenario: Viewing my order summary
-    Given I have logged in
-    And I am viewing the confirmation page for my order
-    When I click on "Place Order"
-    Then I will be directed to my order summary page
+    #Scenario: Viewing my order summary
+    #Given I have logged in
+    #And I am viewing the confirmation page for my order
+    #When I click on "Place Order"
+    #Then I will be directed to my order summary page

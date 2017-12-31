@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   has_many :orders
   has_one  :shopping_cart
-  has_many  :shipping_addresses, class_name: 'Address'
+  has_many :shipping_addresses, class_name: 'Address'
 
   def shopping_cart
     super || ShoppingCart.create(user: self)

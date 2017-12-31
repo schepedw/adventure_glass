@@ -3,13 +3,16 @@
 # newer version of cucumber-rails. Consider adding your own code to a new file
 # instead of editing this one. Cucumber will automatically load all features/**/*.rb
 # files.
-require 'capybara/poltergeist'
 
-require 'cucumber/rails'
 require 'cucumber/rspec/doubles'
 require 'webmock/cucumber'
+require 'pry'
+require 'action_view'
 require 'best_in_place/test_helpers'
 require 'rack_session_access/capybara'
+require 'cucumber/rails'
+require 'capybara/poltergeist'
+
 include BestInPlace::TestHelpers
 Capybara.javascript_driver = :poltergeist
 
@@ -40,7 +43,7 @@ ActionController::Base.allow_rescue = false
 begin
   DatabaseCleaner.strategy = :transaction
 rescue NameError
-  raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
+  raise 'You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it.'
 end
 
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
@@ -61,12 +64,15 @@ end
 # Possible values are :truncation and :transaction
 # The :transaction strategy is faster, but might give you threading problems.
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
+
 Cucumber::Rails::Database.javascript_strategy = :transaction
 WebMock.disable_net_connect!(allow_localhost: true)
-['assets', 'images'].each do |folder|
+%w[assets images].each do |folder|
   full_path = File.join(Rails.root, 'public', folder)
-  FileUtils.mkdir(full_path) unless File.exists?(full_path)
+  FileUtils.mkdir(full_path) unless File.exist?(full_path)
   symlink_dest = File.join(full_path, 'base_model_pictures')
   symlink_source = File.join(Rails.root, 'app', 'assets', 'images')
-  FileUtils.ln_s(symlink_source, symlink_dest) unless File.exists?(symlink_dest)
+  FileUtils.ln_s(symlink_source, symlink_dest) unless File.exist?(symlink_dest)
 end
+
+World(FactoryBot::Syntax::Methods)
