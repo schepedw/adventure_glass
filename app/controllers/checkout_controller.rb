@@ -9,6 +9,6 @@ class CheckoutController < ApplicationController
     @cart = current_shopping_cart
     @shipping_address = current_user.most_recent_shipping_address
     @updated_product = @cart.products.max_by(&:updated_at)
-    @total_cost = @cart.subtotal #TODO: should be renamed to @subtotal
+    @total_cost = @cart.subtotal # TODO: should be renamed to @subtotal
   end
 end

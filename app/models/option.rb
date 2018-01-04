@@ -1,8 +1,8 @@
 class Option < ActiveRecord::Base
   resourcify
-  belongs_to :products
+  belongs_to :products, optional: true
 
   def price_to_s
-    sprintf( "%0.02f", price)
+    format('%0.02f', price)
   end
 end

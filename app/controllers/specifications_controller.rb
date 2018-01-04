@@ -2,7 +2,7 @@ class SpecificationsController < ApplicationController
   respond_to :html, :json
   def create
     Specification.create(specification_params)
-    @base_model = BaseModel.find(specification_params[:base_model_id]) rescue nil
+    @base_model = BaseModel.find_by_id(specification_params[:base_model_id])
     @specifications = @base_model.present? ? @base_model.specifications : Specification.all
   end
 
@@ -14,11 +14,12 @@ class SpecificationsController < ApplicationController
 
   def destroy
     Specification.delete(params[:id])
-    @base_model = BaseModel.find(params[:base_model_id]) rescue nil
+    @base_model = BaseModel.find_by_id(params[:base_model_id])
     @specifications = @base_model.present? ? @base_model.specifications : Specification.all
   end
 
   private
+
   def specification_params
     params.require(:specification).permit(:description, :price, :base_model_id)
   end

@@ -1,4 +1,4 @@
-def all_fields
+def all_fields # rubocop:disable Metrics/MethodLength
   @all_fields ||= {
     email: Faker::Internet.email,
     password: Faker::Internet.password,
@@ -25,7 +25,7 @@ def customer_fields
 end
 
 def parse_fields(fields)
-  fields.split(',').map{|a| a.strip.gsub(' ', '_').to_sym }
+  fields.split(',').map { |a| a.strip.tr(' ', '_').to_sym }
 end
 
 Given(/^my customer information is(| not) complete$/) do |incomplete|
@@ -46,11 +46,11 @@ Given(/^I have logged in$/) do
   step 'I am the current user'
 end
 
-Given(/^the information I have already given includes (|[(\S+)(,\s)]+)$/) do |given_fields|
+Given(/^the information I have already given includes (|[\S+,\s]+)$/) do |given_fields|
   fields = parse_fields(given_fields)
   next if fields.empty?
-  @customer.update_attributes( customer_fields.slice(*fields) )
-  @customer.most_recent_shipping_address.update_attributes( address_fields.slice(*fields) )
+  @customer.update_attributes(customer_fields.slice(*fields))
+  @customer.most_recent_shipping_address.update_attributes(address_fields.slice(*fields))
   @customer.shipping_addresses.reload
   allow(@customer).to receive(:registration_complete?) { false }
 end
@@ -68,7 +68,7 @@ When(/^I enter a new shipping address on the checkout page$/) do
   click_button 'Continue to Checkout'
 end
 
-Then(/^the ( |[(\S+)(,\s)]+ )fields are pre\-populated$/) do |populated_fields|
+Then(/^the ( |[\S+,\s]+)fields are pre\-populated$/) do |populated_fields|
   fields = parse_fields(populated_fields)
   customer_fields.slice(*fields).each do |field, value|
     expect(page.find("#user_#{field}").value).to eql value
@@ -90,7 +90,7 @@ Then(/^I will be directed to my order summary page$/) do
   expect(page.current_path).to eql "/orders/#{Order.last.id}"
 end
 
-Then(/^I see fields for ([(\S+)(,\s)]+)*$/) do |available_fields|
+Then(/^I see fields for ([\S+,\s]+)*$/) do |available_fields|
   available_fields = parse_fields(available_fields)
   customer_fields.slice(*available_fields).values do |field|
     expect(page).to have_content("#user_#{field}")
@@ -120,7 +120,7 @@ Then(/^my updated address will be shown on the confirmation page$/) do
   end
 end
 
-Then(/^I won't see fields for ([(\S+)(,\s)]+)$/) do |fields|
+Then(/^I won't see fields for ([\S+,\s]+)$/) do |fields|
   customer_fields.slice(*fields).values do |field|
     expect(page).to_not have_content("#user_#{field}")
   end

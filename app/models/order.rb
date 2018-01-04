@@ -3,7 +3,7 @@ class Order < ActiveRecord::Base
   belongs_to :status
   has_many :products, through: :shopping_cart
   belongs_to :shopping_cart
-  before_save :default_status
+  before_validation :default_status
 
   private
 

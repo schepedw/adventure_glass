@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   respond_to :html, :json
   before_action :parse_selections!, only: [:create]
   before_action :check_cart, only: [:show, :update, :destroy]
-  #TODO: do we ever use the edit view?
+  # TODO: do we ever use the edit view?
 
   def create
     Product.create(product_params)
@@ -47,37 +47,25 @@ class ProductsController < ApplicationController
   end
 
   def class_name
-    @class_name ||= \
-      ['boat', 'part', 'lift', 'dock', 'product'].find do |type|
-      params[type].present?
-    end
+    @class_name ||= %w[boat part lift dock product].find { |type| params[type].present? }
   end
 
   def product_params
     params.require(class_name).permit(
-      :quantity,
-      :shopping_cart_id,
-      :price,
-      :description,
-      :class_name,
-      :base_model_id,
-      :name,
-      :type,
-      {selected_option_ids: []}
-     ).merge(shopping_cart: current_shopping_cart)
+      :quantity, :shopping_cart_id, :price, :description, :class_name,
+      :base_model_id, :name, :type, selected_option_ids: []
+    ).merge(shopping_cart: current_shopping_cart)
   end
 
   def klass
     class_name.capitalize.constantize
   end
 
-  def parse_selections!
-    association = :selected_option_ids #extendable to be an array
-    if params[class_name][association].is_a? Hash
-      params[class_name][association] = \
-      params[class_name][association].keys.select do |k|
-        params[class_name][association][k][:selected] == '1'
-      end
+  def parse_selections! # rubocop:disable Metrics/AbcSize
+    association = :selected_option_ids # extendable to be an array
+    return unless params[class_name][association].is_a? Hash
+    params[class_name][association] = params[class_name][association].keys.select do |k|
+      params[class_name][association][k][:selected] == '1'
     end
   end
 end

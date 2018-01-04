@@ -1,7 +1,7 @@
 class ShoppingCartsController < ApplicationController
   before_action :check_cart
   def show
-    @total_cost = @cart.subtotal #TODO: should be renamed to @subtotal
+    @total_cost = @cart.subtotal # TODO: should be renamed to @subtotal
     respond_to do |format|
       format.html
       format.js do

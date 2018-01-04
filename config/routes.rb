@@ -20,6 +20,6 @@ Rails.application.routes.draw do
     post 'pictures' => 'base_models#upload_picture'
     delete 'pictures' => 'base_models#delete_picture'
   end
-  resources :orders
-  #TODO: nest orders under users - will that work with anonymous checkout?
+  resource :orders
+  # TODO: nest orders under users - will that work with anonymous checkout?
 end

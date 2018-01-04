@@ -3,17 +3,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :current_shopping_cart
 
-  rescue_from UnauthorizedError do |ex|
+  rescue_from UnauthorizedError do |_ex|
     render 'site/unauthorized', layout: 'application', status: 403, formats: [:html]
   end
 
   rescue_from StandardError do |ex|
-    if ['production', 'staging'].include? Rails.env
-      Airbrake.notify(ex)
-      #TODO: make a 500 page
-    else
-      raise ex
-    end
+    raise ex unless %w[production staging].include? Rails.env
+    Airbrake.notify(ex)
   end
 
   def current_shopping_cart

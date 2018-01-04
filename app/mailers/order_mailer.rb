@@ -1,5 +1,5 @@
 class OrderMailer < ActionMailer::Base
-  default from: "schepedw@gmail.com"
+  default from: 'schepedw@gmail.com'
 
   def confirm_order(order)
     @user = order.user
@@ -7,5 +7,4 @@ class OrderMailer < ActionMailer::Base
     @products = order.products
     mail(to: order.user.email, bcc: 'schepedw@gmail.com', subject: "Adventure Glass Order ##{order.id}")
   end
-
 end

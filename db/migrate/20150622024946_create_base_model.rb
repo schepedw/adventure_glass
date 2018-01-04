@@ -6,7 +6,7 @@ class CreateBaseModel < ActiveRecord::Migration
       t.string   :class_name
       t.string   :name
       t.string   :type
-      t.string   :image_path #TODO: I don't like this
+      t.string   :image_path # TODO: I don't like this
 
       t.timestamps
     end
