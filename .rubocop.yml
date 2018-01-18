@@ -6,6 +6,7 @@ AllCops:
     - 'script/**/*'
     - 'bin/**/*'
     - 'vendor/**/*'
+    - 'node_modules/**/*'
 
 Metrics/LineLength:
   Max: 120

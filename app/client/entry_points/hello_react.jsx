@@ -4,23 +4,17 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
-
-const Hello = props => (
-  <div>Hello {props.name}!</div>
-)
-
-Hello.defaultProps = {
-  name: 'David'
-}
-
-Hello.propTypes = {
-  name: PropTypes.string
-}
+import { Provider } from 'react-redux'
+import { createStore } from 'redux';
+import Hello from 'components/Hello'
+import clickCounter from 'reducers/clickCounter';
 
 document.addEventListener('DOMContentLoaded', () => {
+  const store = createStore(clickCounter);
   ReactDOM.render(
-    <Hello name="React" />,
+    <Provider store={store}>
+      <Hello name="React" />
+    </Provider>,
     document.body.appendChild(document.createElement('div')),
   )
 })
