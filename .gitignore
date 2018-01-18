@@ -18,3 +18,6 @@
 **.DS_Store
 /config/initializers/action_mailer.rb 
 /public
+/public/packs
+/public/packs-test
+/node_modules

@@ -12,6 +12,8 @@ gem 'figgy'
 gem 'listen' # idk why this is needed
 
 # front end
+gem 'webpacker'
+
 gem 'sass-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer',  platforms: :ruby
